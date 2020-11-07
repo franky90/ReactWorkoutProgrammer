@@ -1,23 +1,13 @@
-const ControllerBase = require('./ControllerBase')
+const express = require('express')
+// const ControllerBase = require('./ControllerBase')
+const UserController = express.Router()
 
-class UserController extends ControllerBase {
+UserController.get('/', (req, res) => {
+    res.send({
+        isSuccess: true,
+        msg: "Hello from User Controller"
+    })
+})
 
-    constructor({resourceName}) {
-        super({resourceName})
-        this.getApiCalls()
-    }
-
-    /**
-     * Going to define all my Get Calls for this resource here.
-     */
-    getApiCalls() {
-        this.Router.get('/', (req, res) => {
-            res.send({
-                isSuccess: true,
-                msg: "Hello from User Controller"
-            })
-        })        
-    }
-}
 
 module.exports = UserController
