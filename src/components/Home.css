@@ -1,0 +1,6 @@
+/* EXERCISE BOX  */
+.main-container-exercise{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  

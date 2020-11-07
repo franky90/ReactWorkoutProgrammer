@@ -1,0 +1,41 @@
+
+.main-exercise-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:100%;
+    background-color: #2196F3;
+    padding: 5px;
+    border-bottom:3px solid orangered;
+    align-content:center;
+  }
+  
+  .exercise-container {
+    
+    display:flex;
+    background-color: black;
+    text-align: center;
+    justify-content: center;
+    font-size: 26px;
+    
+}
+.exercise-container >div {
+  padding:0 20px 10px 10px;
+    display:inline-block;
+    /* background-color: green; */
+    text-align: center;
+  font-size: 26px;
+  
+}
+
+@media screen and (max-width: 960px){
+    .exercise-container{
+        width: 100%;
+    }
+    .exercise-container >div{
+        font-size: 1rem;   
+    }
+    .part-two >div{
+      min-width: 25%;
+    }
+}

@@ -1,0 +1,9 @@
+.home, .contact-us, .sign-up, .chest, .consulting,
+.shoulders, .back, .legs, .lower-back-pain,
+.upper-back-pain, .shoulder-mobility, .acl-treatment{
+    display:flex;
+    height:90vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+} 
