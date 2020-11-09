@@ -1,6 +1,6 @@
 import React from "react"
 import "./Welcome.css"
-
+import titleImage from './../images/titleimg.png'
 
 function Welcome(){
     return(
@@ -15,7 +15,7 @@ function Welcome(){
 
    </div>
    <div id="welcome-container-img">
-<img src="../images/titleimg.png" alt="fit-people"/>
+<img src={titleImage} alt="fit-couple"/>
    </div>
     </div>
     )
