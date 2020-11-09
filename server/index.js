@@ -3,20 +3,29 @@ const app = express()
 const port = 5000
 const Logger = require('./Service/Logger')
 const cors = require('cors')
+// const { readFileData } = require('./Service/GoogleService') 
+const UserController = require('./Controllers/UserController')
+const WorkoutController = require('./Controllers/WorkoutController')
+const MetaController = require('./Controllers/ControllerDetails')
+const CustomMiddlewares = require('./Service/CustomMiddlewares')
+const morgan = require('morgan')
 
-// I define all the controllers here
-const Controllers = require('./Controllers/AllControllerInstances')
+app.use(express.json())
+app.use(express.urlencoded())//Parse URL-encoded bodies
+app.use(morgan('tiny'))
+// this will prevent CORS issues in the future! - Currently Applies to all Requests
+app.use(CustomMiddlewares.CORS())
 
-Logger.Title('\tHere are the Resource Routes we are creating')
-Controllers.forEach((controllerInstance, index) => {
-    const routePath = '/' + controllerInstance.resourceName
-    Logger.spaced(1)
-    Logger.danger('\t\t'+(index+1)+' '+routePath)
-    Logger.spaced(1)
-    app.use(routePath, controllerInstance.Router)    
-})
+// Setting up my controllers here...
+app.use(UserController.toRoute(), UserController.Router)
+app.use(WorkoutController.toRoute(), WorkoutController.Router)
+app.use("/Meta", MetaController)
+
 app.use(cors())
 
 app.listen(port, () => {
   Logger.Success(`My app listening at http://localhost:${port}`)
+  Logger.danger(`Visit http://localhost:${port}/Meta to view information about all Routes`)//controllerName
+  Logger.danger(`Visit http://localhost:${port}/Meta?controllerName=User to view information about all Routes belonging to User`)
+  Logger.danger(`Visit http://localhost:${port}/Meta/byControllerName to see Apis grouped by resource`)
 })
