@@ -8,13 +8,14 @@ class ControllerBase
         this.Router = express.Router()
     }
 
-    descriptor({path, verb, description})
+    descriptor({path, verb, description, body})
     {
         new ApiDetail()
         .withController(this.routerPath)
         .withPath(path)
         .withVerb(verb)
         .withDescription(description)
+        .withBody(body)
         .addSettings()
     }
 

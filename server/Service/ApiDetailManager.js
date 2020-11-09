@@ -13,10 +13,16 @@ const ApiDetailManager = function() {
 const ApiDetailManagerInstance = new ApiDetailManager()
 
 const ApiDetail = function() {
-    let _path = ''
-    let _controller = ''
-    let _verb = ''
-    let _description = ''
+    let _path
+    let _controller
+    let _verb
+    let _description
+    let _body
+
+    this.withBody = function(body){
+        _body = body
+        return this
+    }
 
     this.withPath = function(path) {
         _path = path
@@ -43,18 +49,23 @@ const ApiDetail = function() {
             path: _path,
             controller: _controller,
             verb: _verb,
-            description: _description
+            description: _description,
+            body: _body
         }
-        /*
         for(settingsItem in settings) {
-            console.log(settingsItem, settings[settingsItem])
+            let key = settingsItem
+            let value = settings[settingsItem]
+            let isValidValue = !!value
+            if(!isValidValue) {
+                delete settings[key]
+            }
         }
-        */
         return settings
     }
 
     this.addSettings = function() {
-        ApiDetailManagerInstance.add(getSettings())
+        const newSetting = getSettings()
+        ApiDetailManagerInstance.add(newSetting)
     }
 
 }

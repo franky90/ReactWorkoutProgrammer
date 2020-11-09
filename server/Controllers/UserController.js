@@ -23,7 +23,8 @@ class UserController extends ControllerBase {
             {
                 path: '/signin', 
                 verb: 'POST', 
-                description: 'dummy route that allows for the User resource to signin.'
+                description: 'dummy route that allows for the User resource to signin.',
+                body: { "UserName": "admin", "password": "password" }
             }
         )
         this.Router.post('/signin', (req, res) => {
