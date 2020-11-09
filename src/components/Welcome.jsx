@@ -15,7 +15,7 @@ function Welcome(){
 
    </div>
    <div id="welcome-container-img">
-<img src="./../images/titleimg.png" alt="main-image"/>
+<img src="../images/titleimg.png" alt="fit-people"/>
    </div>
     </div>
     )

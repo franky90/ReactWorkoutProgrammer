@@ -10,53 +10,30 @@ import DropdownFB from "./DropdownFB"
 function Navbar() {
   
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
-  const [dropdownFB, setDropdownFB] = useState(false);
+
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-const onMouseEnter = () => {
-  if(window.innerWidth < 960){
-    setDropdown(false)
-  }else{
-    setDropdown(true)
-  }
-}
+// const onMouseEnter = () => {
+//   if(window.innerWidth < 960){
+//     setDropdown(false)
+//   }else{
+//     setDropdown(true)
+//   }
+// }
 
-const onMouseLeave = () => {
-  if(window.innerWidth < 960){
-    setDropdown(false)
-  }else{
-    setDropdown(false)
-  }
-}
+// const onMouseLeave = () => {
+//   if(window.innerWidth < 960){
+//     setDropdown(false)
+//   }else{
+//     setDropdown(false)
+//   }
+// }
 
-const onMouseEnterFB = () => {
-  if(window.innerWidth < 960){
-    setDropdownFB(false)
-  }else{
-    setDropdownFB(true)
-  }
-}
 
-const onMouseLeaveFB = () => {
-  if(window.innerWidth < 960){
-    setDropdownFB(false)
-  }else{
-    setDropdownFB(false)
-  }
-}
 
-const extendTreatments = () =>{
-  dropdownFB ? setDropdownFB(false) : setDropdownFB(true);
-  dropdownFB && closeMobileMenu();
-}
 
-const extendSplit = () =>{
-  dropdown ? setDropdown(false) : setDropdown(true);
-  dropdown && closeMobileMenu();
-}
 
 
 
@@ -82,26 +59,16 @@ CWP <i className="fas fa-dumbbell"/>
         Home
       </Link>
     </li>
-    <li className="nav-item"
-    onMouseEnter={onMouseEnter}
-    onMouseLeave={onMouseLeave}
-    onClick={extendSplit}
-    >
-      <Link to="/" className="nav-links" >
-        Split Workouts <i className="fas fa-caret-down" />
+    <li className="nav-item">
+      <Link to="/workout-creator" className="nav-links" onClick={closeMobileMenu}>
+        Workout Creator
       </Link>
-      {dropdown && <Dropdown />}
     </li>
-    <li className="nav-item" 
-    onMouseEnter={onMouseEnterFB}
-    onMouseLeave={onMouseLeaveFB}
-    onClick={extendTreatments}
-    >
-      <Link to="/" className="nav-links" >
-        Treatments <i className="fas fa-caret-down" />
+    <li className="nav-item" >
+      <Link to="/trainings" className="nav-links" onClick={closeMobileMenu}>
+        Trainings
       </Link>
-      {dropdownFB && <DropdownFB />}
-    </li>
+        </li>
     <li className="nav-item">
       <Link to="/contact-us" className="nav-links" onClick={closeMobileMenu}>
         Contact Us
