@@ -27,4 +27,5 @@ app.listen(port, () => {
   Logger.Success(`My app listening at http://localhost:${port}`)
   Logger.danger(`Visit http://localhost:${port}/Meta to view information about all Routes`)//controllerName
   Logger.danger(`Visit http://localhost:${port}/Meta?controllerName=User to view information about all Routes belonging to User`)
+  Logger.danger(`Visit http://localhost:${port}/Meta/byControllerName to see Apis grouped by resource`)
 })
