@@ -1,16 +1,41 @@
-const express = require('express')
-const { ApiDetail, ApiDetailManagerInstance } = require('./../Service/ApiDetailManager')
+const ControllerBase = require('./ControllerBase')
 
-const UserController = express.Router()
+class UserController extends ControllerBase {
+    constructor()
+    {
+        super("User")
+        this.descriptor(
+            {
+                path: '/', 
+                verb: 'GET', 
+                description: 'dummy route that gives us dummy data for the User resource'
+            }
+        )
+        this.Router.get('/', (req, res) => {
+            res.send({
+                isSuccess: true,
+                msg: "Hello from User Controller"
+            })
+        })
 
-const UserRootSettings = new ApiDetail().withController('/User').withPath('/User').withVerb('GET').getSettings()
-ApiDetailManagerInstance.add(UserRootSettings)
-UserController.get('/', (req, res) => {
-    res.send({
-        isSuccess: true,
-        msg: "Hello from User Controller"
-    })
-})
+
+        this.descriptor(
+            {
+                path: '/signin', 
+                verb: 'POST', 
+                description: 'dummy route that allows for the User resource to signin.'
+            }
+        )
+        this.Router.post('/signin', (req, res) => {
+            res.send({
+                isSuccess: true,
+                msg: "Hello from User Controller, Signin route"
+            })
+        })
+    }
+}
 
 
-module.exports = UserController
+
+
+module.exports = new UserController()
