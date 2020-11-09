@@ -1,7 +1,10 @@
 const express = require('express')
-// const ControllerBase = require('./ControllerBase')
+const { ApiDetail, ApiDetailManagerInstance } = require('./../Service/ApiDetailManager')
+
 const UserController = express.Router()
 
+const UserRootSettings = new ApiDetail().withController('/User').withPath('/User').withVerb('GET').getSettings()
+ApiDetailManagerInstance.add(UserRootSettings)
 UserController.get('/', (req, res) => {
     res.send({
         isSuccess: true,
