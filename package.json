@@ -19,7 +19,8 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "webpack": "4.44.2"
   },
   "scripts": {
     "start": "concurrently \"npm run server:start\" \"npm run client\"",
@@ -57,7 +58,6 @@
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.6",
     "source-map-loader": "^1.1.2",
-    "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
   }
 }

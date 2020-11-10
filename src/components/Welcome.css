@@ -1,6 +1,4 @@
-
-
-.welcome-container {
+#welcome-container {
     display: flex;
     flex-wrap: wrap;
     border: 2px solid crimson;
@@ -10,13 +8,6 @@
     justify-content: center;
     align-content: center;
     margin:0px auto;
-    background: transparent;
-}
-@media (min-width: 960px) {
-    .welcome-container {
-      background: yellow;
-      color: black;
-    }
 }
 
 #welcome-container-text {
