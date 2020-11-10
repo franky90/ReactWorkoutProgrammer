@@ -25,15 +25,16 @@ const App = () => <Router>
                     <Route path="/trainings" exact component={Trainings} />
                     <Route path="/contact-us" exact component={ContactUs} /> 
                     <Route path="/sign-up" exact component={SignUp} /> 
-                    {/* <Route path="/shoulders" exact component={Shoulders} />
+                    {/* 
+                    <Route path="/shoulders" exact component={Shoulders} />
                     <Route path="/back" exact component={Back} /> 
                     <Route path="/legs" exact component={Legs} /> 
                     <Route path="/chest" exact component={Chest} /> 
                     <Route path="/upper-back-pain" exact component={UpperBackP} /> 
                     <Route path="/lower-back-pain" exact component={LowerBackP} /> 
                     <Route path="/acl-treatment" exact component={AclTreatment} /> 
-                    <Route path="/shoulder-mobility" exact component={ShoulderMobility} />  */}
-                    
+                    <Route path="/shoulder-mobility" exact component={ShoulderMobility} />  
+                    */}
                 </Switch>
         </Router>
 export default App;
