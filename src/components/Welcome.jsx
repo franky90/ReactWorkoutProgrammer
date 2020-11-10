@@ -4,7 +4,7 @@ import titleImage from "./../images/titleimg.png";
 
 function Welcome() {
   return (
-    <div id="welcome-container" className="welcome-container">
+    <div id="welcome-container">
       <div id="welcome-container-text">
         <h1>COMPLETE</h1>
         <h1>WORKOUT</h1>
