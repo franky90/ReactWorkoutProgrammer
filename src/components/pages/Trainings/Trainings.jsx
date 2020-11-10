@@ -6,8 +6,6 @@ import {exerciseListSplit} from "../data/exerciseListSplit"
 
 export default function Trainings(){
     
-    
-    
     return(
         <div className="trainings-menu">
     
