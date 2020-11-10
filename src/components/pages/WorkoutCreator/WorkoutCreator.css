@@ -5,8 +5,8 @@
 
 .exercise-row > Td{
     text-align: center;
-    padding: 10px;
     background-color: #393e46;
+    padding:3px;
 }
 
 Thead{
@@ -15,23 +15,13 @@ Thead{
 }
 
 .exercise-heading{
-    padding: 5px;
+    padding: 7.5px;
 }
-
 
 @media screen and (max-width: 40em) {
 
-    .responsiveTable thead tr {
-       border-bottom: 20px solid #333;
-      }
-    
       .responsiveTable tbody tr {
         border: 1px solid #eeeeee;
         padding:0.25em 0;
       }
-      .exercise-row > td{
-          
-          border-bottom: 1px solid red;
-      }
-
 }
