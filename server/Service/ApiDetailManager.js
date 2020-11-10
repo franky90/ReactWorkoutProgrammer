@@ -10,17 +10,23 @@ const ApiDetailManager = function() {
     }
 }
 
-const ApiDetailManagerInstance = new ApiDetailManager()
+export const ApiDetailManagerInstance = new ApiDetailManager()
 
-const ApiDetail = function() {
+export const ApiDetail = function() {
     let _path
     let _controller
     let _verb
     let _description
     let _body
+    let _response
 
     this.withBody = function(body){
         _body = body
+        return this
+    }
+
+    this.withResponse = function(response){
+        _response = response
         return this
     }
 
@@ -50,9 +56,11 @@ const ApiDetail = function() {
             controller: _controller,
             verb: _verb,
             description: _description,
-            body: _body
+            body: _body,
+            response: _response
         }
-        for(settingsItem in settings) {
+
+        for(const settingsItem in settings) {
             let key = settingsItem
             let value = settings[settingsItem]
             let isValidValue = !!value
@@ -60,6 +68,7 @@ const ApiDetail = function() {
                 delete settings[key]
             }
         }
+
         return settings
     }
 
@@ -68,12 +77,4 @@ const ApiDetail = function() {
         ApiDetailManagerInstance.add(newSetting)
     }
 
-}
-
-
-
-
-module.exports = {
-    ApiDetailManagerInstance,
-    ApiDetail
 }

@@ -1,14 +1,14 @@
-const express = require('express')
-const { ApiDetail } = require('./../Service/ApiDetailManager')
-class ControllerBase
+import Express from 'express'
+import { ApiDetail } from "./../Service/ApiDetailManager"
+export class ControllerBase
 {
     constructor(controllerPrefix)
     {
         this.routerPath = controllerPrefix
-        this.Router = express.Router()
+        this.Router = Express.Router()
     }
 
-    descriptor({path, verb, description, body})
+    describeApi({path, verb, description, body, response})
     {
         new ApiDetail()
         .withController(this.routerPath)
@@ -16,12 +16,11 @@ class ControllerBase
         .withVerb(verb)
         .withDescription(description)
         .withBody(body)
+        .withResponse(response)
         .addSettings()
     }
 
-    toRoute(){
+    toRoute() {
         return "/"+this.routerPath
     }
 }
-
-module.exports = ControllerBase

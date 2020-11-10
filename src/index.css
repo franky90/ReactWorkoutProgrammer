@@ -6,10 +6,18 @@
   
 }
 
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  background: linear-gradient(0deg, rgba(0, 173, 181, 1) 0%, rgba(34, 40, 49, 1) 72%);
+}
+
 body{
   font-family:'Roboto', sans-serif;
   font-weight: 400;
-  background: linear-gradient(0deg, rgba(0, 173, 181, 1) 0%, rgba(34, 40, 49, 1) 72%);
+
   background-repeat: no-repeat;
   color: white;
 }

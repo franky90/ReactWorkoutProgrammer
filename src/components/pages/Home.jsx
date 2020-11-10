@@ -3,25 +3,12 @@ import Welcome from "./../Welcome";
 import Info from "./../Info";
 import Exercise from "./../Exercise";
 // getting this from the server now!
-// import exerciseList from "./../../exerciseList";
+import exerciseList from "./../../exerciseList";
 import "./../../components/Home.css"
-import { WorkoutAPI } from './../../Service/WorkoutAPI'
+// import { WorkoutAPI } from './../../Service/WorkoutAPI'
 
 const Home = () => {
-
-    const [exerciseList, setExerciseList] = useState([])
-
-    useEffect(() => {
-        WorkoutAPI.getExerciseCollection().then((goodAxiosResponse) => {
-            if(goodAxiosResponse && goodAxiosResponse.data && Array.isArray(goodAxiosResponse.data.exerciseList)) {
-                setExerciseList(goodAxiosResponse.data.exerciseList)
-            }
-        }).catch((axiosError) => {
-        })
-    }, [])
-
-    const createExerciseBox = passedExerciseList =>  <Exercise {...passedExerciseList}/>    
-    
+    const createExerciseBox = passedExerciseList =>  <Exercise key={passedExerciseList.exerciseName} {...passedExerciseList}/>
     return(<>
             <Welcome />
             <Info />

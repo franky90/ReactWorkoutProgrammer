@@ -1,4 +1,4 @@
-class CustomMiddlewares {
+export class CustomMiddlewares {
     static CORS(){
         return (req, res, next) => {
             res.header('Access-Control-Allow-Origin', '*')
@@ -12,7 +12,3 @@ class CustomMiddlewares {
         }
     }
 }
-
-
-
-module.exports = CustomMiddlewares

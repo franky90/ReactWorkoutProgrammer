@@ -1,10 +1,9 @@
-const ControllerBase = require('./ControllerBase')
-
+import { ControllerBase } from './ControllerBase'
 class UserController extends ControllerBase {
     constructor()
     {
         super("User")
-        this.descriptor(
+        this.describeApi(
             {
                 path: '/', 
                 verb: 'GET', 
@@ -19,7 +18,7 @@ class UserController extends ControllerBase {
         })
 
 
-        this.descriptor(
+        this.describeApi(
             {
                 path: '/signin', 
                 verb: 'POST', 
@@ -28,15 +27,35 @@ class UserController extends ControllerBase {
             }
         )
         this.Router.post('/signin', (req, res) => {
+
+            /*
+            const bodyFromRequest = req.body
+            console.log(bodyFromRequest)
+            console.log(req.body.UserName)
+            */
+
             res.send({
                 isSuccess: true,
                 msg: "Hello from User Controller, Signin route"
             })
         })
+
+
+        this.describeApi(
+            {
+                path: '/register', 
+                verb: 'POST', 
+                description: 'dummy route that allows User to create a profile.',
+                body: { "UserName": "admin", "password": "password" }
+            }
+        )
+        this.Router.post('/register', (req, res) => {
+            res.send({
+                isSuccess: true,
+                msg: "I am now a registered user"
+            })
+        })
     }
 }
 
-
-
-
-module.exports = new UserController()
+export default new UserController()

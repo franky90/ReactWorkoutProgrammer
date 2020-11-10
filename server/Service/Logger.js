@@ -1,12 +1,8 @@
-const chalk = require('chalk')
+import Chalk from 'chalk'
 const log = console.log
-
-class Logger {
+export class Logger {
     static spaced = lineBreakCount => log('\n'.repeat(lineBreakCount))
-    static danger = msg => log(chalk.bgRed.bold.whiteBright(msg))
-    static Title = msg => log(chalk.bgWhiteBright.bold.black(msg))
-    static Success = msg => log(chalk.bgGreenBright.bold.black(msg))
+    static danger = msg => log(Chalk.bgRed.bold.whiteBright(msg))
+    static Title = msg => log(Chalk.bgWhiteBright.bold.black(msg))
+    static Success = msg => log(Chalk.bgGreenBright.bold.black(msg))
 }
-
-
-module.exports = Logger

@@ -13,11 +13,10 @@ import LowerBackP from "./../components/pages/LowerBackP";
 import ShoulderMobility from "./../components/pages/ShoulderMobility";
 import ContactUs from "./../components/pages/ContactUs";
 import SignUp from "./../components/pages/SignUp";
-import WorkoutCreator from "../components/pages/WorkoutCreator";
-import Trainings from "../components/pages/Trainings";
+import WorkoutCreator from "./../components/pages/WorkoutCreator";
+import Trainings from "./../components/pages/Trainings";
 
-const App = () => <div>
-        <Router>
+const App = () => <Router>
             <Navbar />
                 <Switch>
                     <Route path="/" exact component={Home} /> 
@@ -35,6 +34,4 @@ const App = () => <div>
                     <Route path="/sign-up" exact component={SignUp} /> 
                 </Switch>
         </Router>
-    </div>
-
 export default App;

@@ -1,10 +1,9 @@
-const ControllerBase = require('./ControllerBase')
-
+import { ControllerBase } from './ControllerBase'
 class WorkoutController extends ControllerBase {
     constructor()
     {
         super("Workout")
-        this.descriptor(
+        this.describeApi(
             {
                 path: '/', 
                 verb: 'GET', 
@@ -20,7 +19,4 @@ class WorkoutController extends ControllerBase {
     }
 }
 
-
-
-
-module.exports = new WorkoutController()
+export default new WorkoutController()

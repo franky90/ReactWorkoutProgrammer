@@ -1,7 +1,7 @@
-const express = require('express')
-const { ApiDetailManagerInstance } = require('./../Service/ApiDetailManager')
+import Express from 'express'
+import { ApiDetailManagerInstance } from './../Service/ApiDetailManager'
 
-const MetaController = express.Router()
+export const MetaController = Express.Router()
 MetaController.get('/', (req, res) => {
     const allRouteData = ApiDetailManagerInstance.getAllDetails()
     if(req && req.query && req.query.controllerName) {
@@ -29,5 +29,3 @@ MetaController.get('/byControllerName', (req, res) => {
     }
     res.send(dynamicObject)
 })
-
-module.exports = MetaController
