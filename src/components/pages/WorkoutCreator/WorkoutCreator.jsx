@@ -6,12 +6,10 @@ import "./WorkoutCreator.css"
 import ExerciseRow from "../../ExerciseRow"
 
 class WorkoutCreator extends React.Component{
-
- 
   render(){
-
     const exerciseList= [
       {
+        id: 'Shoulders_1',
         buttonName: "Shoulders",
         order: "1",
         exerciseName: "Dumbbell Shoulder Press",
@@ -20,9 +18,17 @@ class WorkoutCreator extends React.Component{
         rest: "90s",
         weight: "70%RM"
       },
+      {
+        id: 'Shoulders_2',
+        buttonName: "Shoulders 2 intense",
+        order: "2",
+        exerciseName: "Dumbbell Shoulder Press upside down",
+        sets: "3",
+        reps: "10",
+        rest: "90s",
+        weight: "70%RM"
+      },
     ]
-
-
   return(
         <div className="workout-creator-container">
     <Table>
@@ -38,10 +44,7 @@ class WorkoutCreator extends React.Component{
         </Tr>
       </Thead>
       <Tbody>
-      {exerciseList.map(({buttonName, order, exerciseName, sets, reps, rest, weight})=>{
-       return(
-         <ExerciseRow buttonName={buttonName} exerciseName={exerciseName} order={order} sets={sets} reps={reps} rest={rest} weight={weight}/> 
-         )})}
+        {exerciseList.map(({id, ...exerciseObjectReference}) => <ExerciseRow key={id} {...exerciseObjectReference}/>)}
       </Tbody>
     </Table>
 </div>

@@ -1,14 +1,12 @@
 import React from "react";
-import "./ShuffleButton.css"
-import shuffleButton from "../images/shuffle.png"
+import "./ShuffleButton.css";
+import shuffleButton from "../images/shuffle.png";
 
-function ShuffleButton(){
-    return(
-        <div className="shuffle-button">
+const ShuffleButton = () => (
+  <div className="shuffle-button">
     <img className="shuffle-img" src={shuffleButton} />
-   <div className="shuffle-text"> CLick to Suffle</div>
-    </div>
-    )
-};
+    <div className="shuffle-text"> CLick to Shuffle</div>
+  </div>
+);
 
 export default ShuffleButton;
