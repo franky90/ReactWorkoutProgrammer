@@ -1,11 +1,11 @@
 .navbar {
-    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    background-color: #222831;
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-  }
+}
   
   .navbar-logo {
     font-family: 'Fredoka One', cursive;
@@ -51,10 +51,8 @@
     transition: all 0.3s ease-out;
   }
   .nav-links:hover {
-    
     transition: all 0.3s ease-in;
-    border-radius: 4px;
-  }
+    }
   
   .fa-bars {
     color: #fff;
