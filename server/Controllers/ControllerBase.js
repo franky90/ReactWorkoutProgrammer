@@ -8,7 +8,7 @@ export class ControllerBase
         this.Router = Express.Router()
     }
 
-    descriptor({path, verb, description, body})
+    describeApi({path, verb, description, body, response})
     {
         new ApiDetail()
         .withController(this.routerPath)
@@ -16,6 +16,7 @@ export class ControllerBase
         .withVerb(verb)
         .withDescription(description)
         .withBody(body)
+        .withResponse(response)
         .addSettings()
     }
 

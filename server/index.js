@@ -9,8 +9,8 @@ import { CustomMiddlewares } from './Service/CustomMiddlewares'
 import Morgan from 'morgan'
 
 const ExpressApp = ExpressLib()
+ExpressApp.use(ExpressLib.urlencoded({ extended: true }))//Parse URL-encoded bodies
 ExpressApp.use(ExpressLib.json())
-ExpressApp.use(ExpressLib.urlencoded())//Parse URL-encoded bodies
 ExpressApp.use(Morgan('tiny'))
 // this will prevent CORS issues in the future! - Currently Applies to all Requests
 ExpressApp.use(CustomMiddlewares.CORS())

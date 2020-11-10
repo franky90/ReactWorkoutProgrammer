@@ -3,7 +3,7 @@ class WorkoutController extends ControllerBase {
     constructor()
     {
         super("Workout")
-        this.descriptor(
+        this.describeApi(
             {
                 path: '/', 
                 verb: 'GET', 

@@ -18,9 +18,15 @@ export const ApiDetail = function() {
     let _verb
     let _description
     let _body
+    let _response
 
     this.withBody = function(body){
         _body = body
+        return this
+    }
+
+    this.withResponse = function(response){
+        _response = response
         return this
     }
 
@@ -50,7 +56,8 @@ export const ApiDetail = function() {
             controller: _controller,
             verb: _verb,
             description: _description,
-            body: _body
+            body: _body,
+            response: _response
         }
 
         for(const settingsItem in settings) {
