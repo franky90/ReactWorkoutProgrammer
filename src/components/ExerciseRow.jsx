@@ -22,7 +22,7 @@ class ExerciseRow extends React.Component{
           <Td>{sets}</Td>
           <Td>{reps}</Td>
           <Td>{rest}</Td>
-          <Td>7{}</Td>
+          <Td>{weight}</Td>
         </Tr>
 
         </>
