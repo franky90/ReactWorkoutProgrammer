@@ -5,7 +5,7 @@ import "./App.css";
 import Home from "./../components/pages/Home";
 import ContactUs from "./../components/pages/ContactUs";
 import SignUp from "./../components/pages/SignUp";
-import WorkoutCreator from "./../components/pages/WorkoutCreator";
+import WorkoutCreator from "./../components/pages/WorkoutCreator/WorkoutCreator";
 import Trainings from "./../components/pages/Trainings/Trainings";
 // import Back from "./../components/pages/Back";
 // import Shoulders from "./../components/pages/Shoulders";
