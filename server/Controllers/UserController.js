@@ -1,5 +1,4 @@
-const ControllerBase = require('./ControllerBase')
-
+import { ControllerBase } from './ControllerBase'
 class UserController extends ControllerBase {
     constructor()
     {
@@ -36,7 +35,4 @@ class UserController extends ControllerBase {
     }
 }
 
-
-
-
-module.exports = new UserController()
+export default new UserController()

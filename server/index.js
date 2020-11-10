@@ -1,30 +1,29 @@
-const express = require('express')
-const app = express()
+import ExpressLib from 'express'
 const port = 5000
-const Logger = require('./Service/Logger')
-const cors = require('cors')
-// const { readFileData } = require('./Service/GoogleService') 
-const UserController = require('./Controllers/UserController')
-const WorkoutController = require('./Controllers/WorkoutController')
-const MetaController = require('./Controllers/ControllerDetails')
-const CustomMiddlewares = require('./Service/CustomMiddlewares')
-const morgan = require('morgan')
+import { Logger } from './Service/Logger'
+import Cors from 'cors'
+import UserController from './Controllers/UserController'
+import WorkoutController from './Controllers/WorkoutController'
+import { MetaController } from './Controllers/ControllerDetails'
+import { CustomMiddlewares } from './Service/CustomMiddlewares'
+import Morgan from 'morgan'
 
-app.use(express.json())
-app.use(express.urlencoded())//Parse URL-encoded bodies
-app.use(morgan('tiny'))
+const ExpressApp = ExpressLib()
+ExpressApp.use(ExpressLib.json())
+ExpressApp.use(ExpressLib.urlencoded())//Parse URL-encoded bodies
+ExpressApp.use(Morgan('tiny'))
 // this will prevent CORS issues in the future! - Currently Applies to all Requests
-app.use(CustomMiddlewares.CORS())
+ExpressApp.use(CustomMiddlewares.CORS())
 
 // Setting up my controllers here...
-app.use(UserController.toRoute(), UserController.Router)
-app.use(WorkoutController.toRoute(), WorkoutController.Router)
-app.use("/Meta", MetaController)
+ExpressApp.use(UserController.toRoute(), UserController.Router)
+ExpressApp.use(WorkoutController.toRoute(), WorkoutController.Router)
+ExpressApp.use("/Meta", MetaController)
 
-app.use(cors())
+ExpressApp.use(Cors())
 
-app.listen(port, () => {
-  Logger.Success(`My app listening at http://localhost:${port}`)
+ExpressApp.listen(port, () => {
+  Logger.Success(`Application is running at http://localhost:${port}`)
   Logger.danger(`Visit http://localhost:${port}/Meta to view information about all Routes`)//controllerName
   Logger.danger(`Visit http://localhost:${port}/Meta?controllerName=User to view information about all Routes belonging to User`)
   Logger.danger(`Visit http://localhost:${port}/Meta/byControllerName to see Apis grouped by resource`)

@@ -1,5 +1,4 @@
-const ControllerBase = require('./ControllerBase')
-
+import { ControllerBase } from './ControllerBase'
 class WorkoutController extends ControllerBase {
     constructor()
     {
@@ -20,7 +19,4 @@ class WorkoutController extends ControllerBase {
     }
 }
 
-
-
-
-module.exports = new WorkoutController()
+export default new WorkoutController()
