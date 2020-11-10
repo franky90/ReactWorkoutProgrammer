@@ -1,0 +1,17 @@
+.shuffle-button{
+    display:flex;
+    justify-content: center;
+    background-color: #222831;
+    padding:10px;
+    margin:0 auto;
+    align-items: center;
+}
+
+
+.shuffle-img{
+    width:30px;
+}
+.shuffle-text{
+    text-align: start;
+    padding-left: 10px;
+}
