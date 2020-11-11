@@ -3,28 +3,9 @@ import { Table, Thead, Tbody, Tr, Th } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./WorkoutCreator.css";
 import { MuscleGroup } from './MuscleGroup'
+import { Range, WeightRange } from './Range'
 
 import ExerciseRow from "./../../ExerciseRow";
-
-export class Range {
-  constructor(small, large){
-    this.small = small
-    this.large = large
-  }
-  format() {
-    return `${this.small}-${this.large}`
-  }
-}
-
-export class WeightRange extends Range {
-  constructor(small, large){
-    super(small, large)
-  }
-  format() {
-    return `${this.small}-${this.large}%RM`
-  }
-}
-
 
 class WorkoutCreator extends React.Component {
   constructor(props) {
@@ -93,7 +74,8 @@ class WorkoutCreator extends React.Component {
       );
     }
 
-    return <div className="workout-creator-container">{tableContent}</div>;
+    return <div className="workout-creator-container">{tableContent}</div>
+
   }
 }
 export default WorkoutCreator;

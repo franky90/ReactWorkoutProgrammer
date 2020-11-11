@@ -1,15 +1,15 @@
-import React from "react";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import { Tr, Td } from "react-super-responsive-table";
-import ShuffleButton from "./ShuffleButton";
+import React from "react"
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
+import { Tr, Td } from "react-super-responsive-table"
+import ShuffleButton from "./ShuffleButton"
 import { Range } from './../components/pages/WorkoutCreator/WorkoutCreator'
 
 class ExerciseRow extends React.Component {
   constructor(props) {
     super(props)
-    const index = 0
+    const index = 0// by default we are the first index
     const { groupItems } = this.props
-    const { name, sets, reps, rest, weight } = groupItems[index]
+    const { name, sets, reps, rest, weight } = groupItems[index]// selecting the first item
     this.state = {
       name, 
       sets, 
