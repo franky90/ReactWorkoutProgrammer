@@ -2,21 +2,25 @@
     display:flex;
     max-width:60%;
     margin: 100px auto;
-    border:1px solid red;
+    border:2px solid #222831;
+    flex-wrap: wrap;
+    justify-content: center;
     
 }
 
 .form-image{
-    height: 608px;
-    width:500px;
+    min-width: 250px;
+    flex:1;
     background-repeat: no-repeat;
     background-size: cover;
+    
+    
     
 }
 
 .form-container{
-    min-width:450px;
-    
+    flex:1 ; 
+    min-width: 250px;
 }
 
 .heading{
@@ -24,10 +28,18 @@
     text-align: center;
     background-color: #222831;
     border-bottom: 1px solid #00adb5;
+    
 }
 
 .form-details{
     background-color: #393e46;
     padding:10% 10% 40% 10%;
     
+    
+}
+
+@media (max-width: 854px) {
+.form-image{
+        height:200px;
+}
 }
