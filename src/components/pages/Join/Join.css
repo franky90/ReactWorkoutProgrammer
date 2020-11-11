@@ -1,0 +1,33 @@
+.logging-container{
+    display:flex;
+    max-width:60%;
+    margin: 100px auto;
+    border:1px solid red;
+    
+}
+
+.form-image{
+    height: 608px;
+    width:500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.form-container{
+    min-width:450px;
+    
+}
+
+.heading{
+    padding: 50px 0;
+    text-align: center;
+    background-color: #222831;
+    border-bottom: 1px solid #00adb5;
+}
+
+.form-details{
+    background-color: #393e46;
+    padding:10% 10% 40% 10%;
+    
+}

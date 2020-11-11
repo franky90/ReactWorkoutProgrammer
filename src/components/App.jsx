@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./App.css";
 import Home from "./../components/pages/Home";
 import ContactUs from "./../components/pages/ContactUs";
-import Join from "./pages/Join"
+import Join from "./pages/Join/Join"
 import Login from "./pages/Login"
 import WorkoutCreator from "./../components/pages/WorkoutCreator/WorkoutCreator";
 import Trainings from "./../components/pages/Trainings/Trainings";
