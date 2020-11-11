@@ -1,0 +1,16 @@
+.flexWrapper {
+    display: flex;
+}
+
+.flexWrapper.centered {
+    justify-content: center;
+    align-items: center;
+}
+
+.flexWrapper.vertical {
+    flex-direction: column;
+}
+
+.flexed-item {
+    flex: 1;
+}

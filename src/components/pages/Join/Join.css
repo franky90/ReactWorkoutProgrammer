@@ -86,9 +86,11 @@ button[type=button], input[type=submit] {
 .logging-container{
         max-width:80%;
 }
+/*
 .form-image{
         height:200px;
 }
+*/
 .heading{
     padding: 20px 0;
 }

@@ -19,8 +19,10 @@ import Trainings from "./../components/pages/Trainings/Trainings";
 // import ShoulderMobility from "./../components/pages/ShoulderMobility";
 
 
-const App = () => <Router>
+const App = () => <div id="page-content" className="vertical flexWrapper fullHeight">
+        <Router>
             <Navbar />
+            <div id="main-content" className="scrollable flexed-item">
                 <Switch>
                     <Route path="/" exact component={Home} /> 
                     <Route path="/workout-creator" exact component={WorkoutCreator} /> 
@@ -39,5 +41,8 @@ const App = () => <Router>
                     <Route path="/shoulder-mobility" exact component={ShoulderMobility} />  
                     */}
                 </Switch>
+            </div>
         </Router>
+    </div>
+
 export default App;

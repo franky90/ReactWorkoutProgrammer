@@ -1,15 +1,48 @@
-
-*{
+* {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
-  }
-  
-body{
-  font-family:'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow: hidden;
+}
+
+html, body, .fullHeight, #root {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
-  background: linear-gradient(0deg, rgba(0, 173, 181, 1) 0%, rgba(34, 40, 49, 1) 72%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 173, 181, 1) 0%,
+    rgba(34, 40, 49, 1) 72%
+  );
   background-repeat: no-repeat;
   color: white;
 }
 
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.scrollable {
+  overflow: auto;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
