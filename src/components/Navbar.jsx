@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Button } from "./Button"
 import { Link } from "react-router-dom"
 import "./Navbar.css"
+import LoginButtons from "./LoginButtons/LoginButtons"
 
 function Navbar() {
 
@@ -46,14 +46,20 @@ CWP <i className="fas fa-dumbbell"/>
       </Link>
           </li>
           <li className="nav-item">
-            <Link to="/sign-up" className="nav-links-mobile"
+            <Link to="/join" className="nav-links-mobile"
               onClick={closeMobileMenu}>
-              Sign Up
+              JOIN
+      </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/log-in" className="nav-links-mobile"
+              onClick={closeMobileMenu}>
+              LOG IN
       </Link>
           </li>
 
         </ul>
-        <Button />
+        <LoginButtons />
       </nav>
     </>
   )

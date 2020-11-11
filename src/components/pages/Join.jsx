@@ -1,10 +1,10 @@
 import React from 'react'
 import "../../components/App.css"
 
-export default function SignUp(){
+export default function Join(){
     return(
         <>
-        <h1 className="sign-up">Sign Up</h1>
+        <h1 className="join">JOIN</h1>
         </>
     )
 }

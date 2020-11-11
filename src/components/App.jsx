@@ -4,9 +4,11 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./App.css";
 import Home from "./../components/pages/Home";
 import ContactUs from "./../components/pages/ContactUs";
-import SignUp from "./../components/pages/SignUp";
+import Join from "./pages/Join"
+import Login from "./pages/Login"
 import WorkoutCreator from "./../components/pages/WorkoutCreator/WorkoutCreator";
 import Trainings from "./../components/pages/Trainings/Trainings";
+
 // import Back from "./../components/pages/Back";
 // import Shoulders from "./../components/pages/Shoulders";
 // import Chest from "./../components/pages/Chest";
@@ -24,7 +26,8 @@ const App = () => <Router>
                     <Route path="/workout-creator" exact component={WorkoutCreator} /> 
                     <Route path="/trainings" exact component={Trainings} />
                     <Route path="/contact-us" exact component={ContactUs} /> 
-                    <Route path="/sign-up" exact component={SignUp} /> 
+                    <Route path="/join" exact component={Join} /> 
+                    <Route path="/log-in" exact component={Login} /> 
                     {/* 
                     <Route path="/shoulders" exact component={Shoulders} />
                     <Route path="/back" exact component={Back} /> 
