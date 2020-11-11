@@ -6,6 +6,24 @@ import { MuscleGroup } from './MuscleGroup'
 
 import ExerciseRow from "./../../ExerciseRow";
 
+export class Range {
+  constructor(small, large){
+    this.small = small
+    this.large = large
+  }
+  format() {
+    return `${this.small}-${this.large}`
+  }
+}
+
+export class WeightRange extends Range {
+  constructor(small, large){
+    super(small, large)
+  }
+  format() {
+    return `${this.small}-${this.large}%RM`
+  }
+}
 
 
 class WorkoutCreator extends React.Component {
@@ -16,16 +34,16 @@ class WorkoutCreator extends React.Component {
     .withGroupItem({
       name: "Shoulders",
       sets: 3,
-      reps: 10,
+      reps: new Range(10,20),
       rest: 90,
       weight: 70,
     })
     .withGroupItem({
       name: "Shoulders 2 intense",
       sets: 3,
-      reps: 10,
-      rest: 90,
-      weight: 70,
+      reps: new Range(15,20),
+      rest: 30,
+      weight: 75,
     });
 
   const LegMuscleGroup = new MuscleGroup({ muscleGroup: "Legs" })
@@ -34,62 +52,20 @@ class WorkoutCreator extends React.Component {
       sets: 3,
       reps: 10,
       rest: 90,
-      weight: 70,
+      weight: new WeightRange(50,60),
     })
     .withGroupItem({
       name: "Goblet squat",
       sets: 4,
       reps: 12,
       rest: 45,
-      weight: 90,
+      weight: new WeightRange(50,60)
     });
 
   const exerciseCollection = [ShouldersMuscleGroup, LegMuscleGroup];
-
     this.state = {
       exerciseCollection
     };
-  }
-
-  componentDidMount() {
-    const timeOutSeconds = 1;
-    setTimeout(() => {
-      /*
-      const ShouldersMuscleGroup = new MuscleGroup({ muscleGroup: "Shoulders" })
-        .withGroupItem({
-          name: "Shoulders",
-          sets: 3,
-          reps: 10,
-          rest: 90,
-          weight: 70,
-        })
-        .withGroupItem({
-          name: "Shoulders 2 intense",
-          sets: 3,
-          reps: 10,
-          rest: 90,
-          weight: 70,
-        });
-
-      const LegMuscleGroup = new MuscleGroup({ muscleGroup: "Legs" })
-        .withGroupItem({
-          name: "Back squat",
-          sets: 3,
-          reps: 10,
-          rest: 90,
-          weight: 70,
-        })
-        .withGroupItem({
-          name: "Goblet squat",
-          sets: 4,
-          reps: 12,
-          rest: 45,
-          weight: 90,
-        });
-      const exerciseCollection = [ShouldersMuscleGroup, LegMuscleGroup];
-      this.setState({ exerciseCollection });
-      */
-    }, timeOutSeconds * 1000);
   }
 
   render() {
@@ -110,13 +86,7 @@ class WorkoutCreator extends React.Component {
           </Thead>
           <Tbody>
             {this.state.exerciseCollection.map(
-              (exerciseObjectReference, index) => (
-                <ExerciseRow
-                  key={exerciseObjectReference.muscleGroup}
-                  {...exerciseObjectReference}
-                  order={index + 1}
-                />
-              )
+              (exerciseObjectReference, index) => (<ExerciseRow key={exerciseObjectReference.muscleGroup} {...exerciseObjectReference} order={index + 1} isReadOnly={false}/>)
             )}
           </Tbody>
         </Table>
