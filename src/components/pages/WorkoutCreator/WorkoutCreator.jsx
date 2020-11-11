@@ -5,30 +5,51 @@ import "./WorkoutCreator.css"
 
 import ExerciseRow from "../../ExerciseRow"
 
+const exerciseList= [
+  {
+    id: '1',
+    muscleGroup: "Shoulders",
+    
+    exerciseName: "Dumbbell Shoulder Press",
+    sets: "3",
+    reps: "10",
+    rest: "90s",
+    weight: "70%RM"
+  },
+  {
+    id: '2',
+    muscleGroup: "Shoulders",
+    
+    exerciseName: "Dumbbell Shoulder Press upside down",
+    sets: "3",
+    reps: "10",
+    rest: "90s",
+    weight: "70%RM"
+  },
+  {
+    id: '3',
+    muscleGroup: "Chest",
+    
+    exerciseName: "Dumbbell Shoulder Press upside down",
+    sets: "3",
+    reps: "10",
+    rest: "90s",
+    weight: "70%RM"
+  },
+  
+]
+
+
+
 class WorkoutCreator extends React.Component{
+  // constructor(){
+  //   super()
+  // this.state= exerciseList;
+  // }
+  
+
   render(){
-    const exerciseList= [
-      {
-        id: 'Shoulders_1',
-        buttonName: "Shoulders",
-        order: "1",
-        exerciseName: "Dumbbell Shoulder Press",
-        sets: "3",
-        reps: "10",
-        rest: "90s",
-        weight: "70%RM"
-      },
-      {
-        id: 'Shoulders_2',
-        buttonName: "Shoulders 2 intense",
-        order: "2",
-        exerciseName: "Dumbbell Shoulder Press upside down",
-        sets: "3",
-        reps: "10",
-        rest: "90s",
-        weight: "70%RM"
-      },
-    ]
+    
   return(
         <div className="workout-creator-container">
     <Table>
@@ -44,7 +65,9 @@ class WorkoutCreator extends React.Component{
         </Tr>
       </Thead>
       <Tbody>
-        {exerciseList.map(({id, ...exerciseObjectReference}) => <ExerciseRow key={id} {...exerciseObjectReference}/>)}
+      {exerciseList.map(({id, muscleGroup, exerciseName, sets, reps, rest, weight})=>
+        (<ExerciseRow id={id} muscleGroup={muscleGroup} exerciseName={exerciseName} sets={sets} reps={reps} rest={rest} weight={weight} />)
+      )}
       </Tbody>
     </Table>
 </div>
