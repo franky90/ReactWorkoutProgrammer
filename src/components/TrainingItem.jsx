@@ -1,17 +1,13 @@
-import React from 'react'
-import "./TrainingItem.css"
+import React from "react";
+import "./TrainingItem.css";
 
-
-
-function TrainingItem({title, imageUrl}){
-    return(
-<div className="training-item">
-<div className="background-image" style={{backgroundImage: `url(${imageUrl})`}}/>
-    <div className="content">
-        <h1 className="title">{title.toUpperCase()}</h1>
+const TrainingItem = ({ title, imageUrl }) => (
+  <div className="training-item">
+    <div className="background-image centered flexWrapper" style={{ backgroundImage: `url(${imageUrl})`}}>
+      <div className="content">
+        <h1 className="title uppercase">{title}</h1>
+      </div>
     </div>
-</div>
-    )
-}
-
+  </div>
+);
 export default TrainingItem;
