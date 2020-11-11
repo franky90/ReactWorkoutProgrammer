@@ -6,7 +6,6 @@ import ShuffleButton from "./ShuffleButton";
 class ExerciseRow extends React.Component {
   constructor(props) {
     super(props)
-    debugger
     const index = 0
     const { groupItems } = this.props
     const { name, sets, reps, rest, weight } = groupItems[index]
