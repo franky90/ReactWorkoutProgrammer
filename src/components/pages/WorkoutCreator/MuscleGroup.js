@@ -1,11 +1,11 @@
 export class MuscleGroup {
-  constructor({ muscleGroup }) {
-    this.muscleGroup = muscleGroup;
-    this.groupItems = [];
+  constructor({ title }) {
+    this.title = title
+    this.exercise = []
   }
 
-  withGroupItem = ({ name, sets, reps, rest, weight }) => {
-    this.groupItems.push({ name, sets, reps, rest, weight });
-    return this;
-  };
+  addExercise = ({ name, sets, reps, rest, weight }) => {
+    this.exercise.push({ name, sets, reps, rest, weight });
+  }
+
 }

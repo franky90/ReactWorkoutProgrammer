@@ -2,8 +2,8 @@ import React from "react";
 import { Table, Thead, Tbody, Tr, Th } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./WorkoutCreator.css";
-import { MuscleGroup } from './MuscleGroup'
-import { Range, WeightRange } from './Range'
+import { MuscleGroup } from './../../../Records/MuscleGroup'
+import { Range, WeightRange } from './../../../Records/Range'
 
 import ExerciseRow from "./../../ExerciseRow";
 
@@ -11,15 +11,15 @@ class WorkoutCreator extends React.Component {
   constructor(props) {
     super(props);
 
-    const ShouldersMuscleGroup = new MuscleGroup({ muscleGroup: "Shoulders" })
-    .withGroupItem({
+    const ShouldersMuscleGroup = new MuscleGroup({ title: "Shoulders" })
+    ShouldersMuscleGroup.addExercise({
       name: "Shoulders",
       sets: 3,
       reps: new Range(10,20),
       rest: 90,
       weight: 70,
     })
-    .withGroupItem({
+    ShouldersMuscleGroup.addExercise({
       name: "Shoulders 2 intense",
       sets: 3,
       reps: new Range(15,20),
@@ -27,15 +27,15 @@ class WorkoutCreator extends React.Component {
       weight: 75,
     });
 
-  const LegMuscleGroup = new MuscleGroup({ muscleGroup: "Legs" })
-    .withGroupItem({
+  const LegMuscleGroup = new MuscleGroup({ title: "Legs" })
+  LegMuscleGroup.addExercise({
       name: "Back squat",
       sets: 3,
       reps: 10,
       rest: 90,
       weight: new WeightRange(50,60),
     })
-    .withGroupItem({
+    LegMuscleGroup.addExercise({
       name: "Goblet squat",
       sets: 4,
       reps: 12,
@@ -43,9 +43,26 @@ class WorkoutCreator extends React.Component {
       weight: new WeightRange(50,60)
     });
 
-  const exerciseCollection = [ShouldersMuscleGroup, LegMuscleGroup];
+    const TriceptMuscleGroup = new MuscleGroup({ title: "Tricept" })
+    TriceptMuscleGroup.addExercise({
+      name: "Tricept Extension",
+      sets: 3,
+      reps: 10,
+      rest: 90,
+      weight: new WeightRange(50,60),
+    })
+    TriceptMuscleGroup.addExercise({
+      name: "Upsidedown Tricept Extension",
+      sets: 4,
+      reps: 12,
+      rest: 45,
+      weight: new WeightRange(50,60)
+    });
+
+  const exerciseCollection = [ShouldersMuscleGroup, LegMuscleGroup, TriceptMuscleGroup];
     this.state = {
-      exerciseCollection
+      exerciseCollection,
+      isSuperSet: false
     };
   }
 
@@ -66,9 +83,7 @@ class WorkoutCreator extends React.Component {
             </Tr>
           </Thead>
           <Tbody>
-            {this.state.exerciseCollection.map(
-              (exerciseObjectReference, index) => (<ExerciseRow key={exerciseObjectReference.muscleGroup} {...exerciseObjectReference} order={index + 1} isReadOnly={false}/>)
-            )}
+            {this.state.exerciseCollection.map((exerciseObjectReference, index) => (<ExerciseRow key={exerciseObjectReference.title} {...exerciseObjectReference} order={index + 1} isReadOnly={false} isSuperSet={this.state.isSuperSet} />))}
           </Tbody>
         </Table>
       );
