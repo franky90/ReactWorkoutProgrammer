@@ -7,14 +7,14 @@ import ContactUs from "./../components/pages/ContactUs";
 // import SignUp from "./../components/pages/SignUp";
 import Join from './pages/Join/Join'
 import Login from './pages/Login'
-
-import { WorkoutTable } from "./../components/pages/WorkoutTable";
+import WorkoutCreator from "./pages/WorkoutCreator/WorkoutCreator"
+// import { WorkoutTable } from "./../components/pages/WorkoutTable";
 import Trainings from "./../components/pages/Trainings/Trainings";
 const App = () => <Router>
             <Navbar />
                 <Switch>
                     <Route path="/" exact component={Home} /> 
-                    <Route path="/workout-creator" exact component={WorkoutTable} /> 
+                    <Route path="/workout-creator" exact component={WorkoutCreator} /> 
                     <Route path="/trainings" exact component={Trainings} />
                     <Route path="/contact-us" exact component={ContactUs} /> 
                     <Route path="/join" exact component={Join} /> 
