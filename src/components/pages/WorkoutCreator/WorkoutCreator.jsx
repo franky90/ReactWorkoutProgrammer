@@ -9,7 +9,6 @@ const exerciseList= [
   {
     id: '1',
     muscleGroup: "Shoulders",
-    
     exerciseName: "Dumbbell Shoulder Press",
     sets: "3",
     reps: "10",
@@ -19,7 +18,6 @@ const exerciseList= [
   {
     id: '2',
     muscleGroup: "Shoulders",
-    
     exerciseName: "Dumbbell Shoulder Press upside down",
     sets: "3",
     reps: "10",
@@ -29,7 +27,6 @@ const exerciseList= [
   {
     id: '3',
     muscleGroup: "Chest",
-    
     exerciseName: "Dumbbell Shoulder Press upside down",
     sets: "3",
     reps: "10",
@@ -52,6 +49,21 @@ class WorkoutCreator extends React.Component{
     
   return(
         <div className="workout-creator-container">
+        <div className="manage-exercises-container">
+        
+        <label for="exercises">New Exercise</label>
+          <select name="exercises" id="exercises">
+          <option value="choose"> ---MUSCLE GROUP--- </option>
+          <option value="shoulders"> Shoulders </option>
+          <option value="chest"> Chest </option>
+          <option value="legs"> Legs </option>
+          <option value="back"> Back </option>
+          <option value="abs"> ABS </option>
+
+        </select>
+        
+         <button className="add-exercise-button" type="button">Add</button>
+        </div>
     <Table>
       <Thead>
         <Tr>

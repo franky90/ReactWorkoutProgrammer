@@ -43,7 +43,7 @@ class ExerciseRow extends React.Component {
 
     
         <Td onClick={this.ShuffleButtonClicked}>
-          <ShuffleButton />
+          <ShuffleButton muscleGroup={muscleGroup}/>
         </Td>
         <Td><Order order={id} /></Td>
         <Td><ExerciseName name={exerciseName} /></Td>

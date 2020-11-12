@@ -52,7 +52,7 @@ export default function Join(){
         
         
         </div>   
-        <button type="button"> SIGN IN </button>
+        <button className="sign-in-button" type="button"> SIGN IN </button>
         </div>
 
         </div>

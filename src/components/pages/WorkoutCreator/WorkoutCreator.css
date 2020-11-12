@@ -1,6 +1,33 @@
+.manage-exercises-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:80px;
+
+}
+
+.manage-exercises-container > select{
+    background-color: #222831;
+    color: #eeeeee;
+    border: 1px solid #00adb5;
+    border-radius: 10px;
+    padding:10px;
+    margin-left:10px;
+}
+
+
+.add-exercise-button{
+    padding:10px 25px;
+    background-color: transparent;
+    border: 1px solid #eeeeee;
+    color: #eeeeee;
+    margin:10px;
+    border-radius:10px;
+}
+
 .responsiveTable{
     width:80%;
-    margin:80px auto;
+    margin:20px auto;
 }
 
 .exercise-row > Td{
@@ -17,6 +44,9 @@ Thead{
 .exercise-heading{
     padding: 7.5px;
 }
+
+
+
 
 @media screen and (max-width: 40em) {
 

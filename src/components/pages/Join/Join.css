@@ -70,7 +70,7 @@ label[for="checkbox"]{
     padding-left: 10px;
 }
 
-button[type=button], input[type=submit] {
+.sign-in-button{
     background-color: #00adb5;
     border: none;
     color: white;
@@ -79,8 +79,7 @@ button[type=button], input[type=submit] {
     margin: 15px 0;
     cursor: pointer;
     border-radius: 10px;
-  }
-
+}
 
 @media (max-width: 854px) {
 .logging-container{
