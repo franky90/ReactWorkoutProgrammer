@@ -5,23 +5,13 @@ import "./App.css";
 import Home from "./../components/pages/Home";
 import ContactUs from "./../components/pages/ContactUs";
 import SignUp from "./../components/pages/SignUp";
-import WorkoutCreator from "./../components/pages/WorkoutCreator/WorkoutCreator";
+import { WorkoutTable } from "./../components/pages/WorkoutTable";
 import Trainings from "./../components/pages/Trainings/Trainings";
-// import Back from "./../components/pages/Back";
-// import Shoulders from "./../components/pages/Shoulders";
-// import Chest from "./../components/pages/Chest";
-// import Legs from "./../components/pages/Legs";
-// import AclTreatment from "./pages/AclTreatment";
-// import UpperBackP from "./../components/pages/UpperBackP";
-// import LowerBackP from "./../components/pages/LowerBackP";
-// import ShoulderMobility from "./../components/pages/ShoulderMobility";
-
-
 const App = () => <Router>
             <Navbar />
                 <Switch>
                     <Route path="/" exact component={Home} /> 
-                    <Route path="/workout-creator" exact component={WorkoutCreator} /> 
+                    <Route path="/workout-creator" exact component={WorkoutTable} /> 
                     <Route path="/trainings" exact component={Trainings} />
                     <Route path="/contact-us" exact component={ContactUs} /> 
                     <Route path="/sign-up" exact component={SignUp} /> 

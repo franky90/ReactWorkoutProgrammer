@@ -1,10 +1,9 @@
 import React from "react"
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import { Tr, Td } from "react-super-responsive-table"
-import ShuffleButton from "./ShuffleButton"
-import { Range } from './../Records/Range'
-import { Alphabet } from './../Records/Aphabet'
-class ExerciseRow extends React.Component {
+import ShuffleButton from "./../ShuffleButton"
+import { Alphabet } from './../../Records/Aphabet'
+
+export class WorkoutTableRow extends React.Component {
   constructor(props) {
     super(props)
     const index = 0// by default we are the first index
@@ -21,6 +20,22 @@ class ExerciseRow extends React.Component {
     this.setState({...newItems, index })
   }
 
+  rangeToCellContent = rangeObject => {
+      let cellContent = '-'
+      switch (rangeObject.type) {
+        case "numeric-multiple":
+            cellContent = `${rangeObject.small}-${rangeObject.large}`;
+            break;
+        case 'numeric':
+            cellContent = rangeObject.value;
+            break;
+        case 'numeric-weight-multiple':
+            cellContent = `${rangeObject.small}-${rangeObject.large}%RM`
+            break;
+      }
+      return cellContent
+  }
+
   render() {
     const { name, sets, reps, rest, weight } = this.state
     const { isReadOnly } = this.props
@@ -30,12 +45,10 @@ class ExerciseRow extends React.Component {
         <Td>{this.props.isSuperSet ? Alphabet.getAlphabetFromIndex(Math.floor((this.props.order - 1)/2))+((this.props.order+1) % 2) + 1 : this.props.order}</Td>
         <Td>{name}</Td>
         <Td>{sets}</Td>
-        <Td>{reps instanceof Range ? reps.format() : reps}</Td>
+        <Td>{this.rangeToCellContent(reps)}</Td>
         <Td>{rest}s</Td>
-        <Td>{weight instanceof Range ? weight.format() : `${weight}%`}</Td>
+        <Td>{this.rangeToCellContent(weight)}</Td>
       </Tr>
     )
   }
 }
-
-export default ExerciseRow;
