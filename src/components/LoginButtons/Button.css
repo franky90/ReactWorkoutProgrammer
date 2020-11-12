@@ -10,8 +10,7 @@
     color: #00adb5;
     border-radius: 4px;
     background-color: transparent;
-    
-    
+    border: 2px solid var(--primary);
 }
 
 .btn:hover{
