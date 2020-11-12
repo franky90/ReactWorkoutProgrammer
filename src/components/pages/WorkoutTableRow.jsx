@@ -2,7 +2,7 @@ import React from "react"
 import { Tr, Td } from "react-super-responsive-table"
 import ShuffleButton from "./../ShuffleButton"
 import { Alphabet } from './../../Records/Aphabet'
-
+import { rangeTypes } from './WorkoutTable'
 export class WorkoutTableRow extends React.Component {
   constructor(props) {
     super(props)
@@ -23,13 +23,13 @@ export class WorkoutTableRow extends React.Component {
   rangeToCellContent = rangeObject => {
       let cellContent = '-'
       switch (rangeObject.type) {
-        case "numeric-multiple":
+        case rangeTypes.numericMultiple:
             cellContent = `${rangeObject.small}-${rangeObject.large}`;
             break;
-        case 'numeric':
+        case rangeTypes.numeric:
             cellContent = rangeObject.value;
             break;
-        case 'numeric-weight-multiple':
+        case rangeTypes.numericWeightMultiple:
             cellContent = `${rangeObject.small}-${rangeObject.large}%RM`
             break;
       }

@@ -4,9 +4,16 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./WorkoutCreator/WorkoutCreator.css";
 import { WorkoutTableRow } from './WorkoutTableRow'
 
+export const rangeTypes = {
+    numericMultiple: 'numericMultiple',
+    numeric: 'numeric',
+    numericWeightMultiple: 'numericWeightMultiple'
+}
+
 export class WorkoutTable extends React.Component {
   constructor(props) {
     super(props);
+
     const Shoulders = {
         title: "Shoulders",
         exercise: [
@@ -16,12 +23,12 @@ export class WorkoutTable extends React.Component {
                 reps: {
                     small: 10,
                     large: 20,
-                    type: 'numeric-multiple'
+                    type: rangeTypes.numericMultiple
                 },
                 rest: 90,
                 weight: {
                     value: 70,
-                    type: 'numeric'
+                    type: rangeTypes.numeric
                 }
             },
             {
@@ -30,12 +37,12 @@ export class WorkoutTable extends React.Component {
                 reps: {
                     small: 12,
                     large: 20,
-                    type: 'numeric-multiple'
+                    type: rangeTypes.numericMultiple
                 },
                 rest: 30,
                 weight: {
                     value: 75,
-                    type: 'numeric'
+                    type: rangeTypes.numeric
                 }
             }
         ]
@@ -48,12 +55,12 @@ export class WorkoutTable extends React.Component {
                 sets: 3,
                 reps: {
                     value: 10,
-                    type: 'numeric'
+                    type: rangeTypes.numeric
                 },
                 rest: 90,
                 weight: {
                     value: 70,
-                    type: 'numeric'
+                    type: rangeTypes.numeric
                 }
             },
             {
@@ -61,13 +68,13 @@ export class WorkoutTable extends React.Component {
                 sets: 4,
                 reps: {
                     value: 12,
-                    type: 'numeric'
+                    type: rangeTypes.numeric
                 },
                 rest: 30,
                 weight: {
                     small: 50,
                     large: 60,
-                    type: 'numeric-weight-multiple'
+                    type: rangeTypes.numericWeightMultiple
                 }
             }
         ]
