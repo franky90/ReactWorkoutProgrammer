@@ -67,7 +67,7 @@ class WorkoutCreator extends React.Component{
     <Table>
       <Thead>
         <Tr>
-        <Th className="exercise-heading">Button</Th>
+        <Th className="exercise-heading">Shuffle</Th>
           <Th className="exercise-heading">Order</Th>
           <Th className="exercise-heading">Exercise</Th>
           <Th className="exercise-heading">Sets</Th>

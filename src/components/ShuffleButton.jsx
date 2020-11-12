@@ -8,7 +8,7 @@ const ShuffleButton = ({muscleGroup}) =>
 (
   <div className="shuffle-button">
     <img className="shuffle-img" src={shuffleButton} />
-    <div className="shuffle-text"> Random exercise {muscleGroup}</div>
+    <div className="shuffle-text"> {muscleGroup}</div>
   </div>
 );
 
