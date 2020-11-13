@@ -10,7 +10,7 @@ class JoinPage extends Component {
             password: '',
             email: '',
             emailConfirm: '',
-            dateOfBirth: '',
+            dateOfBirth: '1990-01-01',
             keepSignedIn: true
         }
     }
@@ -29,41 +29,66 @@ class JoinPage extends Component {
         this.setState(dynamicObject)
     }
 
+    dateChanged = eventRef => {
+        const { value, name } = eventRef.target
+        let dynamicObject = {}
+        dynamicObject[name] = value
+        this.setState(dynamicObject)
+    }
+
+    validateForm = () => {
+        let isValidForm = false
+        // write logic here that will make this true or false....
+
+
+        return isValidForm
+    }
+
+    submitFormHandler = formEventRef => {
+
+        formEventRef.preventDefault()
+        if(this.validateForm()) {
+            // then we are cool so send data to the server...
+        } else {
+            alert('You have messed up somehow...')
+        }
+    }
+
     render() 
     {
-        return <div className="logging-container">
+        return <form onSubmit={this.submitFormHandler} className="logging-container">
             <div className="form-image" style={{ backgroundImage: `url(${formImage})` }} />
             <div className="form-container">
                 <div className="heading">JOIN US</div>
                 <div className="form-details">
                     <div className="form-inputs">
-                        <label for="username"> Username </label><br></br>
-                        <input type="text" value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
+                        <label htmlFor="username"> Username </label><br></br>
+                        <input required={true} type="text" value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
                     </div>
                     <div className="form-inputs">
-                        <label for="password"> Password </label><br></br>
-                        <input type="password" value={this.state.password} onChange={this.textElementChanged} placeholder="Choose a password" name="password" id="password"></input>
+                        <label htmlFor="password"> Password </label><br></br>
+                        <input required={true} type="password" value={this.state.password} onChange={this.textElementChanged} placeholder="Choose a password" name="password" id="password"></input>
                     </div>
                     <div className="form-inputs">
-                        <label for="email"> Email </label><br></br>
-                        <input type="email" value={this.state.email} onChange={this.textElementChanged} placeholder="Add your email" name="email" id="email"></input>
+                        <label htmlFor="email"> Email </label><br></br>
+                        <input required={true} type="email" value={this.state.email} onChange={this.textElementChanged} placeholder="Add your email" name="email" id="email"></input>
                     </div>
                     <div className="form-inputs">
-                        <label for="confirm-email"> Confirm Email </label><br></br>
-                        <input type="email" value={this.state.emailConfirm} onChange={this.textElementChanged} placeholder="Confirm email" name="emailConfirm" id="confirm-email"></input>
+                        <label htmlFor="confirm-email"> Confirm Email </label><br></br>
+                        <input required={true} type="email" value={this.state.emailConfirm} onChange={this.textElementChanged} placeholder="Confirm email" name="emailConfirm" id="confirm-email"></input>
                     </div>
                     <div className="form-inputs">
-                        <label for="cars">Date of Birth</label><br></br>
-                        <input type="date" id="start" name="trip-start" value="1990-01-01" min="1900-01-01" max="2020-01-01" />
+                        <label htmlFor="cars">Date of Birth</label><br></br>
+                        <input required={true} value={this.state.dateOfBirth} onChange={this.dateChanged} type="date" id="start" name="dateOfBirth" max="2020-01-01" />
                     </div>
                     <div className="form-inputs-checkbox">
                         <input checked={this.state.keepSignedIn} value={this.state.keepSignedIn} onChange={this.checkboxClick} type="checkbox" id="checkbox" name="keepSignedIn"></input>
-                        <label for="checkbox">KEEP ME SIGN IN</label>
+                        <label htmlFor="checkbox">KEEP ME SIGN IN</label>
                     </div>
-                    <button className="sign-in-button" type="button">SIGN IN</button>
+                    <button className="sign-in-button" type="submit">SIGN IN</button>
                 </div>
             </div>
-        </div>
+        </form>
     }
 
 }
