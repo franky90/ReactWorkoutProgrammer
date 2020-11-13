@@ -1,12 +1,11 @@
-const mongoose = require('mongoose')
-
-class dbManager {
+import { connect, createConnection } from 'mongoose'
+export class DbManager {
     constructor({connString, username, password, dbName})
     {
         this.connString = connString
         if(typeof connString === "string" && (/^mongodb:\/\/localhost:27017$/g).test(connString) || typeof connString !== "string")
         {
-            this.connString = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false`
+            this.connString = `mongodb://localhost:27017/?readPreference=primary&appname=WorkoutProgrammerDB%20Compass&ssl=false`
         } else {
             this.connString = this.connString.replace(/<username>/, username)
             this.connString = this.connString.replace(/<password>/, password)
@@ -14,24 +13,23 @@ class dbManager {
         }
 
         this.mongoOptions = {
-            useNewUrlParser: true, 
-            useUnifiedTopology: true, 
-            sslValidate: false,
-            useCreateIndex: true
+            useNewUrlParser:        true, 
+            useUnifiedTopology:     true, 
+            sslValidate:            false,
+            useCreateIndex:         true
         }
 
     }
 
-    async connect() 
+    async connectToDatabase() 
     {
         let isSuccess = false
         try {
-            await mongoose.connect(this.connString, this.mongoOptions)
+            await connect(this.connString, this.mongoOptions)
             isSuccess = true
         } catch(err) {
             console.log('err in db connection...')
             console.dir(err)
-            process.exit(1)// crashes application...
         } finally 
         {
             return isSuccess
@@ -42,12 +40,12 @@ class dbManager {
     {
         let connection = null
         try {
-            connection = await mongoose.createConnection(this.connString, this.mongoOptions)
+            connection = await createConnection(this.connString, this.mongoOptions)
             return connection
         } catch (error) {
             console.log('err in db connection...')
             console.dir(err)
-            process.exit(1)// crashes application...
+            // process.exit(1)// crashes application...
         }
         return connection
     }

@@ -1,4 +1,7 @@
 import { ControllerBase } from './ControllerBase'
+import UserService from './../Service/UserService'
+import TokenService from './../Service/TokenService'
+
 class UserController extends ControllerBase {
     constructor()
     {
@@ -20,41 +23,77 @@ class UserController extends ControllerBase {
 
         this.describeApi(
             {
+                path: '/register', 
+                verb: 'POST', 
+                description: 'route that will be used to register a User resource.',
+                body: { "username": "String", "password": "String", "email": "String" }
+            }
+        )
+        this.Router.post('/register', async (req, res) => {
+            const { username, password, email } = req.body
+            try {
+              // check if user exist...
+              const doesUserExist = await UserService.getUserByEmail(email)
+
+              // if User does NOT exist, we are good to adding the User to the service!
+              if(!doesUserExist) {
+                const UserRecord = await UserService.add(username, password, email)
+                const payload = {
+                  id: UserRecord.id,
+                  username: email
+                }
+                const jwt = await TokenService.getUserToken(payload)
+                let goodResponse = {
+                  username: email,
+                  isSuccess: true,
+                  jwt,
+                  msg: 'user is authenticated'
+                }
+                res.send(goodResponse)
+              } else {
+                // user already exists
+                res.send({isSuccess: false})
+              }
+          
+            } catch (error) {
+              console.log(error)
+              res.send({user: {}, isSuccess: false})
+            }
+        })
+
+
+        this.describeApi(
+            {
                 path: '/signin', 
                 verb: 'POST', 
-                description: 'dummy route that allows for the User resource to signin.',
+                description: 'dummy route that allows User to signin  to their profile.',
                 body: { "UserName": "admin", "password": "password" }
             }
         )
         this.Router.post('/signin', (req, res) => {
-
-            /*
-            const bodyFromRequest = req.body
-            console.log(bodyFromRequest)
-            console.log(req.body.UserName)
-            */
-
             res.send({
                 isSuccess: true,
-                msg: "Hello from User Controller, Signin route"
+                msg: "I need to add logic to this route... uses UserName Password to signin"
             })
         })
 
 
         this.describeApi(
             {
-                path: '/register', 
-                verb: 'POST', 
-                description: 'dummy route that allows User to create a profile.',
-                body: { "UserName": "admin", "password": "password" }
+                path: '/allUsers', 
+                verb: 'GET', 
+                description: 'User that route that will allow us to view all user profiles',
             }
         )
-        this.Router.post('/register', (req, res) => {
-            res.send({
-                isSuccess: true,
-                msg: "I am now a registered user"
-            })
+        this.Router.get('/allUsers', async(req, res) => {
+            try {
+                const users = await UserService.getAllUsers()
+                res.send(users)
+            } catch (error) {
+                res.status(401).send({users: []})                
+            }
         })
+
     }
 }
 
