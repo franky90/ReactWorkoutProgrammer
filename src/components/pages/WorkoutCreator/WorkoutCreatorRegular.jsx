@@ -4,40 +4,8 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import "./WorkoutCreator.css"
 import {WorkoutTable} from "../WorkoutTable"
 
-// const exerciseList= [
-//   {
-//     id: '1',
-//     muscleGroup: "Shoulders",
-//     exerciseName: "Dumbbell Shoulder Press",
-//     sets: "3",
-//     reps: "10",
-//     rest: "90s",
-//     weight: "70%RM"
-//   },
-//   {
-//     id: '2',
-//     muscleGroup: "Shoulders",
-//     exerciseName: "Dumbbell Shoulder Press upside down",
-//     sets: "3",
-//     reps: "10",
-//     rest: "90s",
-//     weight: "70%RM"
-//   },
-//   {
-//     id: '3',
-//     muscleGroup: "Chest",
-//     exerciseName: "Dumbbell Shoulder Press upside down",
-//     sets: "3",
-//     reps: "10",
-//     rest: "90s",
-//     weight: "70%RM"
-//   },
-  
-// ]
 
-
-
-class WorkoutCreator extends React.Component{
+class WorkoutCreatorRegular extends React.Component{
  
   render(){
     
@@ -66,4 +34,4 @@ class WorkoutCreator extends React.Component{
     )
 }
 }
-export default WorkoutCreator;
+export default WorkoutCreatorRegular;

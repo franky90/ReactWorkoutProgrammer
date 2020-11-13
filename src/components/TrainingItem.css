@@ -77,4 +77,7 @@
   .training-item:last-child {
     max-width: 90%;
   }
+  .content{
+    height:40%;
+  }
 }
