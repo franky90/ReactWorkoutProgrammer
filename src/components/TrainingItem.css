@@ -67,3 +67,15 @@
   font-size: 22px;
   color: #eeeeee;
 }
+
+@media (max-width: 960px) {
+.training-item {
+  flex-direction: column;
+  width:90%;
+  height:200px;
+  margin: 0 15px 10px;
+  }
+  .training-item:last-child {
+    max-width: 90%;
+  }
+}
