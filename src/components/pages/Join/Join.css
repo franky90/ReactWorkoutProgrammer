@@ -1,97 +1,93 @@
-.logging-container{
-    display:flex;
-    max-width:60%;
-    margin: 100px auto;
-    border:1px solid #eeeeee;
-    flex-wrap: wrap;
-    justify-content: center;
-    
+.logging-container {
+  display: flex;
+  max-width: 60%;
+  margin: 100px auto;
+  border: 1px solid #eeeeee;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.form-image{
-    min-width: 250px;
-    flex:1;
-    background-repeat: no-repeat;
-    background-size: cover;
-  
+.form-image {
+  min-width: 250px;
+  flex: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.form-container{
-    flex:1 ; 
-    min-width: 250px;
+.form-container {
+  flex: 1;
+  min-width: 250px;
 }
 
-.heading{
-    padding: 50px 0;
-    text-align: center;
-    background-color: #222831;
-    border-bottom: 1px solid #00adb5;
-    
+.heading {
+  padding: 50px 0;
+  text-align: center;
+  background-color: #222831;
+  border-bottom: 1px solid #00adb5;
 }
 
-.form-details{
-    background-color: #393e46;
-    padding:10% 10% 40% 10%;
-    
+.form-details {
+  background-color: #393e46;
+  padding: 10% 10% 40% 10%;
 }
 
-input{
-    color: #eeeeee;
-    width:90%;
-    height:45px;
-    margin:2px 0 15px 0 ;
-    background-color: transparent;
-    border:none;
-    border-bottom:1px solid #00adb5 ;
-    padding-left: 10px;
+input {
+  color: #eeeeee;
+  width: 90%;
+  height: 45px;
+  margin: 2px 0 15px 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #00adb5;
+  padding-left: 10px;
 }
 
-.form-inputs-checkbox{
-    display:flex;
-    width: 100%;
-    text-align: left;
-    align-items: center;
+.form-inputs-checkbox {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  align-items: center;
 }
 
 input[type="checkbox"] {
-    display: inline-block;
-    height:20px; 
-    margin:0;    
-    width:10%;
+  display: inline-block;
+  height: 20px;
+  margin: 0;
+  width: 10%;
 }
 
 input[type="checkbox"]:checked {
-    background-color: #00adb5;
+  background-color: #00adb5;
 }
 
-label[for="checkbox"]{
-    display: inline-block;
-    color:#eeeeee;
-    padding-left: 10px;
+label[for="checkbox"] {
+  display: inline-block;
+  color: #eeeeee;
+  padding-left: 10px;
 }
 
-.sign-in-button{
-    background-color: #00adb5;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 15px 0;
-    cursor: pointer;
-    border-radius: 10px;
+.sign-in-button {
+  background-color: #00adb5;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 15px 0;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.invalidInput{
-    border-color: red;
+.invalidInput {
+  border-color: red;
 }
 @media (max-width: 854px) {
-.logging-container{
-        max-width:80%;
-}
-.form-image{
-        height:200px;
-}
-.heading{
+  .logging-container {
+    max-width: 80%;
+  }
+  .form-image {
+    height: 200px;
+  }
+  .heading {
     padding: 20px 0;
-}
+  }
 }

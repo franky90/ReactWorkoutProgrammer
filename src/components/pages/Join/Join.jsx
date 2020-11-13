@@ -63,7 +63,7 @@ class JoinPage extends Component {
     }
 
     getValidationClassName = isValidInput => {
-        return isValidInput ? '' : 'invalidInput'
+        return (isValidInput ? '' : 'invalidInput' ) + " noOutline"
     }
 
 
@@ -73,14 +73,14 @@ class JoinPage extends Component {
         const passwordClassName = this.getValidationClassName(isPasswordValid)
         const emailClassName = this.getValidationClassName(isEmailValid)
 
-        return <form onSubmit={this.submitFormHandler} className="logging-container">
+        return <form onSubmit={this.submitFormHandler} className="activeInputForm logging-container">
             <div className="form-image" style={{ backgroundImage: `url(${formImage})` }} />
             <div className="form-container">
                 <div className="heading">JOIN US</div>
                 <div className="form-details">
                     <div className="form-inputs">
                         <label htmlFor="username"> Username </label><br></br>
-                        <input required={true} minlength="5" maxlength="15" type="text"
+                        <input className="noOutline" required={true} minlength="5" maxlength="15" type="text"
                          value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
                     </div>
                     <div className="form-inputs">
@@ -111,11 +111,12 @@ class JoinPage extends Component {
                         </input>
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="cars">Date of Birth</label><br></br>
-                        <input required={true} value={this.state.dateOfBirth} onChange={this.dateChanged} type="date" id="start" name="dateOfBirth" max="2020-01-01" />
+                        <label htmlFor="dob">Date of Birth<span> mm/dd/yyyy</span></label><br></br>
+                        <input className="noOutline" required={true} value={this.state.dateOfBirth} onChange={this.dateChanged} type="date" id="dob" name="dateOfBirth" max="2020-01-01" />
+                        
                     </div>
                     <div className="form-inputs-checkbox">
-                        <input checked={this.state.keepSignedIn} value={this.state.keepSignedIn} onChange={this.checkboxClick} type="checkbox" id="checkbox" name="keepSignedIn"></input>
+                        <input className="noOutline" checked={this.state.keepSignedIn} value={this.state.keepSignedIn} onChange={this.checkboxClick} type="checkbox" id="checkbox" name="keepSignedIn"></input>
                         <label htmlFor="checkbox">KEEP ME SIGN IN</label>
                     </div>
                     <button className="sign-in-button" type="submit">SIGN IN</button>

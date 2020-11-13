@@ -22,6 +22,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "react-super-responsive-table": "^5.1.4",
+    "source-map-explorer": "^2.5.0",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -30,7 +31,8 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "server:build": "npx babel server --out-dir buildServer",
-    "server:start": "nodemon --exec babel-node ./server/index.js"
+    "server:start": "nodemon --exec babel-node ./server/index.js",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": [
