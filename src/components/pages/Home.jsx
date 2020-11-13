@@ -10,14 +10,11 @@ const Home = () => (
   <>
     <Welcome />
     <Info />
+    {/* 
     <div className="main-container-exercise">
-      {exerciseList.map((passedExerciseList) => (
-        <Exercise
-          key={passedExerciseList.exerciseName}
-          {...passedExerciseList}
-        />
-      ))}
+      {exerciseList.map((passedExerciseList) => (<Exercise key={passedExerciseList.exerciseName} {...passedExerciseList}/>))}
     </div>
+    */}
   </>
 );
 

@@ -13,55 +13,50 @@ function Navbar() {
 
 
   return (
-    <>
-<nav className="navbar">
-  
-  <Link to="/" className="navbar-logo">
-CWP <i className="fas fa-dumbbell"/>
-</Link>
+      <nav className="navbar">
 
-  <div className="menu-icon" onClick={handleClick}> 
-  <i className={click ? "fas fa-times" : "fas fa-bars"}/>
-  </div>
+        <Link to="/" className="navbar-logo">
+          CWP <i className="fas fa-dumbbell" />
+        </Link>
 
-  <ul className={click ? "nav-menu active" : "nav-menu"}>
-    <li className="nav-item">
-      <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-        Home
-      </Link>
-    </li>
-    <li className="nav-item">
-      <Link to="/workout-creator" className="nav-links" onClick={closeMobileMenu}>
-        Workout Creator
-      </Link>
-    </li>
-    <li className="nav-item" >
-      <Link to="/trainings" className="nav-links" onClick={closeMobileMenu}>
-        Trainings
-      </Link>
-        </li>
-    <li className="nav-item">
-      <Link to="/contact-us" className="nav-links" onClick={closeMobileMenu}>
-        Contact Us
-      </Link>
+        <div className="menu-icon" onClick={handleClick}>
+          <i className={click ? "fas fa-times" : "fas fa-bars"} />
+        </div>
+
+        <ul className={click ? "nav-menu active" : "nav-menu"}>
+          <li className="nav-item">
+            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              Home
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="/join" className="nav-links-mobile"
-              onClick={closeMobileMenu}>
+            <Link to="/workout-creator" className="nav-links" onClick={closeMobileMenu}>
+              Workout Creator
+            </Link>
+          </li>
+          <li className="nav-item" >
+            <Link to="/trainings" className="nav-links" onClick={closeMobileMenu}>
+              Trainings
+            </Link>
+          </li>
+          <li className="nav-item">
+              <Link to="/contact-us" className="nav-links" onClick={closeMobileMenu}>
+                Contact Us
+              </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/join" className="nav-links-mobile" onClick={closeMobileMenu}>
               JOIN
-      </Link>
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="/log-in" className="nav-links-mobile"
-              onClick={closeMobileMenu}>
+            <Link to="/log-in" className="nav-links-mobile" onClick={closeMobileMenu}>
               LOG IN
-      </Link>
+            </Link>
           </li>
-
         </ul>
         <LoginButtons />
       </nav>
-    </>
   )
 }
 
