@@ -9,13 +9,15 @@ import Join from './pages/Join/Join'
 import Login from './pages/Login'
 import WorkoutCreator from "./pages/WorkoutCreator/WorkoutCreator"
 // import { WorkoutTable } from "./../components/pages/WorkoutTable";
-import Trainings from "./../components/pages/Trainings/Trainings";
+import TrainingsMenu from "./../components/pages/Trainings/TrainingsMenu";
+import TrainingsSplit from "./../components/pages/Trainings/TrainingsSplit";
 const App = () => <Router>
             <Navbar />
                 <Switch>
                     <Route path="/" exact component={Home} /> 
                     <Route path="/workout-creator" exact component={WorkoutCreator} /> 
-                    <Route path="/trainings" exact component={Trainings} />
+                    <Route path="/trainings-split" exact component={TrainingsSplit} />
+                    <Route path="/trainings" exact component={TrainingsMenu} />
                     <Route path="/contact-us" exact component={ContactUs} /> 
                     <Route path="/join" exact component={Join} /> 
                     <Route path="/log-in" exact component={Login} /> 

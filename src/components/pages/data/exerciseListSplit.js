@@ -7,21 +7,25 @@ export const exerciseListSplit = [
     {
         id: 1,
         title: 'Chest',
-        imageUrl: chestImage
+        imageUrl: chestImage,
+        path: "/trainings-split-chest"
     },
     {
         id: 2,
         title: 'Shoulders',
-        imageUrl: shouldersImage
+        imageUrl: shouldersImage,
+        path: "/trainings-split-shoulders"
     },
     {
         id: 3,
         title: 'Legs',
-        imageUrl: legsImage
+        imageUrl: legsImage,
+        path: "/trainings-split-legs"
     },
     {
         id: 4,
         title: 'Back',
-        imageUrl: backImage
+        imageUrl: backImage,
+        path: "/trainings-split-back"
     }
 ]

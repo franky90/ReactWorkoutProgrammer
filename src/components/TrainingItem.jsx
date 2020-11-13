@@ -1,6 +1,8 @@
 import React from "react";
 import "./TrainingItem.css";
 
+
+
 const TrainingItem = ({ title, imageUrl }) => (
   <div className="training-item">
     <div className="background-image centered flexWrapper" style={{ backgroundImage: `url(${imageUrl})`}}>
