@@ -130,8 +130,11 @@ class JoinPage extends Component {
                         
                     </div>
                     <div className="form-inputs-checkbox">
+                        <div className="form-inputs-checkbox-checkelement">
                         <input className="noOutline" checked={this.state.keepSignedIn} value={this.state.keepSignedIn} onChange={this.checkboxClick} type="checkbox" id="checkbox" name="keepSignedIn"></input>
                         <label htmlFor="checkbox">KEEP ME SIGN IN</label>
+                        </div>
+                        <div className="form-inputs-accountstatus"><Link className="form-inputs-accountstatus-link" to="/log-in">I am already a memeber</Link> </div>
                     </div>
                     <button className="sign-in-button" type="submit">SIGN IN</button>
                 </div>
