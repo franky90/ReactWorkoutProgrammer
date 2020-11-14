@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import formImage from "../../../images/split-background.jpg"
-import "./Join.css"
-
-
-
+import "./JoinPage.css"
 
 
 class JoinPage extends Component {
@@ -18,8 +15,8 @@ class JoinPage extends Component {
             dateOfBirth: '1990-01-01',
             keepSignedIn: true,
             formValidations: {
-                isEmailValid: true,
-                isPasswordValid: true
+            isEmailValid: true,
+            isPasswordValid: true
             }
         }
     }
@@ -62,8 +59,8 @@ class JoinPage extends Component {
         this.setState({formValidations: this.getFormValidationsState()})
     }
 
-    getValidationClassName = isValidInput => {
-        return (isValidInput ? '' : 'invalidInput' ) + " noOutline"
+    getValidationClassName = isInputValid => {
+        return (isInputValid ? '' : 'invalidInput' ) + " noOutline"
     }
 
 

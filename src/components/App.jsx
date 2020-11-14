@@ -5,8 +5,8 @@ import "./App.css";
 import Home from "./../components/pages/Home";
 import ContactUs from "./../components/pages/ContactUs";
 // import SignUp from "./../components/pages/SignUp";
-import Join from './pages/Join/Join'
-import Login from './pages/Login'
+import JoinPage from './pages/Join/JoinPage'
+import Login from './pages/Login/Login'
 import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
 import WorkoutCreatorMenu from "./pages/WorkoutCreator/WorkoutCreatorMenu"
 
@@ -22,7 +22,7 @@ const App = () => <Router>
                     <Route path="/trainings-split" exact component={TrainingsSplit} />
                     <Route path="/trainings" exact component={TrainingsMenu} />
                     <Route path="/contact-us" exact component={ContactUs} /> 
-                    <Route path="/join" exact component={Join} /> 
+                    <Route path="/join" exact component={JoinPage} /> 
                     <Route path="/log-in" exact component={Login} /> 
                     {/* 
                     <Route path="/shoulders" exact component={Shoulders} />
