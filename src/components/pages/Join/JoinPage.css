@@ -26,6 +26,16 @@
   background-color: #222831;
   border-bottom: 1px solid #00adb5;
 }
+.form-container-heading-name{
+text-decoration: none;
+color:#eeeeee;
+}
+.form-container-heading-name:hover{
+color:#00adb5;
+}
+
+
+
 
 .form-container-heading-join{
   width:20%;
@@ -49,6 +59,7 @@
   bottom:0;
   align-items: center;
   font-size: 2rem;
+  
 }
 
 .form-container-heading-light{
@@ -58,6 +69,18 @@ background: #EEEEEE;
 box-shadow: 0px -3px 6px #00ADB5;
 margin-top: 5px;
 }
+
+.light-hidden{
+  visibility: hidden;
+}
+
+.loginactive{
+  color:#00adb5;
+}
+.joinactive{
+  color:#00adb5;
+}
+
 
 .form-details {
   background-color: #393e46;

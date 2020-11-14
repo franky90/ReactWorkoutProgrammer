@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import formImage from "../../../images/split-background.jpg"
 import "./JoinPage.css"
+import {Link} from "react-router-dom"
 
 
 class JoinPage extends Component {
@@ -78,13 +79,13 @@ class JoinPage extends Component {
             <div className="form-container-heading">
             
             <div className="form-container-heading-join">
-            <div className="form-container-heading-name">JOIN</div>
+            <div className="form-container-heading-name joinactive">JOIN</div>
             <div className="form-container-heading-light" />
             </div>
 
             <div className="form-container-heading-login">
-            <div className="form-container-heading-name">LOG IN</div>
-            <div className="form-container-heading-light" />
+            <Link className="form-container-heading-name" to="/log-in">LOGIN</Link>
+            <div className="form-container-heading-light light-hidden" />
             </div>
 
             </div>
