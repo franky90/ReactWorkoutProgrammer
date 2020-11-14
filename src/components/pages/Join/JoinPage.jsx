@@ -72,8 +72,24 @@ class JoinPage extends Component {
 
         return <form onSubmit={this.submitFormHandler} className="activeInputForm logging-container">
             <div className="form-image" style={{ backgroundImage: `url(${formImage})` }} />
+            
             <div className="form-container">
-                <div className="heading">JOIN US</div>
+
+            <div className="form-container-heading">
+            
+            <div className="form-container-heading-join">
+            <div className="form-container-heading-name">JOIN</div>
+            <div className="form-container-heading-light" />
+            </div>
+
+            <div className="form-container-heading-login">
+            <div className="form-container-heading-name">LOG IN</div>
+            <div className="form-container-heading-light" />
+            </div>
+
+            </div>
+                
+
                 <div className="form-details">
                     <div className="form-inputs">
                         <label htmlFor="username"> Username </label><br></br>
