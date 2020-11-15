@@ -2,7 +2,8 @@ import React from 'react'
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import "./WorkoutCreator.css"
-import {WorkoutTable} from "../WorkoutTable"
+import {WorkoutTable} from "./../WorkoutTable"
+import { regularExerciseCollection } from './../data/workoutTableData'
 
 
 class WorkoutCreatorRegular extends React.Component{
@@ -136,7 +137,7 @@ class WorkoutCreatorRegular extends React.Component{
         
         </div>
     
-    <WorkoutTable />
+    <WorkoutTable data={regularExerciseCollection}/>
 
 </div>
     

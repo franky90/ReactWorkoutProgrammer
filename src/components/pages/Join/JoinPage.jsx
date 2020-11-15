@@ -2,19 +2,25 @@ import React, { Component } from 'react'
 import formImage from "../../../images/split-background.jpg"
 import "./JoinPage.css"
 import { Link, Redirect } from "react-router-dom"
-
+import moment from 'moment'
+import Axios from 'axios'
 
 class JoinPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
             userName: 'unclefifi',
-            password: 'password',
-            passwordConfirm: 'password',
-            email: 'fake_email@gmail.com',
-            emailConfirm: 'fake_email@gmail.com',
-            dateOfBirth: '1989-01-01',
-            keepSignedIn: true,
+            password: 'Rebecca1988',
+            passwordConfirm: 'Rebecca1988',
+            email: 'felipedferreira11@gmail.com',
+            emailConfirm: 'felipedferreira11@gmail.com',
+            dateOfBirth: '1989-04-15',
+            dob: {
+                day:    15,
+                month:  3,
+                year:   1989
+            },
+            keepSignedIn: false,
             formValidations: {
                 isEmailValid: true,
                 isPasswordValid: true
@@ -38,13 +44,31 @@ class JoinPage extends Component {
     }
 
     dateChanged = eventRef => {
-        const { value, name, valueAsDate } = eventRef.target
-        // The getTimezoneOffset() method returns the time zone difference, in minutes, from current locale (host system settings) to UTC.
-        const offset = valueAsDate.getTimezoneOffset()
-
+        const { value, valueAsDate, name } = eventRef.target
         let dynamicObject = {}
         dynamicObject[name] = value
-        debugger
+
+        const dob = {
+            day:    0,
+            month:  0,
+            year:   0
+        }
+        if(valueAsDate instanceof Date) {
+            // this is in terms of minutes
+            const minutesOffSet = valueAsDate.getTimezoneOffset()
+            const _date = moment(valueAsDate)
+            // https://momentjs.com/docs/#/manipulating/add/
+            _date.add(minutesOffSet, 'minutes')
+            const day = _date.date()
+            const month = _date.month()
+            const year = _date.year()
+            dob.day = day
+            dob.month = month
+            dob.year = year
+        }
+        // this.setState({dynamicObject, dob})
+        const newState = {...this.state, dob}
+        this.setState(newState)
         this.setState(dynamicObject)
     }
 
@@ -62,12 +86,29 @@ class JoinPage extends Component {
 
     submitFormHandler = formEventRef => {
         formEventRef.preventDefault()
-        const formValidations = this.getFormValidationsState()
-        this.setState({ formValidations })
-        const { isEmailValid, isPasswordValid } = formValidations
-        if (isEmailValid && isPasswordValid) {
-            // making the API call that will be for register
-            this.setState({isRedirecting: true})
+        this.setState({formValidations: this.getFormValidationsState()})
+        const { isEmailValid, isPasswordValid } = this.state.formValidations
+        if(isEmailValid && isPasswordValid) {
+            Axios.post('http://localhost:5000/User/register', {
+                userName: this.state.userName, 
+                password: this.state.password, 
+                email: this.state.email, 
+                dob: this.state.dob
+            }).then((goodAxiosResponse) => {
+
+                if(goodAxiosResponse.data.isSuccess) {
+                    // need to alert this to a service that will use it
+                    const jwt = goodAxiosResponse.data.jwt
+
+                    this.setState({isRedirecting: true})
+                } else {
+                    console.log(goodAxiosResponse.data)
+                }
+
+            }).catch((badAxiosResponse) => {
+                debugger
+                console.log(badAxiosResponse)
+            })
         }
     }
 
@@ -109,20 +150,20 @@ class JoinPage extends Component {
                 <div className="form-details">
                     <div className="form-inputs">
                         <label htmlFor="username"> Username </label><br></br>
-                        <input className="noOutline" required={true} minlength="5" maxlength="15" type="text"
-                            value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
+                        <input className="noOutline" required={true} minLength="5" maxLength="15" type="text"
+                         value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="password"> Password </label><br></br>
                         <input className={passwordClassName}
-                            required={true} minlength="8" maxlength="30" type="password" value={this.state.password} onChange={this.textElementChanged} placeholder="Add a password" name="password" id="password">
+                            required={true} minLength="8" maxLength="30" type="password" value={this.state.password} onChange={this.textElementChanged} placeholder="Add a password" name="password" id="password">
                         </input>
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="confirm-password"> Confirm password </label><br></br>
                         <input
                             className={passwordClassName}
-                            required={true} minlength="8" maxlength="30" type="password" value={this.state.passwordConfirm} onChange={this.textElementChanged} placeholder="Confirm password" name="passwordConfirm" id="confirm-password">
+                            required={true} minLength="8" maxLength="30" type="password" value={this.state.passwordConfirm} onChange={this.textElementChanged} placeholder="Confirm password" name="passwordConfirm" id="confirm-password">
                         </input>
                     </div>
                     <div className="form-inputs">

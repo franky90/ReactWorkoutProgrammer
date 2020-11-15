@@ -30,13 +30,12 @@ class UserController extends ControllerBase {
             }
         )
         this.Router.post('/register', async (req, res) => {
-            const { userName, password, email, dateOfBirth } = req.body
+            const { userName, password, email, dob } = req.body
+            const { day, month, year } = dob
+            const dateOfBirth = new Date(year, month, day)
             try {
-                console.log(dateOfBirth)
-                console.log(typeof dateOfBirth)
-              // check if user exist...
               const doesUserExist = await UserService.getUserByEmail(email)
-
+              console.log('doesUserExist ', doesUserExist)
               // if User does NOT exist, we are good to adding the User to the service!
               if(!doesUserExist) {
                 const UserRecord = await UserService.add(userName, password, email, dateOfBirth)
@@ -54,7 +53,15 @@ class UserController extends ControllerBase {
                 res.send(goodResponse)
               } else {
                 // user already exists
-                res.send({isSuccess: false})
+                res.send(
+                    {
+                        isSuccess: false, 
+                        Error: [
+                            {
+                                msg: 'user already exists', 
+                                enum: 0
+                            }
+                        ]})
               }
           
             } catch (error) {

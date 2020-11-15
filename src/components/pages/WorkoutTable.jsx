@@ -1,90 +1,17 @@
 import React from 'react'
-import { Table, Thead, Tbody, Tr, Th } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import "./WorkoutCreator/WorkoutCreator.css";
+import { Table, Thead, Tbody, Tr, Th } from "react-super-responsive-table"
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
+import "./WorkoutCreator/WorkoutCreator.css"
 import { WorkoutTableRow } from './WorkoutTableRow'
 
-export const rangeTypes = {
-    numericMultiple: 'numericMultiple',
-    numeric: 'numeric',
-    numericWeightMultiple: 'numericWeightMultiple'
-}
 
 export class WorkoutTable extends React.Component {
   constructor(props) {
     super(props);
-
-    const Shoulders = {
-        title: "Shoulders",
-        exercise: [
-            {
-                name: "Shoulders",
-                sets: 3,
-                reps: {
-                    small: 10,
-                    large: 20,
-                    type: rangeTypes.numericMultiple
-                },
-                rest: 90,
-                weight: {
-                    value: 70,
-                    type: rangeTypes.numeric
-                }
-            },
-            {
-                name: "Shoulders 2 intense",
-                sets: 3,
-                reps: {
-                    small: 12,
-                    large: 20,
-                    type: rangeTypes.numericMultiple
-                },
-                rest: 30,
-                weight: {
-                    value: 75,
-                    type: rangeTypes.numeric
-                }
-            }
-        ]
-    }
-    const Legs = {
-        title: "Legs",
-        exercise: [
-            {
-                name: "Back squat",
-                sets: 3,
-                reps: {
-                    value: 10,
-                    type: rangeTypes.numeric
-                },
-                rest: 90,
-                weight: {
-                    value: 70,
-                    type: rangeTypes.numeric
-                }
-            },
-            {
-                name: "Goblet squat",
-                sets: 4,
-                reps: {
-                    value: 12,
-                    type: rangeTypes.numeric
-                },
-                rest: 30,
-                weight: {
-                    small: 50,
-                    large: 60,
-                    type: rangeTypes.numericWeightMultiple
-                }
-            }
-        ]
-    }
-    const exerciseCollection = [Shoulders,Legs]
-
     this.state = {
-      exerciseCollection,
-      isSuperSet: false
-    };
+      exerciseCollection: this.props.data,
+      isSuperSet: true
+    }
   }
 
   render() {

@@ -2,7 +2,8 @@ import React from "react"
 import { Tr, Td } from "react-super-responsive-table"
 import ShuffleButton from "./../ShuffleButton"
 import { Alphabet } from './../../Records/Aphabet'
-import { rangeTypes } from './WorkoutTable'
+import { rangeTypes } from './../pages/data/workoutTableData'
+
 export class WorkoutTableRow extends React.Component {
   constructor(props) {
     super(props)
@@ -36,13 +37,22 @@ export class WorkoutTableRow extends React.Component {
       return cellContent
   }
 
+  getSupersetOrder = superSetN => {
+    const _letter = Alphabet.getAlphabetFromIndex(Math.floor((this.props.order - 1)/superSetN)) 
+    const _number = ((this.props.order+(superSetN-1)) % superSetN)+1
+    return _letter+_number
+  }
+
   render() {
     const { name, sets, reps, rest, weight } = this.state
     const { isReadOnly } = this.props
+
+
+
     return (
       <Tr className="exercise-row">
         { isReadOnly ? <Td>{this.props.title}</Td> : <Td onClick={this.ShuffleButtonClicked}><ShuffleButton muscleGroup={this.props.title}/></Td> }
-        <Td>{this.props.isSuperSet ? Alphabet.getAlphabetFromIndex(Math.floor((this.props.order - 1)/2))+((this.props.order+1) % 2) + 1 : this.props.order}</Td>
+        <Td>{this.props.isSuperSet ? this.getSupersetOrder(3) : this.props.order}</Td>
         <Td>{name}</Td>
         <Td>{sets}</Td>
         <Td>{this.rangeToCellContent(reps)}</Td>
