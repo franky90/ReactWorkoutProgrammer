@@ -14,11 +14,11 @@ class JoinPage extends Component {
             passwordConfirm: '',
             email: '',
             emailConfirm: '',
-            dateOfBirth: '1989-04-15',
+            dateOfBirth: '1980-01-01',
             dob: {
-                day:    15,
-                month:  3,
-                year:   1989
+                day:    1,
+                month:  0,
+                year:   1980
             },
             keepSignedIn: false,
             formValidations: {
