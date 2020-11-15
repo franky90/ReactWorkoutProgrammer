@@ -9,11 +9,11 @@ class JoinPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userName: 'unclefifi',
-            password: 'Rebecca1988',
-            passwordConfirm: 'Rebecca1988',
-            email: 'felipedferreira11@gmail.com',
-            emailConfirm: 'felipedferreira11@gmail.com',
+            userName: '',
+            password: '',
+            passwordConfirm: '',
+            email: '',
+            emailConfirm: '',
             dateOfBirth: '1989-04-15',
             dob: {
                 day:    15,
@@ -22,8 +22,8 @@ class JoinPage extends Component {
             },
             keepSignedIn: false,
             formValidations: {
-                isEmailValid: true,
-                isPasswordValid: true
+                isEmailValid: false,
+                isPasswordValid: false
             },
             isRedirecting: false
         }
