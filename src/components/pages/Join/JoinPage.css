@@ -87,7 +87,7 @@ margin-top: 5px;
   padding: 10% 10% 40% 10%;
 }
 
-input {
+.form-details input {
   color: #eeeeee;
   width: 90%;
   height: 45px;

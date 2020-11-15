@@ -37,6 +37,87 @@ class WorkoutCreatorRegular extends React.Component{
  "It increases the intensity of the workout while reducing the time it takes to execute the program," says Tsakpoe, this making it more effective. But beyond that, there are ways to use supersets to seriously jack up your training or focus on certain goals.
         </div>
         </div>
+
+        <div className="workout-creator-elements-container"> 
+        
+        {/* Type of Supersets  */}
+        <div className="workout-creator-element ">
+        <div className="borderLeft" /> 
+        <div className="workout-creator-element-heading">
+        TYPE OF SUPERSETS
+        </div>
+        <div className="workout-creator-element-content">
+        <div className="workout-creator-element-content-radio">
+        <input type="radio" id="sameMuscle" name="typeOfTraining" value="sameMuscle"/>
+        <label for="typeOfTraining">Same muscle group</label>
+        </div>
+        <div className="workout-creator-element-content-radio">
+        <input type="radio" id="oppositeMuscle" name="typeOfTraining" value="oppositeMuscle"/>
+        <label for="typeOfTraining">Opposite muscle group</label>
+        </div>
+        </div>
+       </div>
+
+        {/* Select Your Goal */}
+       <div className="workout-creator-element">
+       <div className="borderLeft" /> 
+        <div className="workout-creator-element-heading">
+        SELECT YOUR GOAL
+        </div>
+        <div className="workout-creator-element-content">
+        <div className="workout-creator-element-content-radio">
+        <input type="radio" id="strength" name="yourGoal" value="strength"/>
+        <label for="strength">Strength</label>
+        </div>
+        <div className="workout-creator-element-content-radio">
+        <input type="radio" id="endurance" name="yourGoal" value="endurance"/>
+        <label for="endurance">Endurance</label>
+        </div>
+        </div>
+       </div>
+
+        {/* Select Equipment */}
+        <div className="workout-creator-element"> 
+        <div className="borderLeft" /> 
+        <div className="workout-creator-element-heading">
+        YOUR EQUIPMENT
+        </div>
+        <div className="workout-creator-element-content">
+        <div className="workout-creator-element-content-radio">
+        <input type="radio" id="gym" name="Equipment" value="gym"/>
+        <label for="gym">Gym</label>
+        </div>
+        <div className="workout-creator-element-content-radio">
+        <input type="radio" id="home" name="Equipment" value="home"/>
+        <label for="home">Home</label>
+        </div>
+        </div>
+       </div>
+        {/* Booster Buttons */}
+        <div className="workout-creator-element"> 
+        <div className="workout-creator-element-heading">
+        BOOST INTESITY OF TRAINING
+        </div>
+        <div className="workout-creator-element-content">
+        <div>
+        <button> BUTTON ONE</button>
+        </div>
+        <div>
+        <button> BUTTON TWO</button>
+        </div>
+        </div>
+       </div>
+
+        </div>
+
+        {/* <div className="workout-creator-element"> 
+        Select Goal Select Equipment
+        </div>
+      Buttons with boosters
+        <div className="workout-creator-element"> 
+        
+        </div> */}
+        
         </div>
     
     <WorkoutTable />
