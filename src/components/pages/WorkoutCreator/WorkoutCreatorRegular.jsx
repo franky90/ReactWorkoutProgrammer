@@ -82,7 +82,6 @@ class WorkoutCreatorRegular extends React.Component{
 
         {/* Select Equipment */}
         <div className="workout-creator-element"> 
-        <div className="borderLeft" /> 
         <div className="workout-creator-element-heading">
         YOUR EQUIPMENT
         </div>
@@ -105,12 +104,23 @@ class WorkoutCreatorRegular extends React.Component{
         BOOST INTESITY OF TRAINING
         </div>
         <div className="workout-creator-element-content">
-        <div>
-        <button> BUTTON ONE</button>
+       
+        <div className="workout-creator-element-content-switchContainer"> 
+        <div className="workout-creator-element-content-switchName">Big Arms</div>
+        <label class="switch"> 
+        <input type="checkbox" id="arms" name="arms" value="arms"/>
+        <span class="slider round"></span>
+        </label>
         </div>
-        <div>
-        <button> BUTTON TWO</button>
+
+        <div className="workout-creator-element-content-switchContainer"> 
+        <div className="workout-creator-element-content-switchName">Super Endurance</div>
+        <label class="switch"> 
+        <input type="checkbox" id="endurance" name="endurance" value="endurance"/>
+        <span class="slider round"></span>
+        </label>
         </div>
+
         </div>
        </div>
 
