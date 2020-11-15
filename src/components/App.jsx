@@ -7,6 +7,7 @@ import ContactUs from "./../components/pages/ContactUs";
 // import SignUp from "./../components/pages/SignUp";
 import JoinPage from './pages/Join/JoinPage'
 import Login from './pages/Login/Login'
+import { UserDashboardPage } from './pages/UserDashboard'
 import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
 import WorkoutCreatorMenu from "./pages/WorkoutCreator/WorkoutCreatorMenu"
 
@@ -24,6 +25,8 @@ const App = () => <Router>
                     <Route path="/contact-us" exact component={ContactUs} /> 
                     <Route path="/join" exact component={JoinPage} /> 
                     <Route path="/log-in" exact component={Login} /> 
+                    <Route path="/user/:username" component={UserDashboardPage}/>
+                    
                     {/* 
                     <Route path="/shoulders" exact component={Shoulders} />
                     <Route path="/back" exact component={Back} /> 
