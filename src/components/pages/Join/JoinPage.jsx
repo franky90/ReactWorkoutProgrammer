@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
 import formImage from "../../../images/split-background.jpg"
 import "./JoinPage.css"
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 
 class JoinPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userName: '',
-            password: '',
-            passwordConfirm: '',
-            email: '',
-            emailConfirm: '',
-            dateOfBirth: '1990-01-01',
+            userName: 'unclefifi',
+            password: 'password',
+            passwordConfirm: 'password',
+            email: 'fake_email@gmail.com',
+            emailConfirm: 'fake_email@gmail.com',
+            dateOfBirth: '1989-01-01',
             keepSignedIn: true,
             formValidations: {
                 isEmailValid: true,
                 isPasswordValid: true
-            }
+            },
+            isRedirecting: false
         }
     }
 
@@ -66,6 +67,7 @@ class JoinPage extends Component {
         const { isEmailValid, isPasswordValid } = formValidations
         if (isEmailValid && isPasswordValid) {
             // making the API call that will be for register
+            this.setState({isRedirecting: true})
         }
     }
 
@@ -75,6 +77,11 @@ class JoinPage extends Component {
 
 
     render() {
+
+        if(this.state.isRedirecting && this.state.userName.length > 0) {
+            return <Redirect to={`/user/${this.state.userName}`}/>
+        }
+
         const { isEmailValid, isPasswordValid } = this.state.formValidations
         const passwordClassName = this.getValidationClassName(isPasswordValid)
         const emailClassName = this.getValidationClassName(isEmailValid)
