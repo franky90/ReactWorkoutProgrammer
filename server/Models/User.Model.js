@@ -19,6 +19,9 @@ const userSchema = new Schema({
     required: [true, "email can't be blank"], 
     match: [/\S+@\S+\.\S+/, 'is invalid'], 
     index: true
+  },
+  dob: {
+    type: Date
   }
 }, {
   timestamps: true,

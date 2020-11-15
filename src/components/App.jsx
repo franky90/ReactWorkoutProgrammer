@@ -1,9 +1,9 @@
-import React from "react";
-import Navbar from "./Navbar";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import "./App.css";
-import Home from "./../components/pages/Home";
-import ContactUs from "./../components/pages/ContactUs";
+import React from "react"
+import Navbar from "./Navbar"
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import "./App.css"
+import Home from "./../components/pages/Home"
+import ContactUs from "./../components/pages/ContactUs"
 // import SignUp from "./../components/pages/SignUp";
 import JoinPage from './pages/Join/JoinPage'
 import Login from './pages/Login/Login'
@@ -11,8 +11,10 @@ import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
 import WorkoutCreatorMenu from "./pages/WorkoutCreator/WorkoutCreatorMenu"
 
 // import { WorkoutTable } from "./../components/pages/WorkoutTable";
-import TrainingsMenu from "./../components/pages/Trainings/TrainingsMenu";
-import TrainingsSplit from "./../components/pages/Trainings/TrainingsSplit";
+import TrainingsMenu from "./../components/pages/Trainings/TrainingsMenu"
+import TrainingsSplit from "./../components/pages/Trainings/TrainingsSplit"
+
+
 const App = () => <Router>
             <Navbar />
                 <Switch>
@@ -36,4 +38,5 @@ const App = () => <Router>
                     */}
                 </Switch>
         </Router>
-export default App;
+
+export default App
