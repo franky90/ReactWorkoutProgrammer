@@ -48,12 +48,14 @@ class WorkoutCreatorRegular extends React.Component{
         </div>
         <div className="workout-creator-element-content">
         <div className="workout-creator-element-content-radio">
-        <input type="radio" id="sameMuscle" name="typeOfTraining" value="sameMuscle"/>
         <label for="typeOfTraining">Same muscle group</label>
+        <input type="radio" id="sameMuscle" name="typeOfTraining" value="sameMuscle"/>
+        
         </div>
         <div className="workout-creator-element-content-radio">
-        <input type="radio" id="oppositeMuscle" name="typeOfTraining" value="oppositeMuscle"/>
         <label for="typeOfTraining">Opposite muscle group</label>
+        <input type="radio" id="oppositeMuscle" name="typeOfTraining" value="oppositeMuscle"/>
+        
         </div>
         </div>
        </div>
@@ -66,12 +68,14 @@ class WorkoutCreatorRegular extends React.Component{
         </div>
         <div className="workout-creator-element-content">
         <div className="workout-creator-element-content-radio">
-        <input type="radio" id="strength" name="yourGoal" value="strength"/>
         <label for="strength">Strength</label>
+        <input type="radio" id="strength" name="yourGoal" value="strength"/>
+        
         </div>
         <div className="workout-creator-element-content-radio">
-        <input type="radio" id="endurance" name="yourGoal" value="endurance"/>
         <label for="endurance">Endurance</label>
+        <input type="radio" id="endurance" name="yourGoal" value="endurance"/>
+        
         </div>
         </div>
        </div>
@@ -84,12 +88,14 @@ class WorkoutCreatorRegular extends React.Component{
         </div>
         <div className="workout-creator-element-content">
         <div className="workout-creator-element-content-radio">
-        <input type="radio" id="gym" name="Equipment" value="gym"/>
         <label for="gym">Gym</label>
+        <input type="radio" id="gym" name="Equipment" value="gym"/>
+        
         </div>
         <div className="workout-creator-element-content-radio">
-        <input type="radio" id="home" name="Equipment" value="home"/>
         <label for="home">Home</label>
+        <input type="radio" id="home" name="Equipment" value="home"/>
+        
         </div>
         </div>
        </div>
