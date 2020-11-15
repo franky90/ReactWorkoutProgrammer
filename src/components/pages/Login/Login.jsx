@@ -94,10 +94,13 @@ class Login extends Component {
                         <input required={true} minlength="8" maxlength="30" type="password" value={this.state.password} onChange={this.textElementChanged} placeholder="Add a password" name="password" id="password">
                         </input>
                     </div>
-                    
+
                     <div className="form-inputs-checkbox">
+                        <div className="form-inputs-checkbox-checkelement">
                         <input className="noOutline" checked={this.state.keepSignedIn} value={this.state.keepSignedIn} onChange={this.checkboxClick} type="checkbox" id="checkbox" name="keepSignedIn"></input>
                         <label htmlFor="checkbox">KEEP ME SIGN IN</label>
+                        </div>
+                        <div className="form-inputs-accountstatus"> Don't have an account? <span><Link className="form-inputs-accountstatus-link" to="/join">Sign up</Link> </span></div>
                     </div>
                     <button className="sign-in-button" type="submit">SIGN IN</button>
                 </div>
