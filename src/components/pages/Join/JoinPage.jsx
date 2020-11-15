@@ -40,6 +40,7 @@ class JoinPage extends Component {
         const { value, name } = eventRef.target
         let dynamicObject = {}
         dynamicObject[name] = value
+        debugger
         this.setState(dynamicObject)
     }
 
@@ -57,7 +58,12 @@ class JoinPage extends Component {
 
     submitFormHandler = formEventRef => {
         formEventRef.preventDefault()
-        this.setState({formValidations: this.getFormValidationsState()})
+        const formValidations = this.getFormValidationsState()
+        this.setState({formValidations})
+        const { isEmailValid, isPasswordValid } = formValidations
+        if(isEmailValid && isPasswordValid) {
+            // making the API call that will be for register
+        }
     }
 
     getValidationClassName = isInputValid => {

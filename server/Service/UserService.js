@@ -38,16 +38,15 @@ function UserService() {
      * @param {string} username 
      * @param {string} password
      */
-    const addNew = async (username, password, email) => {
-        console.log(`addNew: username: ${username} password: ${password} email: ${email}`)
+    const addNew = async (userName, password, email, dateOfBirth) => {
         const encryptedPassword = await EncryptionService.hashString(password)
         const newUser = new User({
-            username, 
+            userName, 
             password: encryptedPassword, 
-            email
+            email,
+            dateOfBirth
         })
         const UserRecord = await newUser.save()
-        console.log('I AM ADDING A NEW USER YALL')
         return UserRecord
     }
 
@@ -57,16 +56,13 @@ function UserService() {
      * @param {string} username 
      * @param {string} password
      */
-    const add = async (username, password, email) => {
+    const add = async (username, password, email, dateOfBirth) => {
         const userRef = await getUserByUsername(username)
-
-        console.log('userRef')
-        console.log(userRef)
         if(userRef) {
             return {user: {}, isSuccess: false, msg: 'User already exists'}
         } else {
           // if user does not exist we return the following...
-          const userRecord = await addNew(username, password, email)
+          const userRecord = await addNew(username, password, email, dateOfBirth)
           return {user: userRecord, isSuccess: true, msg: 'new User Added'}
         }
     }

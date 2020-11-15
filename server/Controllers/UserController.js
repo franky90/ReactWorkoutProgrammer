@@ -30,21 +30,23 @@ class UserController extends ControllerBase {
             }
         )
         this.Router.post('/register', async (req, res) => {
-            const { username, password, email } = req.body
+            const { userName, password, email, dateOfBirth } = req.body
             try {
+                console.log(dateOfBirth)
+                console.log(typeof dateOfBirth)
               // check if user exist...
               const doesUserExist = await UserService.getUserByEmail(email)
 
               // if User does NOT exist, we are good to adding the User to the service!
               if(!doesUserExist) {
-                const UserRecord = await UserService.add(username, password, email)
+                const UserRecord = await UserService.add(userName, password, email, dateOfBirth)
                 const payload = {
                   id: UserRecord.id,
-                  username: email
+                  userName,
+                  email
                 }
                 const jwt = await TokenService.getUserToken(payload)
                 let goodResponse = {
-                  username: email,
                   isSuccess: true,
                   jwt,
                   msg: 'user is authenticated'

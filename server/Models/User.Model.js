@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 const userSchema = new Schema({
-  username: {
+  userName: {
     type: String,
     required: true,
     unique: true,
@@ -19,6 +19,10 @@ const userSchema = new Schema({
     required: [true, "email can't be blank"], 
     match: [/\S+@\S+\.\S+/, 'is invalid'], 
     index: true
+  },
+  dateOfBirth: {
+    type: Date,
+    required: true
   }
 }, {
   timestamps: true,
