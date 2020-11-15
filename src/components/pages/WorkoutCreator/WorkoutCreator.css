@@ -1,12 +1,25 @@
-.manage-exercises-container{
+.workout-creator-container{
+    width:80%;
+    margin: 0 auto;
+    
+}
+.workout-creator-container-options{
+    border:1px solid #00adb5;
+    border-radius: 10px;
+}
+
+
+.workout-creator-container-selectedType{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin-top:80px;
+    margin:20px;
+    background-color: #222831;
+    
 
 }
 
-.manage-exercises-container > select{
+.workout-creator-container-selectedType> select{
     background-color: #222831;
     color: #eeeeee;
     border: 1px solid #00adb5;
@@ -15,15 +28,42 @@
     margin-left:10px;
 }
 
+.workout-creator-container-typeDescription{
+    background-color:#393e46 ;
+    border-radius: 10px;
+    text-align: center;
+    padding-left: 80px;
+}
+    
 
-.add-exercise-button{
-    padding:10px 25px;
-    background-color: transparent;
+
+.typeDescription-heading{
+    font-size: 1.5rem;
+    padding-top:20px;
+    text-align: left;
+    border-bottom: 1px solid #00adb5;
+   
+}
+
+.typeDescription-content{
+    padding:20px 0;
+    width:80%;
+    text-align: left;
+}
+
+.add-type-button{
+    padding:8px 20px;
+    background-color: #00adb5;
     border: 1px solid #eeeeee;
     color: #eeeeee;
     margin:10px;
     border-radius:10px;
 }
+
+
+
+
+
 
 .responsiveTable{
     width:80%;
