@@ -11,7 +11,6 @@ import { UserDashboardPage } from './pages/UserDashboard'
 import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
 import WorkoutCreatorMenu from "./pages/WorkoutCreator/WorkoutCreatorMenu"
 
-// import { WorkoutTable } from "./../components/pages/WorkoutTable";
 import TrainingsMenu from "./../components/pages/Trainings/TrainingsMenu"
 import TrainingsSplit from "./../components/pages/Trainings/TrainingsSplit"
 
@@ -28,7 +27,9 @@ const App = () => <Router>
                     <Route path="/join" exact component={JoinPage} /> 
                     <Route path="/log-in" exact component={Login} /> 
                     <Route path="/user/:username" component={UserDashboardPage}/>
-                    
+                    <Route path="*">
+                        <h1>404 not found</h1>
+                    </Route>
                     {/* 
                     <Route path="/shoulders" exact component={Shoulders} />
                     <Route path="/back" exact component={Back} /> 

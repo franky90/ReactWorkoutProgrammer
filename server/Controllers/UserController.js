@@ -26,7 +26,7 @@ class UserController extends ControllerBase {
                 path: '/register', 
                 verb: 'POST', 
                 description: 'route that will be used to register a User resource.',
-                body: { "username": "String", "password": "String", "email": "String" }
+                body: { "username": "String", "password": "String", "email": "String", "dob": { "day": "number", "month": "number", 'year': "number" } }
             }
         )
         this.Router.post('/register', async (req, res) => {
@@ -34,10 +34,15 @@ class UserController extends ControllerBase {
             const { day, month, year } = dob
             const dateOfBirth = new Date(year, month, day)
             try {
-              const doesUserExist = await UserService.getUserByEmail(email)
-              console.log('doesUserExist ', doesUserExist)
-              // if User does NOT exist, we are good to adding the User to the service!
-              if(!doesUserExist) {
+                // searching for the user using email
+                let myUserRecord = await UserService.getUserByEmail(email)
+                if(!myUserRecord) {
+                    myUserRecord = await UserService.getUserByUsername(userName)
+                }
+
+
+                // if User does NOT exist, we are good to adding the User to the service!
+              if(!myUserRecord) {
                 const UserRecord = await UserService.add(userName, password, email, dateOfBirth)
                 const payload = {
                   id: UserRecord.id,
@@ -58,12 +63,13 @@ class UserController extends ControllerBase {
                         isSuccess: false, 
                         Error: [
                             {
-                                msg: 'user already exists', 
+                                msg: 'user already exists',
                                 enum: 0
                             }
-                        ]})
+                        ]
+                    }
+                )
               }
-          
             } catch (error) {
               console.log(error)
               res.send({user: {}, isSuccess: false})
@@ -79,9 +85,35 @@ class UserController extends ControllerBase {
                 body: { "UserName": "admin", "password": "password" }
             }
         )
-        this.Router.post('/signin', (req, res) => {
+        this.Router.post('/signin', async (req, res) => {
+            
+            const { userName, password } = req.body
+            const _User = await UserService.getUserByUsername(userName)
+            
+            const isValidPassword = await UserService.verifyEncryptedPassword(password, _User.password)
+            
+            console.log('\n\n\n\n')
+            console.log('isValidPassword', isValidPassword)
+            console.log('password', password)
+            console.log('encrypted.password', _User.password)
+            console.log('\n\n\n\n')
+
+            if(isValidPassword && _User._id) {
+                const payload = {
+                    id: _User._id,
+                    userName,
+                    email: _User.email
+                  }
+                  const jwt = await TokenService.getUserToken(payload)
+                  res.send({
+                    isSuccess: true,
+                    jwt
+                })                  
+                  return
+            }
+
             res.send({
-                isSuccess: true,
+                isSuccess: false,
                 msg: "I need to add logic to this route... uses UserName Password to signin"
             })
         })

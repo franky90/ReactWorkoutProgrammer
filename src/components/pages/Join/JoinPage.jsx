@@ -4,6 +4,7 @@ import "./JoinPage.css"
 import { Link, Redirect } from "react-router-dom"
 import moment from 'moment'
 import Axios from 'axios'
+import { UserApi } from './../../../Service/UserApi'
 
 class JoinPage extends Component {
     constructor(props) {
@@ -14,11 +15,11 @@ class JoinPage extends Component {
             passwordConfirm: '',
             email: '',
             emailConfirm: '',
-            dateOfBirth: '1980-01-01',
+            dateOfBirth: '1988-01-01',
             dob: {
                 day:    1,
                 month:  0,
-                year:   1980
+                year:   1988
             },
             keepSignedIn: false,
             formValidations: {
@@ -86,20 +87,20 @@ class JoinPage extends Component {
 
     submitFormHandler = formEventRef => {
         formEventRef.preventDefault()
-        this.setState({formValidations: this.getFormValidationsState()})
-        const { isEmailValid, isPasswordValid } = this.state.formValidations
+        const formValidations = this.getFormValidationsState()
+        this.setState({formValidations})
+        const { isEmailValid, isPasswordValid } = formValidations
         if(isEmailValid && isPasswordValid) {
-            Axios.post('http://localhost:5000/User/register', {
+            const apiPayload = {
                 userName: this.state.userName, 
                 password: this.state.password, 
                 email: this.state.email, 
                 dob: this.state.dob
-            }).then((goodAxiosResponse) => {
-
+            }
+            new UserApi().register(apiPayload).then((goodAxiosResponse) => {
                 if(goodAxiosResponse.data.isSuccess) {
                     // need to alert this to a service that will use it
                     const jwt = goodAxiosResponse.data.jwt
-
                     this.setState({isRedirecting: true})
                 } else {
                     console.log(goodAxiosResponse.data)

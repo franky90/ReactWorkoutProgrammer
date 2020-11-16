@@ -1,13 +1,14 @@
 // This file contains all the routes for the following Model
 import { User } from './../Models/User.Model'
 import EncryptionService from './EncryptionService'
+import { compare } from 'bcryptjs'//const bcrypt = require('bcrypt')
 
 function UserService() {
 
-    const getUserByUsername = async (username) =>
+    const getUserByUsername = async (userName) =>
     {
         try {
-            return await User.findOne({username})
+            return await User.findOne({userName})
         } catch (error) {
             return null
         }
@@ -64,7 +65,6 @@ function UserService() {
     const add = async (userName, password, email, dateOfBirth) => {
         const userRef = await getUserByUsername(userName)
         if(userRef) {
-            console.log("HEY FELIPE THIS IS THE PROBLEM! USER SERVICE")
             return {user: {}, isSuccess: false, msg: 'User already exists'}
         } else {
           // if user does not exist we return the following...
@@ -73,12 +73,19 @@ function UserService() {
         }
     }
 
+    const verifyEncryptedPassword = async (plainPassword, encryptedPassword) =>
+    {
+        const isMatch = await compare(plainPassword, encryptedPassword)
+        return isMatch
+    }
+
 
     return {
         getAllUsers,
         add,
         getUserByUsername,
-        getUserByEmail
+        getUserByEmail,
+        verifyEncryptedPassword
     }
 
 }
