@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import formImage from "../../../images/split-background.jpg";
 import "./../Join/JoinPage.css";
 import { Link, Redirect } from "react-router-dom"
-import Axios from 'axios'
 import { UserApi } from './../../../Service/UserApi'
 
 class Login extends Component {

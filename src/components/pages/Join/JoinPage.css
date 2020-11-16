@@ -151,8 +151,8 @@ label[for="checkbox"] {
   
 }
 
-.invalidInput {
-  border-color: red;
+.form-details input.invalidInput {
+  border: 1px solid red;
 }
 @media (max-width: 854px) {
   .logging-container {

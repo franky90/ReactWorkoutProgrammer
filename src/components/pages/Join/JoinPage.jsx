@@ -3,22 +3,24 @@ import formImage from "../../../images/split-background.jpg"
 import "./JoinPage.css"
 import { Link, Redirect } from "react-router-dom"
 import moment from 'moment'
-import Axios from 'axios'
 import { UserApi } from './../../../Service/UserApi'
-
+import TokenService from './../../../Service/TokenService'
 
 
 
 class JoinPage extends Component {
     constructor(props) {
         super(props)
+
+        this.alphaNumericRegex = /^[0-9a-zA-Z]+$/
         this.state = {
             userName: '',
+            userNameIsDirty: false,
             password: '',
             passwordConfirm: '',
             email: '',
             emailConfirm: '',
-            dateOfBirth: '1988-01-01',
+            dateOfBirth: '',
             dob: {
                 day:    1,
                 month:  0,
@@ -28,13 +30,19 @@ class JoinPage extends Component {
             formValidations: {
                 isEmailValid: false,
                 isPasswordValid: false,
-                isUserValid: false
             },
-            isRedirecting: false
+            isRedirecting: false,
+            formSubmited: false
         }
     }
 
    
+    userNameChanged = eventRef => {
+        if(this.state.userNameIsDirty === false) {
+            this.setState({userNameIsDirty: true})
+        }
+        this.textElementChanged(eventRef)        
+    }
 
     textElementChanged = eventRef => {
         const { name, value } = eventRef.target
@@ -78,6 +86,12 @@ class JoinPage extends Component {
         this.setState(newState)
         this.setState(dynamicObject)
     }
+
+    validateUserName = () => {
+        const alphaNumericRegex = /^[0-9a-zA-Z]+$/
+        const isUserValid = alphaNumericRegex.test(this.state.userName)
+        return isUserValid
+    }
  
  
     getFormValidationsState = () => {
@@ -85,19 +99,17 @@ class JoinPage extends Component {
         const isEmailValid = this.state.email === this.state.emailConfirm
         // valid if they are the same
         const isPasswordValid = this.state.password === this.state.passwordConfirm
-        // valid if it contains only lettersNumbers characters
-        const isUserValid = this.state.userName.match(/^[0-9a-zA-Z]+$/)
+
         return {
             isEmailValid,
             isPasswordValid,
-            isUserValid
         }
     }
 
     submitFormHandler = formEventRef => {
         formEventRef.preventDefault()
         const formValidations = this.getFormValidationsState()
-        this.setState({formValidations})
+        this.setState({formValidations, formSubmited: true})
         const { isEmailValid, isPasswordValid, isUserValid } = formValidations
         if(isEmailValid && isPasswordValid && isUserValid) {
             const apiPayload = {
@@ -110,13 +122,13 @@ class JoinPage extends Component {
                 if(goodAxiosResponse.data.isSuccess) {
                     // need to alert this to a service that will use it
                     const jwt = goodAxiosResponse.data.jwt
+                    TokenService.saveToken(jwt, this.state.keepSignedIn)
                     this.setState({isRedirecting: true})
                 } else {
                     console.log(goodAxiosResponse.data)
                 }
 
             }).catch((badAxiosResponse) => {
-                debugger
                 console.log(badAxiosResponse)
             })
         }
@@ -133,10 +145,21 @@ class JoinPage extends Component {
             return <Redirect to={`/user/${this.state.userName}`}/>
         }
 
-        const { isEmailValid, isPasswordValid, isUserValid } = this.state.formValidations
-        const passwordClassName = this.getValidationClassName(isPasswordValid)
-        const emailClassName = this.getValidationClassName(isEmailValid)
-        const userClassName = this.getValidationClassName(isUserValid)
+        let passwordClassName = ''
+        let emailClassName = ''
+        if(this.state.formSubmited === true) {
+            const { isEmailValid, isPasswordValid } = this.state.formValidations
+            passwordClassName = this.getValidationClassName(isPasswordValid)
+            emailClassName = this.getValidationClassName(isEmailValid)
+        }
+
+        let userClassName = ''
+        if(this.state.userNameIsDirty === true) {
+            const isUserValid = this.alphaNumericRegex.test(this.state.userName)
+            userClassName = this.getValidationClassName(isUserValid)
+        }
+
+
 
         return <form onSubmit={this.submitFormHandler} className="activeInputForm logging-container">
             <div className="form-image" style={{ backgroundImage: `url(${formImage})` }} />
@@ -162,8 +185,11 @@ class JoinPage extends Component {
                     <div className="form-inputs">
                         <label htmlFor="username"> Username </label><br></br>
                         <input 
-                         className={userClassName} required={true} minLength="5" maxLength="15" type="text"
-                         value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
+                            className={userClassName} 
+                            required={true} 
+                            minLength="5" maxLength="15" type="text"
+                            value={this.state.userName} onChange={this.userNameChanged} placeholder="Pick a username" name="userName" id="username" >
+                         </input>
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="password"> Password </label><br></br>
