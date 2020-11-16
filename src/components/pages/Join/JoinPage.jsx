@@ -5,6 +5,9 @@ import { Link, Redirect } from "react-router-dom"
 import moment from 'moment'
 import Axios from 'axios'
 
+
+
+
 class JoinPage extends Component {
     constructor(props) {
         super(props)
@@ -23,11 +26,14 @@ class JoinPage extends Component {
             keepSignedIn: false,
             formValidations: {
                 isEmailValid: false,
-                isPasswordValid: false
+                isPasswordValid: false,
+                isUserValid: false
             },
             isRedirecting: false
         }
     }
+
+   
 
     textElementChanged = eventRef => {
         const { name, value } = eventRef.target
@@ -71,24 +77,27 @@ class JoinPage extends Component {
         this.setState(newState)
         this.setState(dynamicObject)
     }
-
-
+ 
+ 
     getFormValidationsState = () => {
         // valid if they are the same
         const isEmailValid = this.state.email === this.state.emailConfirm
         // valid if they are the same
         const isPasswordValid = this.state.password === this.state.passwordConfirm
+        // valid if it contains only lettersNumbers characters
+        const isUserValid = this.state.userName.match(/^[0-9a-zA-Z]+$/)
         return {
             isEmailValid,
-            isPasswordValid
+            isPasswordValid,
+            isUserValid
         }
     }
 
     submitFormHandler = formEventRef => {
         formEventRef.preventDefault()
         this.setState({formValidations: this.getFormValidationsState()})
-        const { isEmailValid, isPasswordValid } = this.state.formValidations
-        if(isEmailValid && isPasswordValid) {
+        const { isEmailValid, isPasswordValid, isUserValid } = this.state.formValidations
+        if(isEmailValid && isPasswordValid && isUserValid) {
             Axios.post('http://localhost:5000/User/register', {
                 userName: this.state.userName, 
                 password: this.state.password, 
@@ -123,9 +132,10 @@ class JoinPage extends Component {
             return <Redirect to={`/user/${this.state.userName}`}/>
         }
 
-        const { isEmailValid, isPasswordValid } = this.state.formValidations
+        const { isEmailValid, isPasswordValid, isUserValid } = this.state.formValidations
         const passwordClassName = this.getValidationClassName(isPasswordValid)
         const emailClassName = this.getValidationClassName(isEmailValid)
+        const userClassName = this.getValidationClassName(isUserValid)
 
         return <form onSubmit={this.submitFormHandler} className="activeInputForm logging-container">
             <div className="form-image" style={{ backgroundImage: `url(${formImage})` }} />
@@ -150,7 +160,8 @@ class JoinPage extends Component {
                 <div className="form-details">
                     <div className="form-inputs">
                         <label htmlFor="username"> Username </label><br></br>
-                        <input className="noOutline" required={true} minLength="5" maxLength="15" type="text"
+                        <input 
+                         className={userClassName} required={true} minLength="5" maxLength="15" type="text"
                          value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
                     </div>
                     <div className="form-inputs">
