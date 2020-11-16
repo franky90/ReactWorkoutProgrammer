@@ -6,6 +6,7 @@ const userSchema = new Schema({
     required: true,
     unique: true,
     trim: true,
+    match: [/^\w+$/]
   },
   password: {
     type: String,
