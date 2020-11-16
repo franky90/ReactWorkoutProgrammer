@@ -3,7 +3,6 @@ export const rangeTypes = {
     numeric: 'numeric',
     numericWeightMultiple: 'numericWeightMultiple'
 }
-
 export const Shoulders = {
     title: "Shoulders",
     exercise: [
@@ -69,7 +68,6 @@ export const Legs = {
         }
     ]
 }
-
 export const Butt = {
     title: "Glutes",
     exercise: [
@@ -102,7 +100,6 @@ export const Butt = {
         }
     ]
 }
-
 export const Hips = {
     title: "Hips",
     exercise: [
@@ -121,5 +118,4 @@ export const Hips = {
         }
     ]
 }
-
 export const regularExerciseCollection = [Shoulders, Legs, Butt, Hips, Shoulders, Legs, Butt, Hips]
