@@ -9,19 +9,7 @@ import WorkoutCreatorOptions from "./WorkoutCreatorOptions"
 class WorkoutCreatorRegular extends React.Component{
   constructor(){
     super()
-
-    this.state = {
-      isWarmupChecked: false
-    };
-
   }
-
-  warmupCheckboxHandle = () =>{
-      this.setState({
-        isWarmupChecked: !this.isWarmupChecked
-        })
-    }
-
 
   render(){
     
@@ -33,7 +21,11 @@ class WorkoutCreatorRegular extends React.Component{
                 <h1>Workout Creator</h1>
             </div>
 
-    <WorkoutCreatorOptions />
+    <WorkoutCreatorOptions 
+    trainingTypeHeading = "What is Super set"
+    trainingTypeDescription ="At its very core, a superset workout is simple: alternating sets of two different exercises with no rest in between. For example, doing a set of biceps curls and a set of triceps dips, alternating until you've completed all the sets.
+                              'It increases the intensity of the workout while reducing the time it takes to execute the program,' says Tsakpoe, this making it more effective. But beyond that, there are ways to use supersets to seriously jack up your training or focus on certain goals."
+    />
     
     <WorkoutTable data={regularExerciseCollection}/>
 

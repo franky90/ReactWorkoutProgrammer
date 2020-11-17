@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
-
+import TrainingTypeSuperset from "./TrainingTypeSupersets"
 
  class WorkoutCreatorOptions extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
-          isWarmupChecked: false
+          isWarmupChecked: false,
+          isTypeSuperset: true
         };
     }
 
@@ -15,7 +16,15 @@ import React, {Component} from 'react'
         isWarmupChecked: !this.isWarmupChecked
         })
     }
+
+    
+
+
     render(){
+
+      const {trainingTypeHeading, trainingTypeDescription } = this.props
+
+
         return(
 
             <div className="workout-creator-container-options">
@@ -28,41 +37,25 @@ import React, {Component} from 'react'
           <option value="giant-sets"> Giant sets </option>
           <option value="drop-sets"> Drop sets</option>
           </select>
-          <button className="add-type-button" type="button">Change</button>
+          <button className="add-type-button" type="button">RESET</button>
         </div>
 
         <div className="workout-creator-container-typeDescription">
         <div className="typeDescription-heading">
-        What is Super set ?
+        
+        {trainingTypeHeading}
         </div>
         <div className="typeDescription-content">
-        At its very core, a superset workout is simple: alternating sets of two different exercises with no rest in between. For example, doing a set of biceps curls and a set of triceps dips, alternating until you've completed all the sets.
- "It increases the intensity of the workout while reducing the time it takes to execute the program," says Tsakpoe, this making it more effective. But beyond that, there are ways to use supersets to seriously jack up your training or focus on certain goals.
+        {trainingTypeDescription}
+  
         </div>
         </div>
 
         <div className="workout-creator-elements-container"> 
         
         {/* Type of Supersets  */}
-        <div className="workout-creator-element ">
-        <div className="borderLeft" /> 
-        <div className="workout-creator-element-heading">
-        TYPE OF SUPERSETS
-        </div>
-        <div className="workout-creator-element-content">
-        <div className="workout-creator-element-content-radio">
-        <label for="typeOfTraining">Same muscle group</label>
-        <input type="radio" id="sameMuscle" name="typeOfTraining" value="sameMuscle"/>
-        
-        </div>
-        <div className="workout-creator-element-content-radio">
-        <label for="typeOfTraining">Opposite muscle group</label>
-        <input type="radio" id="oppositeMuscle" name="typeOfTraining" value="oppositeMuscle"/>
-        
-        </div>
-        </div>
-       </div>
-
+        {this.state.isTypeSuperset ? <TrainingTypeSuperset />: null}
+       
         {/* Select Your Goal */}
        <div className="workout-creator-element">
        <div className="borderLeft" /> 
