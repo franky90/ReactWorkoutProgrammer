@@ -7,7 +7,7 @@ import TrainingTypeSuperset from "./TrainingTypeSupersets"
 
         this.state = {
           isWarmupChecked: false,
-          // isTypeSuperset: {this.props.isSuperset}
+          isTypeSuperset: this.props.isSuperset
           };
     }
 
