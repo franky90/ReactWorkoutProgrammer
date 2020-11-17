@@ -5,7 +5,7 @@ import {WorkoutTable} from "./../WorkoutTable"
 import { regularExerciseCollection } from './../data/workoutTableData'
 import WorkoutCreatorOptions from "./WorkoutCreatorOptions"
 
-class WorkoutCreatorRegular extends React.Component{
+class WorkoutCreatorGiantsets extends React.Component{
   constructor(){
     super()
   }
@@ -17,12 +17,12 @@ class WorkoutCreatorRegular extends React.Component{
 
         <div className="workout-creator-container">
         <div className="trainings-menu-heading">
-                <h1>REGULAR</h1>
+                <h1>GIANTSETS</h1>
             </div>
 
     <WorkoutCreatorOptions 
-    trainingTypeHeading = "What is Regular Training "
-    trainingTypeDescription ="This is descriptio about regular training. Why is it good ? What benefits can you achive ?"
+    trainingTypeHeading = "What is Giant set"
+    trainingTypeDescription ="Giant set is when set of exercise contains 3 or more exercises. "
     />
     
     <WorkoutTable data={regularExerciseCollection}/>
@@ -32,4 +32,4 @@ class WorkoutCreatorRegular extends React.Component{
     
 }
 }
-export default WorkoutCreatorRegular;
+export default WorkoutCreatorGiantsets;

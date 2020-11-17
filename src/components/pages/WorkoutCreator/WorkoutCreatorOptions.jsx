@@ -7,8 +7,8 @@ import TrainingTypeSuperset from "./TrainingTypeSupersets"
 
         this.state = {
           isWarmupChecked: false,
-          isTypeSuperset: true
-        };
+          // isTypeSuperset: {this.props.isSuperset}
+          };
     }
 
     warmupCheckboxHandle = () =>{
@@ -19,11 +19,12 @@ import TrainingTypeSuperset from "./TrainingTypeSupersets"
 
     
 
-
+    
     render(){
-
-      const {trainingTypeHeading, trainingTypeDescription } = this.props
-
+      
+      
+      const {trainingTypeHeading, trainingTypeDescription} = this.props
+      
 
         return(
 

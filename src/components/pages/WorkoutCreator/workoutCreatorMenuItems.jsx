@@ -22,11 +22,5 @@ export const workoutCreatorMenuItems = [
         title: 'Giant Sets',
         imageUrl: treatments,
         path: "/workoutcreator-giantsets"
-    },
-    {
-        id: 3,
-        title: 'Dropsets',
-        imageUrl: treatments,
-        path: "/workoutcreator-dropsets"
-    }
+    }   
 ]
