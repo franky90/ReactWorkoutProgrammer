@@ -21,6 +21,8 @@ export class WorkoutCreator extends Component {
 
     componentDidMount() 
     {
+        // NOTE TO PETER -- Ideally I will make a Serverside call that gives me the Data inside the WorkoutTableProps!
+        // I believe we should store this in mongo db and we will extract it here on load
         const trainingtype = this.props.match.params.worktype
         let WorkoutTableProps = {}
         let _isSuperset = false
