@@ -2,25 +2,23 @@ import treatments from "../../../images/treatments.jpg"
 import split from "../../../images/split-background.jpg"
 import fullBody from "../../../images/fullBody.jpg"
 
-
-
 export const workoutCreatorMenuItems = [
     {
-        id: 1,
+        id: 'regular',
         title: 'Regular',
         imageUrl: fullBody,
-        path: "/workoutcreator-regular"
+        path: "/workout-creator/regular"
     },
     {
-        id: 2,
+        id: 'supersets',
         title: 'Supersets',
         imageUrl: split,
-        path: "/workoutcreator-supersets"
+        path: "/workout-creator/supersets"
     },
     {
-        id: 3,
+        id: 'giantsets',
         title: 'Giant Sets',
         imageUrl: treatments,
-        path: "/workoutcreator-giantsets"
+        path: "/workout-creator/giantsets"
     }   
 ]

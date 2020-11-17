@@ -8,9 +8,12 @@ import ContactUs from "./../components/pages/ContactUs"
 import JoinPage from './pages/Join/JoinPage'
 import Login from './pages/Login/Login'
 import { UserDashboardPage } from './pages/UserDashboard'
-import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
-import WorkoutCreatorSupersets from "./pages/WorkoutCreator/WorkoutCreatorSupersets"
-import WorkoutCreatorGiantsets from "./pages/WorkoutCreator/WorkoutCreatorGiantsets"
+
+import { WorkoutCreator } from "./pages/WorkoutCreator/WorkoutCreator"
+// import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
+// import WorkoutCreatorSupersets from "./pages/WorkoutCreator/WorkoutCreatorSupersets"
+// import WorkoutCreatorGiantsets from "./pages/WorkoutCreator/WorkoutCreatorGiantsets"
+
 import WorkoutCreatorMenu from "./pages/WorkoutCreator/WorkoutCreatorMenu"
 import TrainingsMenu from "./../components/pages/Trainings/TrainingsMenu"
 import TrainingsSplit from "./../components/pages/Trainings/TrainingsSplit"
@@ -21,9 +24,12 @@ const App = () => <Router>
                 <Switch>
                     <Route path="/" exact component={Home} /> 
                     <Route path="/workout-creator" exact component={WorkoutCreatorMenu} /> 
+                    <Route path="/workout-creator/:worktype"  component={WorkoutCreator} />
+                    {/*
                     <Route path="/workoutcreator-regular" exact component={WorkoutCreatorRegular} />
                     <Route path="/workoutcreator-supersets" exact component={WorkoutCreatorSupersets} />
                     <Route path="/workoutcreator-giantsets" exact component={WorkoutCreatorGiantsets} />
+                    */}
                     <Route path="/trainings-split" exact component={TrainingsSplit} />
                     <Route path="/trainings" exact component={TrainingsMenu} />
                     <Route path="/contact-us" exact component={ContactUs} /> 
