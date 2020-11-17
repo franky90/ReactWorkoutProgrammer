@@ -7,10 +7,27 @@ import { regularExerciseCollection } from './../data/workoutTableData'
 
 
 class WorkoutCreatorRegular extends React.Component{
- 
+  constructor(){
+    super()
+
+    this.state = {
+      isWarmupChecked: false
+    };
+
+  }
+
+  warmupCheckboxHandle = () =>{
+      this.setState({
+        isWarmupChecked: !this.isWarmupChecked
+        })
+    }
+
+
   render(){
     
-  return(
+    
+    return (
+
         <div className="workout-creator-container">
         <div className="trainings-menu-heading">
                 <h1>Workout Creator</h1>
@@ -83,6 +100,7 @@ class WorkoutCreatorRegular extends React.Component{
 
         {/* Select Equipment */}
         <div className="workout-creator-element"> 
+        <div className="borderLeft" /> 
         <div className="workout-creator-element-heading">
         YOUR EQUIPMENT
         </div>
@@ -124,6 +142,23 @@ class WorkoutCreatorRegular extends React.Component{
 
         </div>
        </div>
+        {/* Add Warm up */}
+       <div className="workout-creator-element"> 
+        <div className="workout-creator-element-heading">
+        ADD WARMUP
+        </div>
+        <div className="workout-creator-element-content">
+       
+        <div className="workout-creator-element-content-switchContainer"> 
+        <div className="workout-creator-element-content-switchName">{this.state.isWarmupChecked? "Yes" : "No"}</div>
+        <label class="switch"> 
+        <input type="checkbox" id="warmup" name="warmup" value="warmup"/>
+        <span onClick={this.warmupCheckboxHandle} class="slider round"></span>
+        </label>
+        </div>
+        </div>
+       </div>
+       
 
         </div>
 
@@ -140,8 +175,8 @@ class WorkoutCreatorRegular extends React.Component{
     <WorkoutTable data={regularExerciseCollection}/>
 
 </div>
-    
     )
+    
 }
 }
 export default WorkoutCreatorRegular;

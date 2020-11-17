@@ -85,16 +85,22 @@
     position: relative;
 }
 
+.workout-creator-element:first-child{
+    height:160px;
+}
+
+.workout-creator-element:nth-child(4){
+    height:180px;
+}
+
 .workout-creator-element:last-child{
     border-radius: 0 0 10px 10px;
     height:160px;
     background-color: #393e46;
 }
 
-.workout-creator-element:first-child{
-    height:160px;
-    
-}
+
+
 
 .borderLeft{
     border-bottom: 1px solid #00adb5;
@@ -229,9 +235,20 @@ Thead{
 
 
 @media screen and (max-width: 40em) {
-
+    .workout-creator-container{
+        width:95%;
+    }
       .responsiveTable tbody tr {
         border: 1px solid #eeeeee;
         padding:0.25em 0;
       }
+      .typeDescription-content{
+        /* padding:20px 0; */
+        width:80%;
+        /* text-align: left; */
+    }
+    .responsiveTable{
+        width:100%;
+    }
+   
 }
