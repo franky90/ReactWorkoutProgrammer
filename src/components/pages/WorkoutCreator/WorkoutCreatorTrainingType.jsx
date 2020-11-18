@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 const WorkoutCreatorTrainingType = () => {
     return(
-        <div className="workout-type-wrapper">
+    <div className="workout-type-wrapper">
         <div className="workout-type-heading">
             <h1>Select Training Type</h1>
         </div>
