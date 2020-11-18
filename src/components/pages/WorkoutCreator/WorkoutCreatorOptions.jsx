@@ -9,11 +9,9 @@ import { Link } from "react-router-dom";
 class WorkoutCreatorOptions extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      isWarmupChecked: false,
-      isTypeSuperset: this.props.isSuperset,
-    };
+      isWarmupChecked: false
+    }
   }
 
   warmupCheckboxHandle = () => {
@@ -35,11 +33,7 @@ class WorkoutCreatorOptions extends Component {
               {workoutCreatorTypeItems.map(({ title, imageUrl, path, id }) => {
                 return (
                   <Link onClick={() => this.props.routeChanged(id)} className="workout-type-item" to={path}>
-                    <WorkoutItem
-                      title={title}
-                      imageUrl={imageUrl}
-                      path={path}
-                    />
+                    <WorkoutItem title={title} imageUrl={imageUrl} path={path} />
                   </Link>
                 );
               })}
@@ -56,7 +50,7 @@ class WorkoutCreatorOptions extends Component {
 
         <div className="workout-creator-elements-container">
           {/* Type of Supersets  */}
-          {this.state.isTypeSuperset ? <TrainingTypeSuperset /> : null}
+          {this.props.isSuperset ? <TrainingTypeSuperset /> : null}
 
           {/* Select Your Goal */}
           <div className="workout-creator-element">
@@ -159,14 +153,6 @@ class WorkoutCreatorOptions extends Component {
             </div>
           </div>
         </div>
-
-        {/* <div className="workout-creator-element"> 
-        Select Goal Select Equipment
-        </div>
-      Buttons with boosters
-        <div className="workout-creator-element"> 
-        
-        </div> */}
       </div>
     );
   }

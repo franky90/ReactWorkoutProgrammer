@@ -14,6 +14,7 @@ export class WorkoutTable extends React.Component {
 
   render() {
     let tableContent = null;
+    debugger
     if (Array.isArray(this.props.data) && this.props.data.length > 0) {
       tableContent = (
         <Table>

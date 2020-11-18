@@ -12,7 +12,7 @@ export class WorkoutCreator extends Component {
             trainingtype: '',
             isLoaded: false,
             WorkoutTableProps: {},
-            isSuperset: false,
+            // isSuperset: false,
             trainingTypeHeading:"",
             trainingTypeDescription: ''
         }
@@ -23,32 +23,33 @@ export class WorkoutCreator extends Component {
         // I believe we should store this in mongo db and we will extract it here on load
         const trainingtype = newRouteName
         let WorkoutTableProps = {}
-        let _isSuperset = false
         let trainingTypeHeading = ''
         let trainingTypeDescription = ''
         switch (trainingtype) {
             case 'regular':
                 WorkoutTableProps = { 
-                    data: regularExerciseCollection 
+                    data: regularExerciseCollection,
+                    isSuperset: false,
+                    trainingTypeHeading:"What is a regular",
+                    trainingTypeDescription: 'let me exaplain what it means to be regular...'
                 }
-                trainingTypeHeading="What is a regular"
-                trainingTypeDescription = 'let me exaplain what it means to be regular...'
+
                 break;
             case 'supersets':
                 WorkoutTableProps = { 
-                    data: regularExerciseCollection 
+                    data: regularExerciseCollection,
+                    isSuperset: true,
+                    trainingTypeHeading:"What is Super set",
+                    trainingTypeDescription:"At its very core, a superset workout is simple: alternating sets of two different exercises with no rest in between. For example, doing a set of biceps curls and a set of triceps dips, alternating until you've completed all the sets. 'It increases the intensity of the workout while reducing the time it takes to execute the program,' says Tsakpoe, this making it more effective. But beyond that, there are ways to use supersets to seriously jack up your training or focus on certain goals."
                 }
-                _isSuperset = true
-                trainingTypeHeading="What is Super set"
-                trainingTypeDescription="At its very core, a superset workout is simple: alternating sets of two different exercises with no rest in between. For example, doing a set of biceps curls and a set of triceps dips, alternating until you've completed all the sets. 'It increases the intensity of the workout while reducing the time it takes to execute the program,' says Tsakpoe, this making it more effective. But beyond that, there are ways to use supersets to seriously jack up your training or focus on certain goals."
                 break;
             case 'giantsets': 
                 WorkoutTableProps = { 
-                    data: regularExerciseCollection 
+                    data: regularExerciseCollection,
+                    isSuperset: true,
+                    trainingTypeHeading: "What is Giant set",
+                    trainingTypeDescription: 'let me exaplain what it means to be a GIANT'
                 }
-                _isSuperset = true
-                trainingTypeHeading="What is Giant set"
-                trainingTypeDescription = 'let me exaplain what it means to be a GIANT'
                 break;
             default:
                 break;
@@ -57,7 +58,6 @@ export class WorkoutCreator extends Component {
             trainingtype, 
             isLoaded: true, 
             WorkoutTableProps, 
-            isSuperset: _isSuperset,
             trainingTypeHeading,
             trainingTypeDescription
         })
@@ -75,18 +75,20 @@ export class WorkoutCreator extends Component {
             return null
         }
 
+        const { WorkoutTableProps } = this.state
+        const isSuperset = WorkoutTableProps.isSuperset || false
+
         return <div className="workout-creator-container">
             <div className="trainings-menu-heading">
                 <h1 className="uppercase">{this.state.trainingtype}</h1>
             </div>
             <WorkoutCreatorOptions 
-                isSuperset={this.state.isSuperset} 
+                isSuperset={isSuperset} 
                 trainingTypeHeading={this.state.trainingTypeHeading} 
                 trainingTypeDescription={this.state.trainingTypeDescription}
                 routeChanged={this.routeChanged}
             />
-            <WorkoutTable {...this.state.WorkoutTableProps} isSuperset={this.state.isSuperset}/>
-
+            <WorkoutTable {...this.state.WorkoutTableProps}/>
         </div>
     }
 }

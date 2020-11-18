@@ -44,9 +44,9 @@ export class WorkoutTableRow extends React.Component {
   }
 
   render() {
+    
     const { name, sets, reps, rest, weight } = this.state
     const { isReadOnly, isSuperSet } = this.props
-
 
     return (
       <Tr className="exercise-row">
