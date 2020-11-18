@@ -2,7 +2,7 @@ import treatments from "../../../images/treatments.jpg"
 import split from "../../../images/split-background.jpg"
 import fullBody from "../../../images/fullBody.jpg"
 
-export const workoutCreatorMenuItems = [
+export const workoutCreatorTypeItems = [
     {
         id: 'regular',
         title: 'Regular',
@@ -20,5 +20,11 @@ export const workoutCreatorMenuItems = [
         title: 'Giant Sets',
         imageUrl: treatments,
         path: "/workout-creator/giantsets"
-    }   
+    },
+    {
+        id: 'homeworkout',
+        title: 'Home Workout',
+        imageUrl: split,
+        path: "/workout-creator/homeworkout"
+    }      
 ]

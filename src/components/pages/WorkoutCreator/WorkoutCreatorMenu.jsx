@@ -1,7 +1,7 @@
 import React from 'react'
 import "./WorkoutCreator.css"
 import TrainingItem from "../../TrainingItem"
-import { workoutCreatorMenuItems } from "./workoutCreatorMenuItems"
+import { workoutCreatorMenuItems } from "./workoutCreatorTypeItems"
 import { Link } from "react-router-dom"
 
 export default function WorkoutCreatorMenu() {

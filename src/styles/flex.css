@@ -1,8 +1,0 @@
-.flexWrapper {
-    display: flex;
-}
-
-.flexWrapper.centered {
-    justify-content: center;
-    align-items: center;
-}

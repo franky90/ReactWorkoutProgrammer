@@ -13,8 +13,7 @@ import { WorkoutCreator } from "./pages/WorkoutCreator/WorkoutCreator"
 // import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
 // import WorkoutCreatorSupersets from "./pages/WorkoutCreator/WorkoutCreatorSupersets"
 // import WorkoutCreatorGiantsets from "./pages/WorkoutCreator/WorkoutCreatorGiantsets"
-
-import WorkoutCreatorMenu from "./pages/WorkoutCreator/WorkoutCreatorMenu"
+// import WorkoutCreatorMenu from "./pages/WorkoutCreator/WorkoutCreatorMenu"
 import TrainingsMenu from "./../components/pages/Trainings/TrainingsMenu"
 import TrainingsSplit from "./../components/pages/Trainings/TrainingsSplit"
 
@@ -23,7 +22,7 @@ const App = () => <Router>
             <Navbar />
                 <Switch>
                     <Route path="/" exact component={Home} /> 
-                    <Route path="/workout-creator" exact component={WorkoutCreatorMenu} /> 
+                    <Route path="/workout-creator" exact component={WorkoutCreator} /> 
                     <Route path="/workout-creator/:worktype"  component={WorkoutCreator} />
                     {/*
                     <Route path="/workoutcreator-regular" exact component={WorkoutCreatorRegular} />

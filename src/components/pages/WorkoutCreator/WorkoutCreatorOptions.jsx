@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TrainingTypeSuperset from "./TrainingTypeSupersets"
+import WorkoutCreatorTrainingType from "./WorkoutCreatorTrainingType"
 
 class WorkoutCreatorOptions extends Component {
   constructor(props) {
@@ -30,14 +31,16 @@ class WorkoutCreatorOptions extends Component {
       <div className="workout-creator-container-options">
         <div className="workout-creator-container-selectedType">
 
-          <label for="muscle-group">Selected Training Type</label>
+
+      <WorkoutCreatorTrainingType />
+          {/* <label for="muscle-group">Selected Training Type</label>
           <select name="muscle-group" id="muscle-group">
             <option value="regular"> Regular </option>
             <option value="super-sets"> Super sets </option>
             <option value="giant-sets"> Giant sets </option>
             <option value="drop-sets"> Drop sets</option>
           </select>
-          <button className="add-type-button" type="button">RESET</button>
+          <button className="add-type-button" type="button">RESET</button> */}
         </div>
 
         <div className="workout-creator-container-typeDescription">
