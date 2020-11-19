@@ -19,7 +19,7 @@ class WorkoutCreatorOptions extends Component {
   };
 
   render() {
-    const { trainingTypeHeading, trainingTypeDescription } = this.props;
+    const { trainingTypeHeading, trainingTypeDescription, trainingTypeTitle } = this.props;
 
     return (
       <div className="workout-creator-container-options">
@@ -38,6 +38,10 @@ class WorkoutCreatorOptions extends Component {
                 );
               })}
             </div>
+            <div className="workout-creator-type-heading">
+                <span className="uppercase">{trainingTypeTitle}</span>
+            </div>
+
           </div>
         </div>
 

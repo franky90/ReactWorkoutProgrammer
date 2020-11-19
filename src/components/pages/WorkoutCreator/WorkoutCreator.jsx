@@ -79,13 +79,12 @@ export class WorkoutCreator extends Component {
         const isSuperset = WorkoutTableProps.isSuperset || false
 
         return <div className="workout-creator-container">
-            <div className="trainings-menu-heading">
-                <h1 className="uppercase">{this.state.trainingtype}</h1>
-            </div>
-            <WorkoutCreatorOptions 
+            
+            <WorkoutCreatorOptions
+                trainingTypeTitle={this.state.trainingtype}
                 isSuperset={isSuperset} 
-                trainingTypeHeading={this.state.trainingTypeHeading} 
-                trainingTypeDescription={this.state.trainingTypeDescription}
+                trainingTypeHeading={this.state.WorkoutTableProps.trainingTypeHeading} 
+                trainingTypeDescription={this.state.WorkoutTableProps.trainingTypeDescription}
                 routeChanged={this.routeChanged}
             />
             <WorkoutTable {...WorkoutTableProps}/>
