@@ -18,8 +18,18 @@ class WorkoutCreatorOptions extends Component {
     this.setState({ isWarmupChecked: !this.state.isWarmupChecked });
   };
 
+  
+
   render() {
-    const { trainingTypeHeading, trainingTypeDescription, trainingTypeTitle } = this.props;
+    const { 
+      trainingTypeHeading, 
+      trainingTypeDescription, 
+      trainingTypeTitle, 
+      goalTitle, 
+      goalOptionOne, 
+      goalOptionTwo 
+    } = this.props;
+      
 
     return (
       <div className="workout-creator-container-options">
@@ -60,25 +70,25 @@ class WorkoutCreatorOptions extends Component {
           <div className="workout-creator-element">
             <div className="borderLeft" />
             <div className="workout-creator-element-heading">
-              SELECT YOUR GOAL
+              {goalTitle}
             </div>
             <div className="workout-creator-element-content">
               <div className="workout-creator-element-content-radio">
-                <label for="strength">Strength</label>
+                <label for={goalOptionOne}>{goalOptionOne}</label>
                 <input
                   type="radio"
-                  id="strength"
+                  id={goalOptionOne}
                   name="yourGoal"
-                  value="strength"
+                  value={goalOptionOne}
                 />
               </div>
               <div className="workout-creator-element-content-radio">
-                <label for="endurance">Endurance</label>
+                <label for={goalOptionTwo}>{goalOptionTwo}</label>
                 <input
                   type="radio"
-                  id="endurance"
+                  id={goalOptionTwo}
                   name="yourGoal"
-                  value="endurance"
+                  value={goalOptionTwo}
                 />
               </div>
             </div>
