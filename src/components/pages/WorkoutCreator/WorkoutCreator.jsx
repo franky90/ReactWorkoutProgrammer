@@ -27,13 +27,12 @@ export class WorkoutCreator extends Component {
         let trainingTypeDescription = ''
         switch (trainingtype) {
             case 'regular':
-                WorkoutTableProps = { 
-                    data: regularExerciseCollection,
+                WorkoutTableProps = {
+                    data: regularExerciseCollection,// Training type, intensity, Type of Superset,
                     isSuperset: false,
-                    trainingTypeHeading:"What is a regular",
+                    trainingTypeHeading: 'What is a regular',
                     trainingTypeDescription: 'let me exaplain what it means to be regular...'
                 }
-
                 break;
             case 'supersets':
                 WorkoutTableProps = { 
