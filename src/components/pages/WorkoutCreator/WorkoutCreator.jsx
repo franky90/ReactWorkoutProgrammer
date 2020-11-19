@@ -26,49 +26,54 @@ export class WorkoutCreator extends Component {
         // I believe we should store this in mongo db and we will extract it here on load
         const trainingtype = newRouteName
         let WorkoutTableProps = {}
-        let goalTitle = "testing"
-        let goalOptionOne = "One"
-        let goalOptionTwo = "Two"
+        let goalTitle = ""
+        let goalOptionOne = ""
+        let goalOptionTwo = ""
         let trainingTypeHeading = ''
         let trainingTypeDescription = ''
         switch (trainingtype) {
-            case 'regular':
+            case 'regular': {
                 WorkoutTableProps = { 
                     data: regularExerciseCollection,
                     isSuperset: false,
                     trainingTypeHeading:"What is a regular",
                     trainingTypeDescription: 'let me exaplain what it means to be regular...',
-                    goalTitle: "Select Your Goal",
-                    goalOptionOne: "Strength",
-                    goalOptionTwo: "Endurance"
                 }
-
+                goalTitle = "Select Your Goal"
+                goalOptionOne = "Strength"
+                goalOptionTwo = "Endurance"
                 break;
-            case 'supersets':
+            }
+            case 'supersets': {
                 WorkoutTableProps = { 
                     data: regularExerciseCollection,
                     isSuperset: true,
                     trainingTypeHeading:"What is Super set",
                     trainingTypeDescription:"At its very core, a superset workout is simple: alternating sets of two different exercises with no rest in between. For example, doing a set of biceps curls and a set of triceps dips, alternating until you've completed all the sets. 'It increases the intensity of the workout while reducing the time it takes to execute the program,' says Tsakpoe, this making it more effective. But beyond that, there are ways to use supersets to seriously jack up your training or focus on certain goals.",
-                    goalTitle: "Select Your Goal",
-                    goalOptionOne: "Strength",
-                    goalOptionTwo: "Endurance"
                 }
+                goalTitle = "Select Your Goal"
+                goalOptionOne = "Strength"
+                goalOptionTwo = "Endurance"
                 break;
-            case 'giantsets': 
+            }
+            case 'giantsets': {
                 WorkoutTableProps = { 
                     data: regularExerciseCollection,
                     isSuperset: true,
                     trainingTypeHeading: "What is Giant set",
                     trainingTypeDescription: 'let me exaplain what it means to be a GIANT',
-                    goalTitle: "Select Intensity",
-                    goalOptionOne: "Low",
-                    goalOptionTwo: "High"
                 }
+                goalTitle = "Select Intensity"
+                goalOptionOne = "Low"
+                goalOptionTwo = "High"
                 break;
-            default:
-                
+            }
+            default: {
+                goalTitle = "Select Intensity"
+                goalOptionOne = "Low"
+                goalOptionTwo = "High"
                 break;
+            }
         }
         this.setState({
             trainingtype, 
