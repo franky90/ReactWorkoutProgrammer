@@ -1,0 +1,46 @@
+.loader_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: rgba(34, 40, 49, 0.85);
+    cursor: wait!important;
+}
+.loader_container .bar-container {
+    width: 150px;
+    height: 140px;
+}
+
+@keyframes loader-animation {
+    from {height: 50px;}
+    to {height: 100%;}
+}
+
+.loader_container .bar-container .bar {
+    width: 20px;
+    height: 50px;
+    background: rgb(0 173 181);
+    animation-name: loader-animation;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.loader_container .bar-container .bar:nth-child(2) {
+    animation-delay: .2s;
+}
+.loader_container .bar-container .bar:nth-child(3) {
+    animation-delay: .4s;
+}
+.loader_container .bar-container .bar:nth-child(4) {
+    animation-delay: .6s;
+}
+.loader_container .bar-container .bar:nth-child(5) {
+    animation-delay: .8s;
+}
+
+.blurred {
+    filter: blur(6px);
+}
