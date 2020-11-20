@@ -11,14 +11,16 @@ return(
         </div>
         <div className="workout-creator-element-content">
         <div className="workout-creator-element-content-radio">
-        <label for="typeOfTraining">Same muscle group</label>
+        <div><label for="sameMuscle">Same muscle group</label></div>
         <input type="radio" id="sameMuscle" name="typeOfTraining" value="sameMuscle"/>
-        
+        <div class="checkmark"></div>
+
         </div>
         <div className="workout-creator-element-content-radio">
-        <label for="typeOfTraining">Opposite muscle group</label>
+        <div><label for="oppositeMuscle">Opposite muscle group</label></div>
         <input type="radio" id="oppositeMuscle" name="typeOfTraining" value="oppositeMuscle"/>
-        
+        <div class="checkmark"></div>
+
         </div>
         </div>
        </div>

@@ -3,13 +3,6 @@
     margin: 0 auto;
 }
 
-.workout-creator-element{
-    margin:20px 0;
-    background-color: #222831;
-    height:100px;
-    
-}
-
 
 .workout-creator-container-options{
     border:1px solid #00adb5;
@@ -137,30 +130,19 @@
 
 .workout-creator-element{
     display:flex;
+    margin:20px 0;
+    background-color: #222831;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height:120px;
     margin: 0;
     position: relative;
 }
 
-.workout-creator-element:first-child{
-    height:160px;
-}
-
-.workout-creator-element:nth-child(4){
-    height:180px;
-}
-
 .workout-creator-element:last-child{
     border-radius: 0 0 10px 10px;
-    height:160px;
     background-color: #393e46;
 }
-
-
-
 
 .borderLeft{
     border-bottom: 1px solid #00adb5;
@@ -179,19 +161,83 @@
 
 .workout-creator-element-content{
     display:flex;
-    margin:10px;
+    margin:10px 0 15px 0;
 }
 
 .workout-creator-element-content-radio{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    padding:0px 20px;
+    margin-bottom: 10px;
+    padding:0px 30px;
     align-items: center;
     text-align: center;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
 }
+/* Hide the browser's default radio button */
+.workout-creator-element-content-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
 
-.workout-creator-element-content-radio input[type="radio"]{
+  .workout-creator-element-content-radio label{
+      cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    
+    margin-top: 10px;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eeeeee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .workout-creator-element-content-radio:hover input ~ .checkmark {
+    background-color: #393e46;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .workout-creator-element-content-radio input:checked ~ .checkmark {
+    background-color: #00adb5;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    margin: 35% 35%;
+    right:0;
+    bottom:0;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .workout-creator-element-content-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .workout-creator-element-content-radio .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .workout-creator-element-content-radio input[type="radio"]{
     margin: 10px;
 }
 

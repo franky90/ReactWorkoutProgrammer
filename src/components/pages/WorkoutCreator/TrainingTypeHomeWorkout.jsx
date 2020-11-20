@@ -11,16 +11,19 @@ return(
             </div>
             <div className="workout-creator-element-content">
               <div className="workout-creator-element-content-radio">
-                <label for="gym">Regular</label>
+              <div><label for="regular">Regular</label></div>
                 <input type="radio" id="regular" name="homeTrainingType" value="regular" />
+                <div class="checkmark"></div>
               </div>
               <div className="workout-creator-element-content-radio">
-                <label for="home">Supersets</label>
+                <div><label for="supersets">Supersets</label></div>
                 <input type="radio" id="supersets" name="homeTrainingType" value="supersets" />
+                <div class="checkmark"></div>
               </div>
               <div className="workout-creator-element-content-radio">
-                <label for="home">Giantsets</label>
+                <div><label for="giantsets">Giantsets</label></div>
                 <input type="radio" id="giantsets" name="homeTrainingType" value="giantsets" />
+                <div class="checkmark"></div>
               </div>
             </div>
        </div>

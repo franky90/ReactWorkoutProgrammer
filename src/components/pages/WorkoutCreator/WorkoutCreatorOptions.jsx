@@ -77,22 +77,24 @@ class WorkoutCreatorOptions extends Component {
             </div>
             <div className="workout-creator-element-content">
               <div className="workout-creator-element-content-radio">
-                <label for={goalOptionOne}>{goalOptionOne}</label>
+                <div><label for={goalOptionOne}>{goalOptionOne}</label></div>
                 <input
                   type="radio"
                   id={goalOptionOne}
                   name="yourGoal"
                   value={goalOptionOne}
                 />
+                <div class="checkmark"></div>
               </div>
               <div className="workout-creator-element-content-radio">
-                <label for={goalOptionTwo}>{goalOptionTwo}</label>
+                <div><label for={goalOptionTwo}>{goalOptionTwo}</label></div>
                 <input
                   type="radio"
                   id={goalOptionTwo}
                   name="yourGoal"
                   value={goalOptionTwo}
                 />
+                <div class="checkmark"></div>
               </div>
             </div>
           </div>
