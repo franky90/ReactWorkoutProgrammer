@@ -4,7 +4,7 @@ import TrainingTypeSuperset from "./TrainingTypeSupersets";
 // import WorkoutCreatorTrainingType from "./WorkoutCreatorTrainingType";
 import WorkoutItem from "./WorkoutItem";
 import { workoutCreatorTypeItems } from "./workoutCreatorTypeItems";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import TrainingTypeHomeWorkout from "./TrainingTypeHomeWorkout"
 
 class WorkoutCreatorOptions extends Component {
@@ -65,16 +65,18 @@ class WorkoutCreatorOptions extends Component {
             <div className="workout-type-items">
               {workoutCreatorTypeItems.map(({ title, imageUrl, path, id }) => {
                 return (
-                  <Link onClick={() => this.props.routeChanged(id)} className="workout-type-item" to={path}>
+                  <NavLink exact activeClassName="selected" onClick={() => this.props.routeChanged(id)} className="workout-type-item" to={path}>
                     <WorkoutItem title={title} imageUrl={imageUrl} path={path} />
-                  </Link>
+                  </NavLink>
                 );
               })}
             </div>
+
+            {/* 
             <div className="workout-creator-type-heading">
                 <span className="uppercase">{trainingTypeTitle}</span>
             </div>
-
+            */}
           </div>
         </div>
 

@@ -45,6 +45,7 @@
 }
 
 .training-item-wc {
+    position: relative;
     border-radius: 10px;
     min-width: 100%;
     height: 100%;
@@ -55,6 +56,9 @@
     border: 1px solid #222831;
     overflow: hidden;
   }
+
+
+
 .content-wc {
     border-radius: 10px;
     height: 50%;
@@ -66,9 +70,26 @@
     justify-content: center;
     text-align: center;
     border: 2px solid #222831;
+    /*
     background-color: #00adb5;
+    */
+    background: #00adb58f;
     opacity: 0.8;
+    transition: all 0.3s;
+    letter-spacing: normal;
   }
+  
+  a.workout-type-item.selected .content-wc {
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    background-color: #00adb5;
+    background-color: #eeeeeebd;
+    color: #00adb5;
+    letter-spacing: 5px;
+  }
+
+
   
   .title-wc {
     font-weight: bold;
