@@ -5,6 +5,7 @@ import TrainingTypeSuperset from "./TrainingTypeSupersets";
 import WorkoutItem from "./WorkoutItem";
 import { workoutCreatorTypeItems } from "./workoutCreatorTypeItems";
 import { Link } from "react-router-dom";
+import TrainingTypeHomeWorkout from "./TrainingTypeHomeWorkout"
 
 class WorkoutCreatorOptions extends Component {
   constructor(props) {
@@ -27,7 +28,9 @@ class WorkoutCreatorOptions extends Component {
       trainingTypeTitle, 
       goalTitle, 
       goalOptionOne, 
-      goalOptionTwo 
+      goalOptionTwo,
+      isSuperset,
+      isTypeHomeWorkout
     } = this.props;
       
 
@@ -64,7 +67,7 @@ class WorkoutCreatorOptions extends Component {
 
         <div className="workout-creator-elements-container">
           {/* Type of Supersets  */}
-          {this.props.isSuperset ? <TrainingTypeSuperset /> : null}
+          {isSuperset ? <TrainingTypeSuperset /> : null}
 
           {/* Select Your Goal */}
           <div className="workout-creator-element">
@@ -95,22 +98,9 @@ class WorkoutCreatorOptions extends Component {
           </div>
 
           {/* Select Equipment */}
-          <div className="workout-creator-element">
-            <div className="borderLeft" />
-            <div className="workout-creator-element-heading">
-              YOUR EQUIPMENT
-            </div>
-            <div className="workout-creator-element-content">
-              <div className="workout-creator-element-content-radio">
-                <label for="gym">Gym</label>
-                <input type="radio" id="gym" name="Equipment" value="gym" />
-              </div>
-              <div className="workout-creator-element-content-radio">
-                <label for="home">Home</label>
-                <input type="radio" id="home" name="Equipment" value="home" />
-              </div>
-            </div>
-          </div>
+          {isTypeHomeWorkout ? <TrainingTypeHomeWorkout /> : null}
+          
+
           {/* Booster Buttons */}
           <div className="workout-creator-element">
             <div className="workout-creator-element-heading">
