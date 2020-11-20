@@ -148,10 +148,7 @@ class WorkoutCreatorOptions extends Component {
                 </div>
                 <label className="switch">
                   <input type="checkbox" id="warmup" name="warmup" value="warmup"/>
-                  <span
-                    onClick={this.warmupCheckboxHandle}
-                    className="slider round"
-                  ></span>
+                  <span onClick={this.warmupCheckboxHandle} className="slider round"></span>
                 </label>
               </div>
             </div>

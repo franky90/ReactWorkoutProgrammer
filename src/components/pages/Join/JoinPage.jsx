@@ -116,7 +116,6 @@ class JoinPage extends Component {
                 }
 
             }).catch((badAxiosResponse) => {
-                debugger
                 console.log(badAxiosResponse)
             })
         }

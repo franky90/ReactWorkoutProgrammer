@@ -60,7 +60,7 @@ export class WorkoutTableRow extends React.Component {
   renderMuscleGroupCell = (isReadOnly, title) => {
     // Properties to be injected in Td JSX.Component
     let tdHTMLProps = {
-      classname: 'notClickable'
+      // classname: 'notClickable'
     }
     if(isReadOnly === false) {
       tdHTMLProps = {

@@ -11,7 +11,7 @@ const ShuffleButton = (props) => {
   if(isReadOnly === false) {
     shuffleImgHTML = <img className="shuffle-img" src={shuffleButton} alt="shuffle button" />
   } else {
-    className += ' notClickable'
+    // className += ' notClickable'
   }
 
   return (

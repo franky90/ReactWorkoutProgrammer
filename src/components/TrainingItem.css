@@ -19,6 +19,11 @@
   align-items: center;
 }
 
+.flexWrapper.centered2 {
+  justify-content: space-around;
+  align-items: center;
+}
+
 /* .training-item:last-child {
   max-width:50%;
 } */

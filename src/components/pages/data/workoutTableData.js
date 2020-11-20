@@ -5,7 +5,38 @@ export const rangeTypes = {
     numericWeight: 'numericWeight',
     numericSeconds: 'numericSeconds',
 }
-export const Shoulders = {
+
+const shouldersExercise = {
+    name: "Shoulders",
+    sets: 3,
+    reps: {
+        small: 10,
+        large: 20,
+        type: rangeTypes.numericMultiple
+    },
+    rest: 90,
+    weight: {
+        value: 70,
+        type: rangeTypes.numeric
+    }
+}
+
+const intenseShoulder = {
+    name: "Shoulders 2 intense",
+    sets: 3,
+    reps: {
+        small: 12,
+        large: 20,
+        type: rangeTypes.numericMultiple
+    },
+    rest: 30,
+    weight: {
+        value: 75,
+        type: rangeTypes.numeric
+    }
+}
+
+export const ShoulderMuscleGroup = {
     title: "Shoulders",
     exercise: [
         {
@@ -119,4 +150,11 @@ export const Hips = {
         }
     ]
 }
-export const regularExerciseCollection = [Shoulders, Legs, Butt, Hips, Shoulders, Legs, Butt, Hips]
+
+
+export const regularExerciseCollection = [
+    ShoulderMuscleGroup, 
+    Legs, 
+    Butt, 
+    Hips
+]

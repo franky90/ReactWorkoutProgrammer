@@ -38,7 +38,6 @@ class Login extends Component {
         }
         console.log(goodAxiosRes.data)
     }).catch((badAxiosResponse) => {
-        debugger
         console.log(badAxiosResponse)
     })
   }
