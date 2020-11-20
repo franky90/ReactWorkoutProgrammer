@@ -10,7 +10,15 @@ export class WorkoutTableRow extends React.Component {
     const index = 0// by default we are the first index
     const { exercise } = this.props
     const { name, sets, reps, rest, weight } = exercise[index]// selecting the first item
-    this.state = { name, sets, reps, rest, weight, exercise, index }
+    this.state = { 
+    name,
+    sets,
+    reps,
+    rest,
+    weight,
+    exercise,
+    index 
+  }
   }
 
   ShuffleButtonClicked = () => {

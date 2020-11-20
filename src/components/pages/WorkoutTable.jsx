@@ -30,7 +30,13 @@ export class WorkoutTable extends React.Component {
             </Tr>
           </Thead>
           <Tbody>
-            {this.props.data.map((exerciseObjectReference, index) => (<WorkoutTableRow key={exerciseObjectReference.title} {...exerciseObjectReference} order={index + 1} isReadOnly={false} isSuperSet={this.props.isSuperset} />))}
+            {this.props.data.map((exerciseObjectReference, index) => 
+            (<WorkoutTableRow 
+            key={exerciseObjectReference.title} {...exerciseObjectReference} 
+            order={index + 1} 
+            isReadOnly={false} 
+            isSuperSet={this.props.isSuperset} 
+            />))}
           </Tbody>
         </Table>
       );

@@ -133,7 +133,9 @@ export class WorkoutCreator extends Component {
                 trainingTypeDescription={this.state.WorkoutTableProps.trainingTypeDescription}
                 routeChanged={this.routeChanged}
             />
-            <WorkoutTable {...WorkoutTableProps}/>
+            <WorkoutTable 
+            {...WorkoutTableProps}
+            />
         </div>
     }
 }
