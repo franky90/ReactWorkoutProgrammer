@@ -1,7 +1,9 @@
 export const rangeTypes = {
     numericMultiple: 'numericMultiple',
     numeric: 'numeric',
-    numericWeightMultiple: 'numericWeightMultiple'
+    numericWeightMultiple: 'numericWeightMultiple',
+    numericWeight: 'numericWeight',
+    numericSeconds: 'numericSeconds',
 }
 export const Shoulders = {
     title: "Shoulders",
@@ -17,7 +19,7 @@ export const Shoulders = {
             rest: 90,
             weight: {
                 value: 70,
-                type: rangeTypes.numeric
+                type: rangeTypes.numericWeight
             }
         },
         {
@@ -31,7 +33,7 @@ export const Shoulders = {
             rest: 30,
             weight: {
                 value: 75,
-                type: rangeTypes.numeric
+                type: rangeTypes.numericWeight
             }
         }
     ]
@@ -49,7 +51,7 @@ export const Legs = {
             rest: 90,
             weight: {
                 value: 70,
-                type: rangeTypes.numeric
+                type: rangeTypes.numericWeight
             }
         },
         {
@@ -75,13 +77,13 @@ export const Butt = {
             name: "Butt squat",
             sets: 3,
             reps: {
-                value: 10,
-                type: rangeTypes.numeric
+                value: 60,
+                type: rangeTypes.numericSeconds
             },
             rest: 90,
             weight: {
                 value: 70,
-                type: rangeTypes.numeric
+                type: rangeTypes.numericWeight
             }
         },
         {
@@ -93,9 +95,8 @@ export const Butt = {
             },
             rest: 30,
             weight: {
-                small: 50,
-                large: 60,
-                type: rangeTypes.numericWeightMultiple
+                value: 60,
+                type: rangeTypes.numericWeight
             }
         }
     ]
@@ -113,7 +114,7 @@ export const Hips = {
             rest: 90,
             weight: {
                 value: 70,
-                type: rangeTypes.numeric
+                type: rangeTypes.numericWeight
             }
         }
     ]

@@ -25,7 +25,10 @@ export class WorkoutCreator extends Component {
         // NOTE TO PETER -- Ideally I will make a Serverside call that gives me the Data inside the WorkoutTableProps!
         // I believe we should store this in mongo db and we will extract it here on load
         const trainingtype = newRouteName
-        let WorkoutTableProps = {}
+        let WorkoutTableProps = {
+            isReadOnly: false,
+            SuperSetSize: 1,
+        }
         let goalTitle = ""
         let goalOptionOne = ""
         let goalOptionTwo = ""
@@ -34,6 +37,7 @@ export class WorkoutCreator extends Component {
         switch (trainingtype) {
             case 'regular': {
                 WorkoutTableProps = { 
+                    ...WorkoutTableProps,
                     data: regularExerciseCollection,
                     isSuperset: false,
                     isTypeHomeWorkout: false,
@@ -47,6 +51,8 @@ export class WorkoutCreator extends Component {
             }
             case 'supersets': {
                 WorkoutTableProps = {
+                    ...WorkoutTableProps,
+                    SuperSetSize: 2,
                     data: regularExerciseCollection,
                     isSuperset: true,
                     isTypeHomeWorkout: false,
@@ -60,8 +66,10 @@ export class WorkoutCreator extends Component {
             }
             case 'giantsets': {
                 WorkoutTableProps = { 
+                    ...WorkoutTableProps,
+                    SuperSetSize: 3,
                     data: regularExerciseCollection,
-                    isSuperset: false,
+                    isSuperset: true,
                     isTypeHomeWorkout: false,
                     trainingTypeHeading: "What is Giant set",
                     trainingTypeDescription: 'let me exaplain what it means to be a GIANT',
@@ -73,6 +81,7 @@ export class WorkoutCreator extends Component {
             }
             case 'homeworkout': {
                 WorkoutTableProps = { 
+                    ...WorkoutTableProps,
                     data: regularExerciseCollection,
                     isSuperset: false,
                     isTypeHomeWorkout: true,
@@ -133,9 +142,7 @@ export class WorkoutCreator extends Component {
                 trainingTypeDescription={this.state.WorkoutTableProps.trainingTypeDescription}
                 routeChanged={this.routeChanged}
             />
-            <WorkoutTable 
-            {...WorkoutTableProps}
-            />
+            <WorkoutTable {...WorkoutTableProps}/>
         </div>
     }
 }

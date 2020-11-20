@@ -11,13 +11,33 @@ class WorkoutCreatorOptions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isWarmupChecked: false
+      isWarmupChecked: false,
+      isLeftIntensityChecked: true
     }
   }
 
   warmupCheckboxHandle = () => {
     this.setState({ isWarmupChecked: !this.state.isWarmupChecked });
-  };
+  }
+
+  
+  changeIntensityCheckbox = newValue => {
+    if(newValue !== this.state.isLeftIntensityChecked) {
+      this.setState({isLeftIntensityChecked: newValue})
+    }
+  }
+
+
+  renderIntensityCheckbox = isLeft => {
+    const { isLeftIntensityChecked } = this.state
+    let className = 'innerCheckbox'
+    if(isLeft && isLeftIntensityChecked || !isLeft && !isLeftIntensityChecked) {
+        className += ' active'
+    }
+    return <div className="checkmark flexWrapper centered clickable">
+      <div className={className}></div>
+    </div>
+  }
 
   
 
@@ -76,25 +96,13 @@ class WorkoutCreatorOptions extends Component {
               {goalTitle}
             </div>
             <div className="workout-creator-element-content">
-              <div className="workout-creator-element-content-radio">
-                <label for={goalOptionOne}>{goalOptionOne}</label>
-                <input
-                  type="radio"
-                  id={goalOptionOne}
-                  name="yourGoal"
-                  value={goalOptionOne}
-                />
-                <div class="checkmark"></div>
+              <div onClick={() => this.changeIntensityCheckbox(true)} className="clickable workout-creator-element-content-radio">
+                <label>{goalOptionOne}</label>
+                {this.renderIntensityCheckbox(true)}
               </div>
-              <div className="workout-creator-element-content-radio">
-                <label for={goalOptionTwo}>{goalOptionTwo}</label>
-                <input
-                  type="radio"
-                  id={goalOptionTwo}
-                  name="yourGoal"
-                  value={goalOptionTwo}
-                />
-                <div class="checkmark"></div>
+              <div onClick={() => this.changeIntensityCheckbox(false)} className="clickable workout-creator-element-content-radio">
+                <label>{goalOptionTwo}</label>
+                {this.renderIntensityCheckbox(false)}
               </div>
             </div>
           </div>
@@ -113,9 +121,9 @@ class WorkoutCreatorOptions extends Component {
                 <div className="workout-creator-element-content-switchName">
                   Big Arms
                 </div>
-                <label class="switch">
+                <label className="switch">
                   <input type="checkbox" id="arms" name="arms" value="arms" />
-                  <span class="slider round"></span>
+                  <span className="slider round"></span>
                 </label>
               </div>
 
@@ -123,14 +131,9 @@ class WorkoutCreatorOptions extends Component {
                 <div className="workout-creator-element-content-switchName">
                   Super Endurance
                 </div>
-                <label class="switch">
-                  <input
-                    type="checkbox"
-                    id="endurance"
-                    name="endurance"
-                    value="endurance"
-                  />
-                  <span class="slider round"></span>
+                <label className="switch">
+                  <input type="checkbox" id="endurance" name="endurance" value="endurance"/>
+                  <span className="slider round"></span>
                 </label>
               </div>
             </div>
@@ -143,16 +146,11 @@ class WorkoutCreatorOptions extends Component {
                 <div className="workout-creator-element-content-switchName">
                   {this.state.isWarmupChecked ? "Yes" : "No"}
                 </div>
-                <label class="switch">
-                  <input
-                    type="checkbox"
-                    id="warmup"
-                    name="warmup"
-                    value="warmup"
-                  />
+                <label className="switch">
+                  <input type="checkbox" id="warmup" name="warmup" value="warmup"/>
                   <span
                     onClick={this.warmupCheckboxHandle}
-                    class="slider round"
+                    className="slider round"
                   ></span>
                 </label>
               </div>

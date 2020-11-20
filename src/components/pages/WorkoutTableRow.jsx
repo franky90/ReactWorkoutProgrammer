@@ -11,14 +11,14 @@ export class WorkoutTableRow extends React.Component {
     const { exercise } = this.props
     const { name, sets, reps, rest, weight } = exercise[index]// selecting the first item
     this.state = { 
-    name,
-    sets,
-    reps,
-    rest,
-    weight,
-    exercise,
-    index 
-  }
+      name,
+      sets,
+      reps,
+      rest,
+      weight,
+      exercise,
+      index 
+    }
   }
 
   ShuffleButtonClicked = () => {
@@ -41,6 +41,12 @@ export class WorkoutTableRow extends React.Component {
         case rangeTypes.numericWeightMultiple:
             cellContent = `${rangeObject.small}-${rangeObject.large}%RM`
             break;
+        case rangeTypes.numericWeight:
+          cellContent = `${rangeObject.value}%RM`
+          break;
+        case rangeTypes.numericSeconds:
+          cellContent = `${rangeObject.value}s`
+          break;
       }
       return cellContent
   }
@@ -51,18 +57,37 @@ export class WorkoutTableRow extends React.Component {
     return _letter+_number
   }
 
+  renderMuscleGroupCell = (isReadOnly, title) => {
+    // Properties to be injected in Td JSX.Component
+    let tdHTMLProps = {
+      classname: 'notClickable'
+    }
+    if(isReadOnly === false) {
+      tdHTMLProps = {
+        onClick: this.ShuffleButtonClicked,
+        className: 'clickable'
+      }
+    }
+    return <Td {...tdHTMLProps}>
+      <ShuffleButton isReadOnly={isReadOnly} muscleGroup={title}/>
+    </Td> 
+  }
+
   render() {
     
     const { name, sets, reps, rest, weight } = this.state
-    const { isReadOnly, isSuperSet } = this.props
+    const { isSuperSet, title, isReadOnly, SuperSetSize } = this.props
+    const groupItemsLength = this.state.exercise.length
+    let _isReadOnly = isReadOnly
+
+    if(_isReadOnly === false) {
+      _isReadOnly = groupItemsLength <= 1
+    }
 
     return (
       <Tr className="exercise-row">
-        { isReadOnly 
-        ? <Td><ShuffleButton isReadOnly= {isReadOnly} muscleGroup={this.props.title}/></Td> 
-        : <Td onClick={this.ShuffleButtonClicked}><ShuffleButton muscleGroup={this.props.title}/></Td> 
-        }
-        <Td>{isSuperSet ? this.getSupersetOrder(3) : this.props.order}</Td>
+        {this.renderMuscleGroupCell(_isReadOnly, title)}
+        <Td>{isSuperSet ? this.getSupersetOrder(SuperSetSize) : this.props.order}</Td>
         <Td>{name}</Td>
         <Td>{sets}</Td>
         <Td>{this.rangeToCellContent(reps)}</Td>

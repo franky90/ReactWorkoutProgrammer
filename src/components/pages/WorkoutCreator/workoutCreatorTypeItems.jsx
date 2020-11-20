@@ -1,6 +1,7 @@
 import treatments from "../../../images/treatments.jpg"
 import split from "../../../images/split-background.jpg"
 import fullBody from "../../../images/fullBody.jpg"
+import homeWorkout from './../../../images/homeWorkout.jpg'
 
 export const workoutCreatorTypeItems = [
     {
@@ -24,7 +25,7 @@ export const workoutCreatorTypeItems = [
     {
         id: 'homeworkout',
         title: 'Home Workout',
-        imageUrl: split,
+        imageUrl: homeWorkout,
         path: "/workout-creator/homeworkout"
     }      
 ]

@@ -193,7 +193,6 @@
   
   /* Create a custom radio button */
   .checkmark {
-    
     margin-top: 10px;
     top: 0;
     left: 0;
@@ -203,6 +202,13 @@
     border-radius: 50%;
   }
   
+  .innerCheckbox.active {
+    height: 50%;
+    width: 50%;
+    background: #393e46;
+    border-radius: 50%;
+  }
+
   /* On mouse-over, add a grey background color */
   .workout-creator-element-content-radio:hover input ~ .checkmark {
     background-color: #393e46;
