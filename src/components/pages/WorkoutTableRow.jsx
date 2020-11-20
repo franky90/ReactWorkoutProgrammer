@@ -58,7 +58,10 @@ export class WorkoutTableRow extends React.Component {
 
     return (
       <Tr className="exercise-row">
-        { isReadOnly ? <Td>{this.props.title}</Td> : <Td onClick={this.ShuffleButtonClicked}><ShuffleButton muscleGroup={this.props.title}/></Td> }
+        { isReadOnly 
+        ? <Td><ShuffleButton isReadOnly= {isReadOnly} muscleGroup={this.props.title}/></Td> 
+        : <Td onClick={this.ShuffleButtonClicked}><ShuffleButton muscleGroup={this.props.title}/></Td> 
+        }
         <Td>{isSuperSet ? this.getSupersetOrder(3) : this.props.order}</Td>
         <Td>{name}</Td>
         <Td>{sets}</Td>

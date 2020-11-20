@@ -34,13 +34,17 @@ export class WorkoutTable extends React.Component {
             (<WorkoutTableRow 
             key={exerciseObjectReference.title} {...exerciseObjectReference} 
             order={index + 1} 
-            isReadOnly={false} 
-            isSuperSet={this.props.isSuperset} 
+            isReadOnly= {exerciseObjectReference.exercise.length <= 1 ? true: false} 
+            isSuperSet={this.props.isSuperset}
             />))}
           </Tbody>
         </Table>
       );
     }
+
+   
+    
+
 
     return <div className="workout-creator-container">{tableContent}</div>
 
