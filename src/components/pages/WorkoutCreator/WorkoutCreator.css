@@ -74,7 +74,7 @@
     background-color: #00adb5;
     */
     background: #00adb58f;
-    opacity: 0.8;
+    opacity: 0.85;
     transition: all 0.3s;
     letter-spacing: normal;
   }
@@ -84,9 +84,9 @@
     width: 100%;
     border-radius: 6px;
     background-color: #00adb5;
-    background-color: #eeeeeebd;
-    color: #00adb5;
     letter-spacing: 5px;
+    border: 3px solid #eee;
+    border-radius: 10px;
   }
 
 
