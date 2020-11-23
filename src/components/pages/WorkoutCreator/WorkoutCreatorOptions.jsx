@@ -12,34 +12,9 @@ class WorkoutCreatorOptions extends Component {
     super(props);
     this.state = {
       isWarmupChecked: false,
-      isLeftIntensityChecked: true
+     
     }
   }
-
-  warmupCheckboxHandle = () => {
-    this.setState({ isWarmupChecked: !this.state.isWarmupChecked });
-  }
-
-  
-  changeIntensityCheckbox = newValue => {
-    if(newValue !== this.state.isLeftIntensityChecked) {
-      this.setState({isLeftIntensityChecked: newValue})
-    }
-  }
-
-
-  renderIntensityCheckbox = isLeft => {
-    const { isLeftIntensityChecked } = this.state
-    let className = 'innerCheckbox'
-    if(isLeft && isLeftIntensityChecked || !isLeft && !isLeftIntensityChecked) {
-        className += ' active'
-    }
-    return <div className="checkmark flexWrapper centered clickable">
-      <div className={className}></div>
-    </div>
-  }
-
-  
 
   render() {
     const { 
@@ -98,13 +73,25 @@ class WorkoutCreatorOptions extends Component {
               {goalTitle}
             </div>
             <div className="workout-creator-element-content">
-              <div onClick={() => this.changeIntensityCheckbox(true)} className="clickable workout-creator-element-content-radio">
-                <label>{goalOptionOne}</label>
-                {this.renderIntensityCheckbox(true)}
+              <div className="workout-creator-element-content-radio">
+                <label for={goalOptionOne}>{goalOptionOne}</label>
+                <input
+                  type="radio"
+                  id={goalOptionOne}
+                  name="intensity"
+                  value={goalOptionOne}
+                />
+                <div className="checkmark"></div>
               </div>
-              <div onClick={() => this.changeIntensityCheckbox(false)} className="clickable workout-creator-element-content-radio">
-                <label>{goalOptionTwo}</label>
-                {this.renderIntensityCheckbox(false)}
+              <div className="workout-creator-element-content-radio">
+                <label for={goalOptionTwo}>{goalOptionTwo}</label>
+                <input
+                  type="radio"
+                  id={goalOptionTwo}
+                  name="intensity"
+                  value={goalOptionTwo}
+                />
+                <div className="checkmark"></div>
               </div>
             </div>
           </div>
