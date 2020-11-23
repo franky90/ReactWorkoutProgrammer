@@ -1,59 +1,111 @@
 import React, { Component } from "react";
-import TrainingTypeSuperset from "./TrainingTypeSupersets";
 // NOTE TO PETER - DELETE THIS COMPONENT
-// import WorkoutCreatorTrainingType from "./WorkoutCreatorTrainingType";
 import WorkoutItem from "./WorkoutItem";
 import { workoutCreatorTypeItems } from "./workoutCreatorTypeItems";
-import { Link, NavLink } from "react-router-dom";
-import TrainingTypeHomeWorkout from "./TrainingTypeHomeWorkout"
+import { NavLink } from "react-router-dom";
+import TrainingTypeHomeWorkout from "./TrainingTypeHomeWorkout";
 
 class WorkoutCreatorOptions extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isWarmupChecked: false,
-      isLeftIntensityChecked: true
-    }
+      isLeftIntensityChecked: true,
+      isLeftSupersetCheckboxChecked: true,
+      renderHomeWorkOutOptions: [
+        {
+          isSelected: true,
+          value: 'Regular'
+        },
+        {
+          isSelected: false,
+          value: 'Supersets'
+        },
+        {
+          isSelected: false,
+          value: 'Giantsets'
+        }
+      ]
+    };
   }
 
   warmupCheckboxHandle = () => {
     this.setState({ isWarmupChecked: !this.state.isWarmupChecked });
   }
 
-  
-  changeIntensityCheckbox = newValue => {
-    if(newValue !== this.state.isLeftIntensityChecked) {
-      this.setState({isLeftIntensityChecked: newValue})
-    }
+  changeIntensityCheckbox = (newValue) => {
+    if (newValue !== this.state.isLeftIntensityChecked) this.setState({ isLeftIntensityChecked: newValue });
   }
 
-
-  renderIntensityCheckbox = isLeft => {
+  renderIntensityCheckbox = (isLeft) => {
     const { isLeftIntensityChecked } = this.state
-    let className = 'innerCheckbox'
-    if(isLeft && isLeftIntensityChecked || !isLeft && !isLeftIntensityChecked) {
-        className += ' active'
-    }
-    return <div className="checkmark flexWrapper centered clickable">
-      <div className={className}></div>
-    </div>
+    let className = "innerCheckbox"
+    if ((isLeft && isLeftIntensityChecked) || (!isLeft && !isLeftIntensityChecked)) className += " active"
+    return <div className="checkmark flexWrapper centered clickable"><div className={className}></div></div>
   }
 
-  
+  changeSupersetCheckbox = newValue => {
+    if (newValue !== this.state.isLeftSupersetCheckboxChecked) this.setState({ isLeftSupersetCheckboxChecked: newValue });
+  }
+
+  renderSupersetCheckbox = isLeft => {
+    const { isLeftSupersetCheckboxChecked } = this.state
+    let className = "innerCheckbox"
+    if ((isLeft && isLeftSupersetCheckboxChecked) || (!isLeft && !isLeftSupersetCheckboxChecked)) className += " active"
+    return <div className="checkmark flexWrapper centered clickable"><div className={className}></div></div>
+  }
+
+  renderSuperSetOptions = () => {
+    if(this.props.isSuperset === false) return null
+    return (<div className="workout-creator-element">
+        <div className="borderLeft" />
+        <div className="workout-creator-element-heading">TYPE OF SUPERSETS</div>
+        <div className="workout-creator-element-content">
+          <div onClick={() => this.changeSupersetCheckbox(true)} className="clickable workout-creator-element-content-radio">
+            <label>Same muscle group</label>
+            {this.renderSupersetCheckbox(true)}
+          </div>
+          <div onClick={() => this.changeSupersetCheckbox(false)} className="clickable workout-creator-element-content-radio">
+            <label>Opposite muscle group</label>
+            {this.renderSupersetCheckbox(false)}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderCheckBox = isSelected => {
+    let className = "innerCheckbox"
+    if (isSelected) className += " active"
+    return <div className="checkmark flexWrapper centered clickable"><div className={className}></div></div>
+  }
+
+
+  changeHomeWorkOutSelection = (newSelection) => {
+    const renderHomeWorkOutOptionsCopy = this.state.renderHomeWorkOutOptions.slice()
+    renderHomeWorkOutOptionsCopy.forEach(o => o.isSelected = false)
+    const selection = renderHomeWorkOutOptionsCopy.find(o => o.value === newSelection.value)
+    selection.isSelected = true
+    this.setState({renderHomeWorkOutOptions: renderHomeWorkOutOptionsCopy})
+  }
+  renderHomeWorkOutOptions = () => {
+    if(this.props.isTypeHomeWorkout === false) return null
+    return (<div className="workout-creator-element">
+        <div className="borderLeft" />
+        <div className="workout-creator-element-heading">TRAINING TYPE FOR NO EQUIPMENT WORKOUT</div>
+        <div className="workout-creator-element-content">
+          {this.state.renderHomeWorkOutOptions.map(option => 
+            <div onClick={() => this.changeHomeWorkOutSelection(option)} className="clickable workout-creator-element-content-radio">
+              <label>{option.value}</label>
+                {this.renderCheckBox(option.isSelected)}
+            </div>)}
+        </div>
+      </div>
+    )
+  }
 
   render() {
-    const { 
-      trainingTypeHeading, 
-      trainingTypeDescription, 
-      trainingTypeTitle, 
-      goalTitle, 
-      goalOptionOne, 
-      goalOptionTwo,
-      isSuperset,
-      isTypeHomeWorkout
-    } = this.props;
-      
-
+    const { trainingTypeHeading, trainingTypeDescription, goalTitle, goalOptionOne, goalOptionTwo } = this.props;
     return (
       <div className="workout-creator-container-options">
         <div className="workout-creator-container-selectedType">
@@ -61,22 +113,9 @@ class WorkoutCreatorOptions extends Component {
             <div className="workout-type-heading">
               <h1>Select Training Type</h1>
             </div>
-
             <div className="workout-type-items">
-              {workoutCreatorTypeItems.map(({ title, imageUrl, path, id }) => {
-                return (
-                  <NavLink exact activeClassName="selected" onClick={() => this.props.routeChanged(id)} className="workout-type-item" to={path}>
-                    <WorkoutItem title={title} imageUrl={imageUrl} path={path} />
-                  </NavLink>
-                );
-              })}
+              {workoutCreatorTypeItems.map(({ title, imageUrl, path, id }) => <NavLink exact activeClassName="selected" onClick={() => this.props.routeChanged(id)} className="workout-type-item" to={path}><WorkoutItem title={title} imageUrl={imageUrl} path={path}/></NavLink>)}
             </div>
-
-            {/* 
-            <div className="workout-creator-type-heading">
-                <span className="uppercase">{trainingTypeTitle}</span>
-            </div>
-            */}
           </div>
         </div>
 
@@ -89,14 +128,12 @@ class WorkoutCreatorOptions extends Component {
 
         <div className="workout-creator-elements-container">
           {/* Type of Supersets  */}
-          {isSuperset ? <TrainingTypeSuperset /> : null}
+          {this.renderSuperSetOptions()}
 
           {/* Select Your Goal */}
           <div className="workout-creator-element">
             <div className="borderLeft" />
-            <div className="workout-creator-element-heading">
-              {goalTitle}
-            </div>
+            <div className="workout-creator-element-heading">{goalTitle}</div>
             <div className="workout-creator-element-content">
               <div onClick={() => this.changeIntensityCheckbox(true)} className="clickable workout-creator-element-content-radio">
                 <label>{goalOptionOne}</label>
@@ -109,9 +146,8 @@ class WorkoutCreatorOptions extends Component {
             </div>
           </div>
 
-          {/* Select Equipment */}
-          {isTypeHomeWorkout ? <TrainingTypeHomeWorkout /> : null}
-          
+          {/* Homeworkout */}
+          {this.renderHomeWorkOutOptions()}
 
           {/* Booster Buttons */}
           <div className="workout-creator-element">
@@ -130,9 +166,7 @@ class WorkoutCreatorOptions extends Component {
               </div>
 
               <div className="workout-creator-element-content-switchContainer">
-                <div className="workout-creator-element-content-switchName">
-                  Super Endurance
-                </div>
+                <div className="workout-creator-element-content-switchName">Super Endurance</div>
                 <label className="switch">
                   <input type="checkbox" id="endurance" name="endurance" value="endurance"/>
                   <span className="slider round"></span>
@@ -157,7 +191,7 @@ class WorkoutCreatorOptions extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
