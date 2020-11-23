@@ -5,11 +5,12 @@
     padding:10px;
     margin:0 auto;
     align-items: center;
+    border: 1px solid #00adb5;
+    border-radius: 10px;
 }
 
 .shuffle-button:hover { 
-    background: ghostwhite;
-    color: #222831;
+    border-color: #eee;
 }
 .shuffle-img{
     width:30px;
