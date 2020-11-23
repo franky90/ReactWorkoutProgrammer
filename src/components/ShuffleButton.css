@@ -11,6 +11,11 @@
 
 .shuffle-button:hover { 
     border-color: #eee;
+    transform: scale(1.04);
+}
+
+.shuffle-button:active{
+    transform: translateY(4px);
 }
 .shuffle-img{
     width:30px;
