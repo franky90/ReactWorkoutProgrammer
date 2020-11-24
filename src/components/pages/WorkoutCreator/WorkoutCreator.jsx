@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import WorkoutCreatorOptions from './../WorkoutCreator/WorkoutCreatorOptions'
 import { WorkoutTable } from './../WorkoutTable'
-import { regularExerciseCollection, } from './../data/workoutTableData'
+import { allExercises } from './../data/workoutTableData'
+import { Goals, muscleGroup } from './../data/Exercises/Exercises.model'
 
 export class WorkoutCreator extends Component {
 
@@ -15,9 +16,9 @@ export class WorkoutCreator extends Component {
             goalTitle:"",
             goalOptionOne:"",
             goalOptionTwo:"",
-            // isSuperset: false,
             trainingTypeHeading:"",
-            trainingTypeDescription: ''
+            trainingTypeDescription: '',
+            Goal: Goals.Strength// need to specify the goal here!
         }
     }
 
@@ -34,11 +35,12 @@ export class WorkoutCreator extends Component {
         let goalOptionTwo = ""
         let trainingTypeHeading = ''
         let trainingTypeDescription = ''
+        let Goal = null
         switch (trainingtype) {
             case 'regular': {
                 WorkoutTableProps = { 
                     ...WorkoutTableProps,
-                    data: regularExerciseCollection,
+                    // data: regularExerciseCollection,
                     isSuperset: false,
                     isTypeHomeWorkout: false,
                     trainingTypeHeading:"What is a regular",
@@ -47,13 +49,14 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT YOUR GOAL"
                 goalOptionOne = "Strength"
                 goalOptionTwo = "Endurance"
+                Goal = Goals.Strength
                 break;
             }
             case 'supersets': {
                 WorkoutTableProps = {
                     ...WorkoutTableProps,
                     SuperSetSize: 2,
-                    data: regularExerciseCollection,
+                    // data: regularExerciseCollection,
                     isSuperset: true,
                     isTypeHomeWorkout: false,
                     trainingTypeHeading:"What is Super set",
@@ -62,13 +65,14 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT YOUR GOAL"
                 goalOptionOne = "Strength"
                 goalOptionTwo = "Endurance"
+                Goal = Goals.Strength
                 break;
             }
             case 'giantsets': {
                 WorkoutTableProps = { 
                     ...WorkoutTableProps,
                     SuperSetSize: 3,
-                    data: regularExerciseCollection,
+                    // data: regularExerciseCollection,
                     isSuperset: true,
                     isTypeHomeWorkout: false,
                     trainingTypeHeading: "What is Giant set",
@@ -77,12 +81,13 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT INTENSITY"
                 goalOptionOne = "Low"
                 goalOptionTwo = "High"
+                Goal = Goals.LowReps
                 break;
             }
             case 'homeworkout': {
                 WorkoutTableProps = { 
                     ...WorkoutTableProps,
-                    data: regularExerciseCollection,
+                    // data: regularExerciseCollection,
                     isSuperset: false,
                     isTypeHomeWorkout: true,
                     trainingTypeHeading: "Why to train at home?",
@@ -91,6 +96,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT INTENSITY"
                 goalOptionOne = "Low"
                 goalOptionTwo = "High"
+                Goal = Goals.Strength
                 break;
             }
             default: {
@@ -100,16 +106,46 @@ export class WorkoutCreator extends Component {
                 break;
             }
         }
+
+        this.filterTableData({Goal}, WorkoutTableProps)
+
         this.setState({
             trainingtype, 
             isLoaded: true, 
             WorkoutTableProps,
             goalTitle,
-            goalOptionOne,   // OKKK man. Default is empty for now
+            goalOptionOne,   
             goalOptionTwo,
             trainingTypeHeading,
-            trainingTypeDescription
+            trainingTypeDescription,
+            Goal
         })
+    }
+
+
+    filterTableData = (filters, workoutProps) => {
+        let _exercises = allExercises.slice()
+        if(filters.Goal) {
+            _exercises = _exercises.filter((e) => e.goal === filters.Goal)
+        }
+
+        const exercisesByMuscleGroup = {}
+        const outCollection = []
+        _exercises.forEach(e => {
+            if(exercisesByMuscleGroup[e.muscleGroup]) {
+                exercisesByMuscleGroup[e.muscleGroup].exercise.push(e)
+            } else {
+                // first time adding the reference
+                exercisesByMuscleGroup[e.muscleGroup] = {
+                    exercise: [e],
+                    title: e.muscleGroup
+                }
+                outCollection.push(exercisesByMuscleGroup[e.muscleGroup])
+            }
+        })
+        if(Array.isArray(outCollection)) {
+            workoutProps.data = outCollection
+        }
     }
 
     componentDidMount() 

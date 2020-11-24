@@ -2,7 +2,7 @@ import React from "react"
 import { Tr, Td } from "react-super-responsive-table"
 import ShuffleButton from "./../ShuffleButton"
 import { Alphabet } from './../../Records/Aphabet'
-import { rangeTypes } from './../pages/data/workoutTableData'
+import { rangeTypes } from './../pages/data/Exercises/Exercises.model'
 
 export class WorkoutTableRow extends React.Component {
   constructor(props) {
