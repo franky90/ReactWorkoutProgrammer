@@ -5,6 +5,7 @@ const port = 5000
 import UserController from './Controllers/UserController'
 import WorkoutController from './Controllers/WorkoutController'
 import { MetaController } from './Controllers/ControllerDetails'
+import ExerciseController from './Controllers/ExerciseController'
 
 // Import of Services
 import { Logger } from './Service/Logger'
@@ -25,6 +26,10 @@ ExpressApp.use(CustomMiddlewares.CORS())
 // Setting up my controllers here...
 ExpressApp.use(UserController.toRoute(), UserController.Router)
 ExpressApp.use(WorkoutController.toRoute(), WorkoutController.Router)
+// this is new!
+ExpressApp.use(ExerciseController.toRoute(), ExerciseController.Router)
+
+
 ExpressApp.use("/Meta", MetaController)
 
 ExpressApp.use(Cors())

@@ -16,6 +16,12 @@ class WorkoutCreatorOptions extends Component {
     }
   }
 
+
+  warmupCheckboxHandle = () => {
+    // will toggle the upstairs state of goal...
+    this.props.toggleGoalProps()
+  }
+
   render() {
     const { 
       trainingTypeHeading, 
@@ -74,7 +80,7 @@ class WorkoutCreatorOptions extends Component {
             </div>
             <div className="workout-creator-element-content">
               <div className="workout-creator-element-content-radio">
-                <label for={goalOptionOne}>{goalOptionOne}</label>
+                <label htmlFor={goalOptionOne}>{goalOptionOne}</label>
                 <input
                   type="radio"
                   id={goalOptionOne}
@@ -84,7 +90,7 @@ class WorkoutCreatorOptions extends Component {
                 <div className="checkmark"></div>
               </div>
               <div className="workout-creator-element-content-radio">
-                <label for={goalOptionTwo}>{goalOptionTwo}</label>
+                <label htmlFor={goalOptionTwo}>{goalOptionTwo}</label>
                 <input
                   type="radio"
                   id={goalOptionTwo}

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import WorkoutCreatorOptions from './../WorkoutCreator/WorkoutCreatorOptions'
 import { WorkoutTable } from './../WorkoutTable'
-import { allExercises } from './../data/workoutTableData'
+import { regularStrength, regularEndurance, allExercises } from './../data/workoutTableData'
 import { Goals, muscleGroup } from './../data/Exercises/Exercises.model'
+import { ExerciseApi } from './../../../Service/ExerciseApi'
 
 export class WorkoutCreator extends Component {
 
@@ -18,11 +19,21 @@ export class WorkoutCreator extends Component {
             goalOptionTwo:"",
             trainingTypeHeading:"",
             trainingTypeDescription: '',
-            Goal: Goals.Strength// need to specify the goal here!
+            Goal: Goals.Endurance// need to specify the goal here!
         }
     }
 
-    routeChanged = newRouteName => {
+    routeChanged = (newRouteName, passedGoal) => {
+        const goalFilter = passedGoal || this.state.Goal
+        new ExerciseApi().getTableData({goal: goalFilter}).then((axiosResponse) => {
+            if(axiosResponse.data.isSuccess && axiosResponse.data.tableData) {
+                const WorkoutTablePropsCopy = {...WorkoutTableProps}
+                WorkoutTablePropsCopy.data = axiosResponse.data.tableData
+                this.setState({WorkoutTableProps: WorkoutTablePropsCopy })
+            }
+        }).catch((axiosError) => {
+            debugger
+        })
         // NOTE TO PETER -- Ideally I will make a Serverside call that gives me the Data inside the WorkoutTableProps!
         // I believe we should store this in mongo db and we will extract it here on load
         const trainingtype = newRouteName
@@ -49,7 +60,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT YOUR GOAL"
                 goalOptionOne = "Strength"
                 goalOptionTwo = "Endurance"
-                Goal = Goals.Strength
+                passedGoal = Goals.Strength
                 break;
             }
             case 'supersets': {
@@ -65,7 +76,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT YOUR GOAL"
                 goalOptionOne = "Strength"
                 goalOptionTwo = "Endurance"
-                Goal = Goals.Strength
+                passedGoal = Goals.Strength
                 break;
             }
             case 'giantsets': {
@@ -81,7 +92,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT INTENSITY"
                 goalOptionOne = "Low"
                 goalOptionTwo = "High"
-                Goal = Goals.LowReps
+                passedGoal = Goals.LowReps
                 break;
             }
             case 'homeworkout': {
@@ -96,7 +107,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT INTENSITY"
                 goalOptionOne = "Low"
                 goalOptionTwo = "High"
-                Goal = Goals.Strength
+                passedGoal = Goals.Strength
                 break;
             }
             default: {
@@ -107,7 +118,7 @@ export class WorkoutCreator extends Component {
             }
         }
 
-        this.filterTableData({Goal}, WorkoutTableProps)
+        // this.filterTableData({Goal}, WorkoutTableProps)
 
         this.setState({
             trainingtype, 
@@ -118,40 +129,61 @@ export class WorkoutCreator extends Component {
             goalOptionTwo,
             trainingTypeHeading,
             trainingTypeDescription,
-            Goal
+            // Goal: passedGoal
         })
     }
 
 
     filterTableData = (filters, workoutProps) => {
-        let _exercises = allExercises.slice()
-        if(filters.Goal) {
-            _exercises = _exercises.filter((e) => e.goal === filters.Goal)
+        /*
+        debugger
+        const newList = allExercises.filter(e => e.goal === filters.Goal).map(ex => {
+            // copy of...
+            ex.reps = {...ex.reps}
+            ex.weight = {...ex.reps}
+            return ex
+        })
+
+        if(filters.Goal === Goals.Strength) {
+            workoutProps.data = regularStrength
+        }
+        if(filters.Goal === Goals.Endurance) {
+            workoutProps.data = regularEndurance
         }
 
-        const exercisesByMuscleGroup = {}
-        const outCollection = []
-        _exercises.forEach(e => {
-            if(exercisesByMuscleGroup[e.muscleGroup]) {
-                exercisesByMuscleGroup[e.muscleGroup].exercise.push(e)
+        // needs to produce same kind of data!
+        console.log(workoutProps.data)
+
+        // muscleGroup -> title
+        // exercise -> Array<Exercise>
+        const groupedCollection = []
+        const keyValueTrack = {}
+        newList.forEach(e => {
+
+            if(keyValueTrack[e.muscleGroup]) {
+                // existing entry
+                keyValueTrack[e.muscleGroup].exercise.push(entry)
             } else {
-                // first time adding the reference
-                exercisesByMuscleGroup[e.muscleGroup] = {
-                    exercise: [e],
-                    title: e.muscleGroup
-                }
-                outCollection.push(exercisesByMuscleGroup[e.muscleGroup])
+                // brand new entry!
+                let entry = { title: e.muscleGroup, exercise: e }
+                keyValueTrack[e.muscleGroup] = [entry]
+                groupedCollection.push(keyValueTrack[e.muscleGroup])
             }
         })
-        if(Array.isArray(outCollection)) {
-            workoutProps.data = outCollection
-        }
+        */
+
     }
 
     componentDidMount() 
     {
         // once component mounts this will be called... and if nothing is matched default will hit... see the default case:
         this.routeChanged(this.props.match.params.worktype)
+    }
+
+    toggleGoalProps = () => {
+        const Goal = this.state.Goal === Goals.Endurance ? Goals.Strength : Goals.Endurance
+        this.setState({Goal: Goal })
+        this.routeChanged(this.props.match.params.worktype, Goal)
     }
 
     
@@ -177,6 +209,7 @@ export class WorkoutCreator extends Component {
                 trainingTypeHeading={this.state.WorkoutTableProps.trainingTypeHeading}
                 trainingTypeDescription={this.state.WorkoutTableProps.trainingTypeDescription}
                 routeChanged={this.routeChanged}
+                toggleGoalProps={this.toggleGoalProps}
             />
             <WorkoutTable {...WorkoutTableProps}/>
         </div>

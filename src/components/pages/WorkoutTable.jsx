@@ -13,6 +13,7 @@ export class WorkoutTable extends React.Component {
   }
 
   render() {
+
     const { data, isSuperset, isReadOnly, SuperSetSize } = this.props
     let tableContent = null;
     if (Array.isArray(data) && data.length > 0) {

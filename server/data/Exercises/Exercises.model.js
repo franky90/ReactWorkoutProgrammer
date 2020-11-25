@@ -62,4 +62,12 @@ export default class Exercise
         this.goal = goal
         return this
     }
+
+    /**
+     * Creates a new Exercise Reference!
+     * @param {Exercise} BaseExercise 
+     */
+    static Copy(BaseExercise) {
+        return new Exercise(BaseExercise)
+    }
 }
