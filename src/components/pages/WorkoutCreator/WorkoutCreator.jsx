@@ -23,17 +23,28 @@ export class WorkoutCreator extends Component {
         }
     }
 
-    routeChanged = (newRouteName, passedGoal) => {
-        const goalFilter = passedGoal || this.state.Goal
-        new ExerciseApi().getTableData({goal: goalFilter}).then((axiosResponse) => {
-            if(axiosResponse.data.isSuccess && axiosResponse.data.tableData) {
-                const WorkoutTablePropsCopy = {...WorkoutTableProps}
-                WorkoutTablePropsCopy.data = axiosResponse.data.tableData
-                this.setState({WorkoutTableProps: WorkoutTablePropsCopy })
-            }
-        }).catch((axiosError) => {
-            debugger
-        })
+    changedTableData = newFilter => {
+        // newFilter
+        // newFilter.goal
+        // newFilter.workoutCategory
+        if(newFilter && newFilter.goal && newFilter.workoutCategory) {
+            new ExerciseApi().getTableData(newFilter).then((axiosResponse) => {
+                if(newFilter && newFilter.goal) this.setState({ Goal: newFilter.goal})
+                if(axiosResponse.data.isSuccess && axiosResponse.data.tableData) {
+                    const WorkoutTablePropsCopy = {
+                        ...this.state.WorkoutTableProps,
+                        data: axiosResponse.data.tableData
+                    }
+                    // WorkoutTablePropsCopy.data = axiosResponse.data.tableData
+                    this.setState({ WorkoutTableProps: WorkoutTablePropsCopy })
+                }
+            }).catch((axiosError) => {
+                debugger
+            })
+        }
+    }
+
+    routeChanged = (newRouteName) => {
         // NOTE TO PETER -- Ideally I will make a Serverside call that gives me the Data inside the WorkoutTableProps!
         // I believe we should store this in mongo db and we will extract it here on load
         const trainingtype = newRouteName
@@ -47,6 +58,7 @@ export class WorkoutCreator extends Component {
         let trainingTypeHeading = ''
         let trainingTypeDescription = ''
         let Goal = null
+
         switch (trainingtype) {
             case 'regular': {
                 WorkoutTableProps = { 
@@ -60,7 +72,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT YOUR GOAL"
                 goalOptionOne = "Strength"
                 goalOptionTwo = "Endurance"
-                passedGoal = Goals.Strength
+                Goal = Goals.Strength
                 break;
             }
             case 'supersets': {
@@ -76,7 +88,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT YOUR GOAL"
                 goalOptionOne = "Strength"
                 goalOptionTwo = "Endurance"
-                passedGoal = Goals.Strength
+                Goal = Goals.Strength
                 break;
             }
             case 'giantsets': {
@@ -92,7 +104,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT INTENSITY"
                 goalOptionOne = "Low"
                 goalOptionTwo = "High"
-                passedGoal = Goals.LowReps
+                Goal = Goals.LowReps
                 break;
             }
             case 'homeworkout': {
@@ -107,7 +119,7 @@ export class WorkoutCreator extends Component {
                 goalTitle = "SELECT INTENSITY"
                 goalOptionOne = "Low"
                 goalOptionTwo = "High"
-                passedGoal = Goals.Strength
+                Goal = Goals.Strength
                 break;
             }
             default: {
@@ -117,9 +129,6 @@ export class WorkoutCreator extends Component {
                 break;
             }
         }
-
-        // this.filterTableData({Goal}, WorkoutTableProps)
-
         this.setState({
             trainingtype, 
             isLoaded: true, 
@@ -128,51 +137,13 @@ export class WorkoutCreator extends Component {
             goalOptionOne,   
             goalOptionTwo,
             trainingTypeHeading,
-            trainingTypeDescription,
-            // Goal: passedGoal
+            trainingTypeDescription
         })
-    }
-
-
-    filterTableData = (filters, workoutProps) => {
-        /*
         debugger
-        const newList = allExercises.filter(e => e.goal === filters.Goal).map(ex => {
-            // copy of...
-            ex.reps = {...ex.reps}
-            ex.weight = {...ex.reps}
-            return ex
-        })
-
-        if(filters.Goal === Goals.Strength) {
-            workoutProps.data = regularStrength
-        }
-        if(filters.Goal === Goals.Endurance) {
-            workoutProps.data = regularEndurance
-        }
-
-        // needs to produce same kind of data!
-        console.log(workoutProps.data)
-
-        // muscleGroup -> title
-        // exercise -> Array<Exercise>
-        const groupedCollection = []
-        const keyValueTrack = {}
-        newList.forEach(e => {
-
-            if(keyValueTrack[e.muscleGroup]) {
-                // existing entry
-                keyValueTrack[e.muscleGroup].exercise.push(entry)
-            } else {
-                // brand new entry!
-                let entry = { title: e.muscleGroup, exercise: e }
-                keyValueTrack[e.muscleGroup] = [entry]
-                groupedCollection.push(keyValueTrack[e.muscleGroup])
-            }
-        })
-        */
-
+        this.changedTableData({goal: Goal, workoutCategory: trainingtype})
     }
+
+
 
     componentDidMount() 
     {
@@ -180,10 +151,10 @@ export class WorkoutCreator extends Component {
         this.routeChanged(this.props.match.params.worktype)
     }
 
+    // Simply an example so I can test!
     toggleGoalProps = () => {
         const Goal = this.state.Goal === Goals.Endurance ? Goals.Strength : Goals.Endurance
-        this.setState({Goal: Goal })
-        this.routeChanged(this.props.match.params.worktype, Goal)
+        this.changedTableData({goal: Goal, workoutCategory: this.state.trainingtype})
     }
 
     

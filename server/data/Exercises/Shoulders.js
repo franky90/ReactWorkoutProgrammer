@@ -11,15 +11,3 @@ export const MilitaryPressBarbell = new Exercise(
         muscleGroup: muscleGroup.Shoulders
     }
 )
-
-export const MilitaryPressBarbellRegularEndurance = new Exercise(
-    {
-        name: 'Military Press Barbell', 
-        sets: 3,
-        reps: {small: 15,large: 20, type: rangeTypes.numericMultiple},
-        rest: '60-90',
-        weight: {value: 50, type: rangeTypes.numericWeight},
-        goal: Goals.Endurance,
-        muscleGroup: muscleGroup.Shoulders
-    }
-)

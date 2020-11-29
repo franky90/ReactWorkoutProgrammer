@@ -12,7 +12,7 @@ export class ExerciseApi
     /**
      * makes an Api call that will allow a user to be registered
      */
-    getTableData({goal}) {
-        return Axios.get(`${this.apiBase}/Exercise/?goal=${goal}`)
+    getTableData({goal, workoutCategory}) {
+        return Axios.get(`${this.apiBase}/Exercise/?goal=${goal}&workoutCategory=${workoutCategory}`)
     }
 }

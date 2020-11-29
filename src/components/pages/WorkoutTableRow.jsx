@@ -21,6 +21,13 @@ export class WorkoutTableRow extends React.Component {
     }
   }
 
+  // gives us access to 
+  // const { name, sets, reps, rest, weight } =
+  getExerciseData = () => {
+    const { exercise } = this.props
+    return exercise[this.state.index]// selecting the first item
+  }
+
   ShuffleButtonClicked = () => {
     const groupItemsLength = this.state.exercise.length
     const index = (this.state.index + 1) % groupItemsLength
@@ -75,7 +82,8 @@ export class WorkoutTableRow extends React.Component {
 
   render() {
     
-    const { name, sets, reps, rest, weight } = this.state
+    // const { name, sets, reps, rest, weight, index } = this.state
+    const { name, sets, reps, rest, weight } = this.getExerciseData()
     const { isSuperSet, title, isReadOnly, SuperSetSize } = this.props
     const groupItemsLength = this.state.exercise.length
     let _isReadOnly = isReadOnly

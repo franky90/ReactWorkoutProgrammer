@@ -23,17 +23,25 @@ export const muscleGroup = {
     Abs: 'Abs'
 }
 
+export const workoutCategory = {
+    'regular': 'regular',
+    'supersets': 'supersets',
+    'giantsets': 'giantsets',
+    'homeworkout': 'homeworkout'
+}
+
 
 export default class Exercise 
 {
-    constructor({name, sets, reps, rest, weight, goal, muscleGroup}) {
+    constructor({name, sets, reps, rest, weight, goal, muscleGroup, workoutCategory = 'regular'}) {
         this.name = name
         this.sets = sets
         this.reps = reps
         this.rest = rest
         this.weight = weight
-        this.goal = goal
+        this.goal = goal// this is something we filter by
         this.muscleGroup = muscleGroup
+        this.workoutCategory = workoutCategory// this is something we filter by
     }
 
     withSets(sets) {
@@ -60,6 +68,11 @@ export default class Exercise
 
     withGoal(goal) {
         this.goal = goal
+        return this
+    }
+
+    withWorkoutCategory(wc) {
+        this.workoutCategory = wc
         return this
     }
 
