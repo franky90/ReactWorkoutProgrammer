@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import WorkoutCreatorOptions from './../WorkoutCreator/WorkoutCreatorOptions'
 import { WorkoutTable } from './../WorkoutTable'
-import { regularStrength, regularEndurance, allExercises } from './../data/workoutTableData'
-import { Goals, muscleGroup } from './../data/Exercises/Exercises.model'
+import { Goals } from './../data/Exercises/Exercises.model'
 import { ExerciseApi } from './../../../Service/ExerciseApi'
 
 export class WorkoutCreator extends Component {
@@ -28,6 +27,7 @@ export class WorkoutCreator extends Component {
         // newFilter.goal
         // newFilter.workoutCategory
         if(newFilter && newFilter.goal && newFilter.workoutCategory) {
+            
             new ExerciseApi().getTableData(newFilter).then((axiosResponse) => {
                 if(newFilter && newFilter.goal) this.setState({ Goal: newFilter.goal})
                 if(axiosResponse.data.isSuccess && axiosResponse.data.tableData) {
@@ -139,7 +139,6 @@ export class WorkoutCreator extends Component {
             trainingTypeHeading,
             trainingTypeDescription
         })
-        debugger
         this.changedTableData({goal: Goal, workoutCategory: trainingtype})
     }
 

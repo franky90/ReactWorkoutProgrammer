@@ -1,10 +1,9 @@
 import { ControllerBase } from './ControllerBase'
-// import { Goals } from './../data/Exercises/Exercises.model'
 import { allExercises } from './../data/workoutTableData'
 
-
-function groupTableData(tblDat)
-{
+function groupTableData(tblDat) {
+    // empty object
+    // keyed by string and value can be anything
     const keyValue = {}
     const outCollection  = []
 
@@ -24,7 +23,6 @@ function groupTableData(tblDat)
 }
 
 
-// /Exercise/MilitaryPressBarbell
 class ExerciseController extends ControllerBase {
     constructor()
     {
@@ -39,32 +37,43 @@ class ExerciseController extends ControllerBase {
 
 
         // Mandatory~ goal, workoutCategory
-        this.Router.get('/', (req, res) => {
-
-            // copies standard collection
-            let data = allExercises.slice()
-            data = data.filter(e => e.workoutCategory === req.query.workoutCategory && e.goal === req.query.goal)
-
-            console.log(`workoutCategory -> ${req.query.workoutCategory}`)
-            console.log(`goal -> ${req.query.goal}`)
-
-            res.send({
-                isSuccess: true,
-                tableData: groupTableData(data)
-            })
-            return
+        this.Router.get('/', function(request, response) {
+            try {
+                // copies standard collection
+                let allExercisesSubset = allExercises.filter(e => e.workoutCategory === request.query.workoutCategory && e.goal === request.query.goal)
+                console.log(`workoutCategory -> ${request.query.workoutCategory}`)
+                console.log(`goal -> ${request.query.goal}`)
+                response.send({
+                    isSuccess: true,
+                    tableData: groupTableData(allExercisesSubset)
+                })
+                return//stop running this stupid ass function
+            } catch (error) {
+                response.send({isSuccess: false,tableData: []})
+                return//stop running this stupid ass function
+            }
         })
-
 
 
         // returns void
         this.Router.get('/MilitaryPressBarbell', (req, res) => {
-            let data = allExercises.slice()
-            const MilitaryPressBarbellExercises = data.filter(x => x.name === 'Military Press Barbell')
+            
+            const MilitaryPressBarbellExercises = allExercises.filter(x => 
+                x.name === 'Military Press Barbell'
+            )
+
             res.send({ data: MilitaryPressBarbellExercises })
+            return
         })
 
-    
+
+        // returns void
+        this.Router.get('/allExercises', (req, res) => {
+            res.send({ data: allExercises })
+            return
+        })
+
+
     }
 }
 

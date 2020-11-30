@@ -3,10 +3,7 @@ import Axios from 'axios'
 export class ExerciseApi 
 {
     constructor() {
-        // Note for self! 
-        // need to figure out a way to make this dynamic,
-        // so that when this is hosted we are not calling localhost
-        this.apiBase = 'http://localhost:5000'
+        this.apiBase = process.env.REACT_APP_apiBase
     }
     
     /**
