@@ -6,6 +6,7 @@ import Home from "./../components/pages/Home";
 import ContactUs from "./../components/pages/ContactUs";
 // import SignUp from "./../components/pages/SignUp";
 import JoinPage from "./pages/Join/JoinPage";
+import { GroupingProblemPage } from './pages/Groupingproblem'
 import Login from "./pages/Login/Login";
 import { UserDashboardPage } from "./pages/UserDashboard";
 
@@ -47,6 +48,11 @@ const App = () => {
           <Route path="/join" exact component={JoinPage} />
           <Route path="/log-in" exact component={Login} />
           <Route path="/user/:username" component={UserDashboardPage} />
+
+          <Route exact path="/groupingproblem">
+            <GroupingProblemPage/>
+          </Route>
+
           <Route path="*">
             <h1>404 not found</h1>
           </Route>
