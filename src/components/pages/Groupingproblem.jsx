@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 
+
 export const GroupingProblemPage = () => {
 
-    const [exerciseCount, setExerciseCount] = useState({
+    const [exerciseCount, setExerciseCount] = useState(
+        {
         'Military Press Barbell': 3
-    })
+        }
+    )
+
+    setExerciseCount= () =>{
+        {
+    exerciseCount= exerciseCollection.reduce((allExercises, exercise)=>{
+    if (exercise in allExercises){
+      allExercises[exercise]+1
+    }else{
+        allExercises[exercise] = 1
+    } 
+    return allExercises
+ 
+    },{})
+    }
+    }
+    
+
+
     useEffect(() => {
         Axios.get('http://localhost:5000/Exercise/allExercises').then((exerciseCollection) => {
             const data = exerciseCollection.data.allExercises
