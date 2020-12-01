@@ -8,17 +8,31 @@ export const GroupingProblemPage = () => {
     })
     useEffect(() => {
         Axios.get('http://localhost:5000/Exercise/allExercises').then((exerciseCollection) => {
-            debugger
-            console.log(exerciseCollection)
-            // Peter writes code here!
-            // setExerciseCount(exerciseCollection)
+            const data = exerciseCollection.data.allExercises
+            if(Array.isArray(data) && data.length > 0) {
+                const Mapping = {}
+                data.forEach(exercise => {
+                    const name = exercise.name
+                    if(Mapping[name]) Mapping[name]++ 
+                    else Mapping[name] = 1
+                })
+                setExerciseCount(Mapping)
+            }
         }).catch((axiosError) => {
-            debugger
             console.log(axiosError)
         })
     },
     [])
 
 
-    return <h1>{JSON.stringify(exerciseCount, null, 2)}</h1>
+    const loopOverObject = () => {
+        const JSXElementCollection = []
+        for(let _exercise in exerciseCount) JSXElementCollection.push(<div key={_exercise}><h1>{_exercise}: <span style={{color: "crimson"}}>{exerciseCount[_exercise]}</span></h1></div>)
+        return JSXElementCollection
+    }
+
+
+    return <div>
+        {loopOverObject()}
+    </div>
 }

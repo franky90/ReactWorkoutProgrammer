@@ -8,7 +8,8 @@ import { MetaController } from './Controllers/ControllerDetails'
 import ExerciseController from './Controllers/ExerciseController'
 
 // Import of Services
-import { Logger } from './Service/Logger'
+// import { Logger } from './Service/Logger'
+const Logger = require('./Service/Logger')
 import { CustomMiddlewares } from './Service/CustomMiddlewares'
 import { DbManager } from './Service/DatabaseService'
 

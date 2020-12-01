@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "server:build": "npx babel server --out-dir buildServer",
     "server:start": "nodemon --exec babel-node ./server/index.js",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "whatsMyIP": "node ./server/scripts/getIp.js"
   },
   "eslintConfig": {
     "extends": [

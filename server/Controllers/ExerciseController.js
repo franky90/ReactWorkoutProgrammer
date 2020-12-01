@@ -69,7 +69,7 @@ class ExerciseController extends ControllerBase {
 
         // returns void
         this.Router.get('/allExercises', (req, res) => {
-            res.send({ data: allExercises })
+            res.send({ allExercises })
             return
         })
 
