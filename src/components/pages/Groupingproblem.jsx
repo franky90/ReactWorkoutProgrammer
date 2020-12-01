@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
-import {allExercises} from "./data/workoutTableData"
+
 
 export const GroupingProblemPage = () => {
 
@@ -10,23 +10,20 @@ export const GroupingProblemPage = () => {
         }
     )
 
-    const setExerciseCount= () =>{
+    setExerciseCount= () =>{
         {
-        //   posortowac je zeby itemy o tej samej nazwie byly obok siebie  
-        allExercises.sort() // so it suppose to sort them in ascending way 
-            for (let i=0; i<allExercises.length; i++){
-               
-                if (allExercises[i] === allExercises[i+1]){
-                if (allExercises[i]){
-                    allExercises[i].push(allExercises[i])
-                }
-                // push to array with it's name or ...
-                //create new array or if it exists use one
-                }
-            }
-            
-        }
+    exerciseCount= exerciseCollection.reduce((allExercises, exercise)=>{
+    if (exercise in allExercises){
+      allExercises[exercise]+1
+    }else{
+        allExercises[exercise] = 1
+    } 
+    return allExercises
+ 
+    },{})
     }
+    }
+    
 
 
     useEffect(() => {
