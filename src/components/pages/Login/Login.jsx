@@ -48,7 +48,7 @@ class Login extends Component {
     }
 
     return (
-      <form onSubmit={this.submitFormHandler} className="activeInputForm logging-container">
+      <form onSubmit={this.submitFormHandler} autocomplete="off" className="activeInputForm logging-container">
         <div className="form-image" style={{ backgroundImage: `url(${formImage})` }}/>
         <div className="form-container">
           <div className="form-container-heading">
@@ -70,8 +70,7 @@ class Login extends Component {
 
           <div className="form-details">
             <div className="form-inputs">
-              <label htmlFor="username"> Username </label>
-              <br></br>
+            <label htmlFor="username" className={`${this.state.userName.length ? "shrink" : ""} form-input-label`}> Username </label>
               <input
                 className="noOutline"
                 required={true}
@@ -80,14 +79,14 @@ class Login extends Component {
                 type="text"
                 value={this.state.userName}
                 onChange={this.textElementChanged}
-                placeholder="Pick a username"
+                placeholder=""
                 name="userName"
                 id="username"
               ></input>
+              
             </div>
             <div className="form-inputs">
-              <label htmlFor="password"> Password </label>
-              <br></br>
+              <label htmlFor="password" className={`${this.state.password.length ? "shrink" : ""} form-input-label`}> Password </label>
               <input
                 required={true}
                 minLength="8"
@@ -95,7 +94,7 @@ class Login extends Component {
                 type="password"
                 value={this.state.password}
                 onChange={this.textElementChanged}
-                placeholder="Add a password"
+                placeholder=""
                 name="password"
                 id="password"
               ></input>

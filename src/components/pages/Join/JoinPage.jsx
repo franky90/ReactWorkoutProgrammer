@@ -137,7 +137,7 @@ class JoinPage extends Component {
         const emailClassName = this.getValidationClassName(isEmailValid)
         const userClassName = this.getValidationClassName(isUserValid)
 
-        return <form onSubmit={this.submitFormHandler} className="activeInputForm logging-container">
+        return <form onSubmit={this.submitFormHandler} autocomplete="off" className="activeInputForm logging-container">
             <div className="form-image" style={{ backgroundImage: `url(${formImage})` }} />
 
             <div className="form-container">
@@ -159,36 +159,36 @@ class JoinPage extends Component {
 
                 <div className="form-details">
                     <div className="form-inputs">
-                        <label htmlFor="username"> Username </label><br></br>
+                        <label htmlFor="username" className={`${this.state.userName.length ? "shrink" : ""} form-input-label`}> Username </label>
                         <input 
                          className={userClassName} required={true} minLength="5" maxLength="15" type="text"
-                         value={this.state.userName} onChange={this.textElementChanged} placeholder="Pick a username" name="userName" id="username" ></input>
+                         value={this.state.userName} onChange={this.textElementChanged} placeholder="" name="userName" id="username" ></input>
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="password"> Password </label><br></br>
+                        <label htmlFor="password" className={`${this.state.password.length ? "shrink" : ""} form-input-label`}> Password </label>
                         <input className={passwordClassName}
-                            required={true} minLength="8" maxLength="30" type="password" value={this.state.password} onChange={this.textElementChanged} placeholder="Add a password" name="password" id="password">
+                            required={true} minLength="8" maxLength="30" type="password" value={this.state.password} onChange={this.textElementChanged} placeholder="" name="password" id="password">
                         </input>
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="confirm-password"> Confirm password </label><br></br>
+                        <label htmlFor="confirm-password" className={`${this.state.passwordConfirm.length ? "shrink" : ""} form-input-label`}> Confirm password </label>
                         <input
                             className={passwordClassName}
-                            required={true} minLength="8" maxLength="30" type="password" value={this.state.passwordConfirm} onChange={this.textElementChanged} placeholder="Confirm password" name="passwordConfirm" id="confirm-password">
+                            required={true} minLength="8" maxLength="30" type="password" value={this.state.passwordConfirm} onChange={this.textElementChanged} placeholder="" name="passwordConfirm" id="confirm-password">
                         </input>
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="email"> Email </label><br></br>
+                        <label htmlFor="email" className={`${this.state.email.length ? "shrink" : ""} form-input-label`}> Email </label>
                         <input
                             className={emailClassName}
-                            required={true} type="email" value={this.state.email} onChange={this.textElementChanged} placeholder="Add your email" name="email" id="email">
+                            required={true} type="email" value={this.state.email} onChange={this.textElementChanged} placeholder="" name="email" id="email">
                         </input>
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="confirm-email"> Confirm Email </label><br></br>
+                        <label htmlFor="confirm-email" className={`${this.state.emailConfirm.length ? "shrink" : ""} form-input-label`}> Confirm Email </label>
                         <input
                             className={emailClassName}
-                            required={true} type="email" value={this.state.emailConfirm} onChange={this.textElementChanged} placeholder="Confirm email" name="emailConfirm" id="confirm-email">
+                            required={true} type="email" value={this.state.emailConfirm} onChange={this.textElementChanged} placeholder="" name="emailConfirm" id="confirm-email">
                         </input>
                     </div>
                     <div className="form-inputs">
