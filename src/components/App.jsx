@@ -9,6 +9,7 @@ import JoinPage from "./pages/Join/JoinPage";
 import { GroupingProblemPage } from './pages/Groupingproblem'
 import Login from "./pages/Login/Login";
 import { UserDashboardPage } from "./pages/UserDashboard";
+import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/SignInAndSignUp";
 
 import { WorkoutCreator } from "./pages/WorkoutCreator/WorkoutCreator";
 // import WorkoutCreatorRegular from "./pages/WorkoutCreator/WorkoutCreatorRegular"
@@ -45,6 +46,10 @@ const App = () => {
           <Route path="/trainings-split" exact component={TrainingsSplit} />
           <Route path="/trainings" exact component={TrainingsMenu} />
           <Route path="/contact-us" exact component={ContactUs} />
+          <Route path="/sign-page" exact component={SignInAndSignUpPage} />
+          <Route path="/sign-in" exact component={SignInAndSignUpPage} />
+          <Route path="/sign-up" exact component={SignInAndSignUpPage} />    
+
           <Route path="/join" exact component={JoinPage} />
           <Route path="/log-in" exact component={Login} />
           <Route path="/user/:username" component={UserDashboardPage} />

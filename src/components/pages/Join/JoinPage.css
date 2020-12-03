@@ -87,11 +87,11 @@ margin-top: 5px;
   padding: 10% 10% 40% 10%;
 }
 
-.form-inputs{
+/* .form-inputs{
   position: relative;  
-}
+} */
 
-.form-input-label{
+/* .form-input-label{
   pointer-events: none;
   position: absolute;
   bottom:25px;
@@ -104,10 +104,10 @@ margin-top: 5px;
   left: 0px;
   font-size: 14px;
   color:#00adb5;
-}
+} */
 
 
-.form-details input {
+/* .form-details input {
   color: #eeeeee;
   width: 90%;
   height: 45px;
@@ -116,13 +116,13 @@ margin-top: 5px;
   border: none;
   border-bottom: 1px solid #00adb5;
   padding-left: 10px;
-}
+} */
 
-.form-details input:focus{
+/* .form-details input:focus{
   border-bottom:1px solid #eee;
   background-color: transparent;
   color: #eee;
-}
+} */
 
 .form-inputs-checkbox {
   display: flex;
