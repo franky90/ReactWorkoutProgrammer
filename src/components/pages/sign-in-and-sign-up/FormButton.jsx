@@ -2,11 +2,6 @@ import React from 'react'
 
 import "./signInAndSignUp.styles.css"
 
-const FormButton = ({children, ...otherProps}) =>{
-   return (
-    <button type="button" className="form-button" {...otherProps}> 
-    {children}
-    </button>
-    )}
+const FormButton = ({...submitButtonProps}) =><input type="submit" className="form-button" {...submitButtonProps}/>
 
 export default FormButton;
