@@ -5,7 +5,12 @@ import "./signInAndSignUp.styles.css"
 
 const FormHeading = ({ isSignIn, toggle }) => {
 
-    const clickHandler = (whoClicked) => (isSignIn && whoClicked || !isSignIn && !whoClicked) && toggle()
+    const clickHandler = (whoClicked) => {
+        debugger
+        if(isSignIn && whoClicked || !isSignIn && !whoClicked) {
+            toggle()
+        }
+    }
 
     return (
         <div className="form-container-heading">

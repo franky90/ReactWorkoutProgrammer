@@ -22,7 +22,6 @@ class SignIn extends React.Component {
 
     handleChange = event => {
         const { value, name } = event.target;
-
         this.setState({ [name]: value })
     }
 
@@ -30,13 +29,12 @@ class SignIn extends React.Component {
     render() {
         return (
             <div className="sign-in">
-                <h2 className="form-title">Please Sign Up to your account </h2>
-
+                <h2 className="form-title">Please Sign Up to your account</h2>
                 <form onSubmit={this.handleSubmit} autocomplete="off">
                     <FormInput name="email" type="email" handleChange={this.handleChange} value={this.state.email} label="email" required />
                     <FormInput name="password" type="password" handleChange={this.handleChange} value={this.state.password} label="password" required />
                     <div className="buttons">
-                        <FormButton type="submit" value="Sign In" onClick={this.handleSubmit}/>
+                        <FormButton value="Sign In" onClick={this.handleSubmit}/>
                     </div>
                 </form>
             </div>

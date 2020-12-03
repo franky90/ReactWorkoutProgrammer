@@ -16,7 +16,9 @@ class SignInAndSignUpPage extends React.Component {
         }
     }
 
-    toggle = () => this.setState({isSignIn: !this.state.isSignIn})
+    toggle = () => {
+        this.setState({isSignIn: !this.state.isSignIn})
+    }
 
     render() {
         const { isSignIn } = this.state

@@ -84,7 +84,10 @@
     font-size: 18px;
 }
 
-.form-details input {
+
+.form-details input[type="email"],
+.form-details input[type="password"],
+.form-details input[type="text"] {
     color: #eeeeee;
     width: 90%;
     height: 45px;
