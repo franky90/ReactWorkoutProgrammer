@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import "./Navbar.css"
 import LoginButtons from "./LoginButtons/LoginButtons"
+import NavRegisterButton from "./LoginButtons/NavRegisterButton"
 
 function Navbar() {
 
@@ -44,15 +45,15 @@ function Navbar() {
                 Contact Us
               </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/join" className="nav-links-mobile" onClick={closeMobileMenu}>
-              JOIN
-            </Link>
+          <li className="nav-item" onClick={closeMobileMenu}>
+          <NavRegisterButton buttonPath="/sign-page" buttonLinkClass="nav-links-mobile" buttonClass=""  >
+          JOIN
+          </NavRegisterButton>
           </li>
-          <li className="nav-item">
-            <Link to="/log-in" className="nav-links-mobile" onClick={closeMobileMenu}>
-              LOG IN
-            </Link>
+          <li className="nav-item" onClick={closeMobileMenu}>
+          <NavRegisterButton buttonPath="/sign-page" buttonLinkClass="nav-links-mobile" buttonClass="" >
+          LOGIN
+          </NavRegisterButton>
           </li>
         </ul>
         <LoginButtons />
