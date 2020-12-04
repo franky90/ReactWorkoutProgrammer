@@ -11,14 +11,14 @@ export default function LoginButtons(){
         buttonLinkClass="btn-list"
         buttonClass="btn"
         >
-        JOIN    
+        MY ACCOUNT  
         </NavRegisterButton>
-        <NavRegisterButton
+        {/* <NavRegisterButton
         buttonPath="/sign-page"
         buttonLinkClass="btn-list"
         buttonClass="btn">
         LOGIN
-        </NavRegisterButton>
+        </NavRegisterButton> */}
         </>
        )
     }

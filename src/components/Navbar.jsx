@@ -47,13 +47,13 @@ function Navbar() {
           </li>
           <li className="nav-item" onClick={closeMobileMenu}>
           <NavRegisterButton buttonPath="/sign-page" buttonLinkClass="nav-links-mobile" buttonClass=""  >
-          JOIN
+          MY ACCOUNT
           </NavRegisterButton>
           </li>
           <li className="nav-item" onClick={closeMobileMenu}>
-          <NavRegisterButton buttonPath="/sign-page" buttonLinkClass="nav-links-mobile" buttonClass="" >
+          {/* <NavRegisterButton buttonPath="/sign-page" buttonLinkClass="nav-links-mobile" buttonClass="" >
           LOGIN
-          </NavRegisterButton>
+          </NavRegisterButton> */}
           </li>
         </ul>
         <LoginButtons />

@@ -14,15 +14,15 @@ const FormHeading = ({ isSignIn, toggle }) => {
 
     return (
         <div className="form-container-heading">
+        <div className="form-container-heading-login">
+                <div onClick={() => clickHandler(false)} className={`${isSignIn ? "" : "sign-in-active"} form-container-heading-name`} to="/log-in">LOG IN</div>
+                <div className={`${isSignIn ? "" : "light-hidden"} form-container-heading-light`} />
+            </div>
+
             <div className="form-container-heading-join">
                 {/*<Link className={`${isSignIn ? "sign-up-active" : ""} form-container-heading-name`} to="/join">SIGN UP</Link>*/}
                 <div onClick={() => clickHandler(true)} className={`${isSignIn ? "sign-up-active" : ""} form-container-heading-name`} to="/join">JOIN</div>
                 <div className={`${isSignIn ? "light-hidden" : ""} form-container-heading-light`} />
-                
-            </div>
-            <div className="form-container-heading-login">
-                <div onClick={() => clickHandler(false)} className={`${isSignIn ? "" : "sign-in-active"} form-container-heading-name`} to="/log-in">LOG IN</div>
-                <div className={`${isSignIn ? "" : "light-hidden"} form-container-heading-light`} />
             </div>
         </div>
     )

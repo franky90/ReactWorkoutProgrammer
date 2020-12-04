@@ -38,7 +38,7 @@
     flex-wrap: wrap;
     align-items: right;
     position: absolute;
-    left:35%;
+    left:70%;
     bottom:0;
     align-items: center;
     font-size: 2rem;
@@ -49,7 +49,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    left:70%;
+    left:35%;
     bottom:0;
     align-items: center;
     font-size: 2rem;
