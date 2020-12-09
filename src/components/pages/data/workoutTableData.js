@@ -1,4 +1,4 @@
-import { MilitaryPressBarbell, MilitaryPressBarbellRegularEndurance } from './Exercises/Shoulders'
+import { MilitaryPressBarbell, DumbbellOverheadPress, MilitaryPressBarbellRegularEndurance } from './Exercises/Shoulders'
 import { BackSquatBarbell, DeadLift } from './Exercises/Legs'
 import { StandingCalfRaises } from './Exercises/Calves'
 import { HollowBody } from './Exercises/Abs'
@@ -20,7 +20,7 @@ export const regularStrength = {
     exercise: [
         {
             title: muscleGroup.Shoulders,
-            exercise: [MilitaryPressBarbell]
+            exercise: [MilitaryPressBarbell, DumbbellOverheadPress]
         },
         {
             title: muscleGroup.LegsPush,
