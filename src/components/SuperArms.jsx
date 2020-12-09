@@ -25,14 +25,14 @@ class SuperArms extends React.Component {
         this.setState({ index: newIndex })
     }
 
-    
+
     render() {
 
         return (
             <>
                 <Tr className="exercise-row">
-                    <Td>
-                        <ShuffleButton onClick={this.shuffleExercise} muscleGroup="Super Arms Triceps" isReadOnly={false} />
+                    <Td onClick={this.shuffleExercise}>
+                        <ShuffleButton muscleGroup="Super Arms Triceps" isReadOnly={false} />
                     </Td>
                     <Td>pump 1</Td>
                     <Td>{this.getExercise()} </Td>
