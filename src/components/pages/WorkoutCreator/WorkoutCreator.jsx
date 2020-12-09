@@ -18,7 +18,8 @@ export class WorkoutCreator extends Component {
             goalOptionTwo:"",
             trainingTypeHeading:"",
             trainingTypeDescription: '',
-            Goal: Goals.Endurance// need to specify the goal here!
+            Goal: Goals.Endurance,// need to specify the goal here!
+            SuperArms: false
         }
     }
 
@@ -180,6 +181,7 @@ export class WorkoutCreator extends Component {
                 trainingTypeDescription={this.state.WorkoutTableProps.trainingTypeDescription}
                 routeChanged={this.routeChanged}
                 toggleGoalProps={this.toggleGoalProps}
+                handleSuperArms={this.state.superArms}
             />
             <WorkoutTable {...WorkoutTableProps}/>
         </div>

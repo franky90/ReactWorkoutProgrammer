@@ -22,6 +22,11 @@ class WorkoutCreatorOptions extends Component {
     this.props.toggleGoalProps()
   }
 
+
+  handleSuperArmsFunction=()=>{
+    handleSuperArms = !handleSuperArms;
+  }
+
   render() {
     const { 
       trainingTypeHeading, 
@@ -31,7 +36,8 @@ class WorkoutCreatorOptions extends Component {
       goalOptionOne, 
       goalOptionTwo,
       isSuperset,
-      isTypeHomeWorkout
+      isTypeHomeWorkout,
+      handleSuperArms
     } = this.props;
       
 
@@ -112,7 +118,7 @@ class WorkoutCreatorOptions extends Component {
               BOOST INTESITY OF TRAINING
             </div>
             <div className="workout-creator-element-content">
-              <div className="workout-creator-element-content-switchContainer">
+              <div onClick={this.handleSuperArmsFunction} className="workout-creator-element-content-switchContainer">
                 <div className="workout-creator-element-content-switchName">
                   Big Arms
                 </div>

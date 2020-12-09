@@ -14,7 +14,7 @@ export class WorkoutTable extends React.Component {
 
   render() {
 
-    const { data, isSuperset, isReadOnly, SuperSetSize } = this.props
+    const { data, isSuperset, isReadOnly, SuperSetSize, superArms } = this.props
     let tableContent = null;
     if (Array.isArray(data) && data.length > 0) {
       tableContent = (
@@ -32,7 +32,7 @@ export class WorkoutTable extends React.Component {
           </Thead>
           <Tbody>
             {data.map((exerciseObjectReference, index) => <WorkoutTableRow key={exerciseObjectReference.title} {...exerciseObjectReference} order={index + 1} isReadOnly={isReadOnly} isSuperSet={isSuperset} SuperSetSize={SuperSetSize}/>)}
-            <SuperArms />
+            {superArms &&  <SuperArms /> }
           </Tbody>
          
         </Table>
