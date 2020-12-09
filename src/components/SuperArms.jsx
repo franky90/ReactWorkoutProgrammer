@@ -12,16 +12,12 @@ class SuperArms extends React.Component {
         }
     }
 
-    getExercise = () => {
-        debugger
-        return this.state.name[this.state.index]
-    }
+    getExercise = () =>  this.state.name[this.state.index]
 
 
     shuffleExercise = () => {
-        debugger
         const pumpOneArrayLength = this.state.name.length
-        const newIndex = this.state.index+1%pumpOneArrayLength
+        const newIndex = (this.state.index+1)%pumpOneArrayLength
         this.setState({ index: newIndex })
     }
 
