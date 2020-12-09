@@ -12,7 +12,7 @@ class WorkoutCreatorOptions extends Component {
     super(props);
     this.state = {
       isWarmupChecked: false,
-     
+      isSuperArms: handleSuperArms
     }
   }
 
@@ -24,7 +24,7 @@ class WorkoutCreatorOptions extends Component {
 
 
   handleSuperArmsFunction=()=>{
-    handleSuperArms = !handleSuperArms;
+    this.setState({isSuperArms: !handleSuperArms})
   }
 
   render() {
@@ -39,7 +39,8 @@ class WorkoutCreatorOptions extends Component {
       isTypeHomeWorkout,
       handleSuperArms
     } = this.props;
-      
+
+    
 
     return (
       <div className="workout-creator-container-options">
