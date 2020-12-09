@@ -27,7 +27,7 @@ const App = () => {
     useEffect(() => {
         setTimeout(() => {
             setLoadingState(false)
-        }, 3000)//setting this for 3 seconds so we are able to see it...
+        }, 1000)//setting this for 3 seconds so we are able to see it...
     }, 
     [])
 
