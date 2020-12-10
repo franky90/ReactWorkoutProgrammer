@@ -19,7 +19,7 @@ export class WorkoutCreator extends Component {
             trainingTypeHeading:"",
             trainingTypeDescription: '',
             Goal: Goals.Endurance,// need to specify the goal here!
-            SuperArms: false
+            superArms: false
         }
     }
 
@@ -40,7 +40,7 @@ export class WorkoutCreator extends Component {
                     this.setState({ WorkoutTableProps: WorkoutTablePropsCopy })
                 }
             }).catch((axiosError) => {
-                debugger
+                // debugger
             })
         }
     }
@@ -157,7 +157,12 @@ export class WorkoutCreator extends Component {
         this.changedTableData({goal: Goal, workoutCategory: this.state.trainingtype})
     }
 
+    handleSuperArmsFunction=()=>{
+        this.setState({isSuperArms: true})
+        console.log(this.state.superArms)
+      }
     
+
     render() {
 
         if(this.state.isLoaded === false) {
@@ -181,9 +186,11 @@ export class WorkoutCreator extends Component {
                 trainingTypeDescription={this.state.WorkoutTableProps.trainingTypeDescription}
                 routeChanged={this.routeChanged}
                 toggleGoalProps={this.toggleGoalProps}
-                handleSuperArms={this.state.superArms}
+                handleSuperArms = {this.handleSuperArmsFunction}
             />
-            <WorkoutTable {...WorkoutTableProps}/>
+            <WorkoutTable 
+            superArms={this.state.superArms}
+            {...WorkoutTableProps}/>
         </div>
     }
 }

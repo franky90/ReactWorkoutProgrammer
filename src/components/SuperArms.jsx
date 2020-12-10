@@ -15,15 +15,14 @@ class SuperArms extends React.Component {
         }
     }
 
-<<<<<<< HEAD
     getTriceps = () => {
-        debugger
+        // debugger
         return this.state.tricepsArray[this.state.tricepsIndex]
     }
 
 
     shuffleTriceps = () => {
-        debugger
+        // debugger
         const pumpOneArrayLength = this.state.tricepsArray.length
         const newIndex = this.state.tricepsIndex+1%pumpOneArrayLength
         if (newIndex < pumpOneArrayLength){
@@ -52,15 +51,6 @@ class SuperArms extends React.Component {
             this.setState({ bicepsIndex: 0 })
         }
         
-=======
-    getExercise = () =>  this.state.name[this.state.index]
-
-
-    shuffleExercise = () => {
-        const pumpOneArrayLength = this.state.name.length
-        const newIndex = (this.state.index+1)%pumpOneArrayLength
-        this.setState({ index: newIndex })
->>>>>>> 579063894f9a1ecf32f7236a40c29c0a166ca348
     }
 
 

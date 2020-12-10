@@ -12,7 +12,7 @@ class WorkoutCreatorOptions extends Component {
     super(props);
     this.state = {
       isWarmupChecked: false,
-      isSuperArms: handleSuperArms
+      
     }
   }
 
@@ -23,9 +23,6 @@ class WorkoutCreatorOptions extends Component {
   }
 
 
-  handleSuperArmsFunction=()=>{
-    this.setState({isSuperArms: !handleSuperArms})
-  }
 
   render() {
     const { 
@@ -119,7 +116,7 @@ class WorkoutCreatorOptions extends Component {
               BOOST INTESITY OF TRAINING
             </div>
             <div className="workout-creator-element-content">
-              <div onClick={this.handleSuperArmsFunction} className="workout-creator-element-content-switchContainer">
+              <div onClick={handleSuperArms} className="workout-creator-element-content-switchContainer">
                 <div className="workout-creator-element-content-switchName">
                   Big Arms
                 </div>

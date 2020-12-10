@@ -8,14 +8,19 @@ import SuperArms from "./../SuperArms"
 export class WorkoutTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state={
+
     }
+    
   }
 
+  
   render() {
 
     const { data, isSuperset, isReadOnly, SuperSetSize, superArms } = this.props
-    let tableContent = null;
+    let tableContent = null;    
+   
+
     if (Array.isArray(data) && data.length > 0) {
       tableContent = (
         <Table>
