@@ -26,23 +26,16 @@ class SuperArms extends React.Component {
     }
 
 
-    getExerciseByName = EName => {
-        if(EName === 'Triceps') {
-            return this.state.tricepsArray[this.state.tricepsIndex]
-        } else if(EName === 'Biceps') {
-            return this.state.bicepsArray[this.state.bicepsIndex]
-        }
+    getExerciseByName = (EName = 'Triceps') => {
+        if(EName === 'Biceps') return this.state.bicepsArray[this.state.bicepsIndex]
+        return this.state.tricepsArray[this.state.tricepsIndex]
     }
 
-    shuffleExercise = EName => {
-        let ArrRef = []
-        let index = 0
-        let callBackFunc = newIndex => {}//empty callBack by default...
-        if(EName === 'Triceps') {
-            ArrRef = this.state.tricepsArray
-            index = this.state.tricepsIndex
-            callBackFunc = tricepsIndex => this.setState({tricepsIndex})
-        } else if(EName === 'Biceps') {
+    shuffleExercise = (EName = 'Triceps') => {
+        let ArrRef = this.state.tricepsArray
+        let index = this.state.tricepsIndex
+        let callBackFunc = tricepsIndex => this.setState({tricepsIndex})
+        if(EName === 'Biceps') {
             ArrRef = this.state.bicepsArray
             index = this.state.bicepsIndex
             callBackFunc = bicepsIndex => this.setState({bicepsIndex})
@@ -59,11 +52,11 @@ class SuperArms extends React.Component {
         return (
             <>
                 <Tr className="exercise-row">
-                    <Td onClick={() => this.shuffleExercise('Triceps')}>
+                    <Td onClick={this.shuffleExercise}>
                         <ShuffleButton muscleGroup="Super Arms Triceps" isReadOnly={false} />
                     </Td>
                     <Td>pump 1</Td>
-                    <Td>{this.getExerciseByName('Triceps')} </Td>
+                    <Td>{this.getExerciseByName()} </Td>
                     <Td>3</Td>
                     <Td>15</Td>
                     <Td>30-90s</Td>
