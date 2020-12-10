@@ -188,9 +188,7 @@ export class WorkoutCreator extends Component {
                 toggleGoalProps={this.toggleGoalProps}
                 handleSuperArms = {this.handleSuperArmsFunction}
             />
-            <WorkoutTable 
-            superArms={this.state.superArms}
-            {...WorkoutTableProps}/>
+            <WorkoutTable superArms={this.state.isSuperArms} {...WorkoutTableProps}/>
         </div>
     }
 }
