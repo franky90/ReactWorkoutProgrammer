@@ -158,8 +158,9 @@ export class WorkoutCreator extends Component {
     }
 
     handleSuperArmsFunction=()=>{
-        this.setState({isSuperArms: true})
-        console.log(this.state.superArms)
+        // this.setState({isSuperArms: true})
+        this.setState({isSuperArms: !this.state.isSuperArms})
+        // console.log(this.state.superArms)
       }
     
 
