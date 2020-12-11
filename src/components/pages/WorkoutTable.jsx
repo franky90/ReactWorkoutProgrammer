@@ -4,6 +4,7 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import "./WorkoutCreator/WorkoutCreator.css"
 import { WorkoutTableRow } from './WorkoutTableRow'
 import SuperArms from "./../SuperArms"
+import SuperEndurance from "./../SuperEndurance"
 
 export class WorkoutTable extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export class WorkoutTable extends React.Component {
   
   render() {
 
-    const { data, isSuperset, isReadOnly, SuperSetSize, superArms } = this.props
+    const { data, isSuperset, isReadOnly, SuperSetSize, superArms, superEndurance } = this.props
     let tableContent = null;    
    
 
@@ -38,6 +39,7 @@ export class WorkoutTable extends React.Component {
           <Tbody>
             {data.map((exerciseObjectReference, index) => <WorkoutTableRow key={exerciseObjectReference.title} {...exerciseObjectReference} order={index + 1} isReadOnly={isReadOnly} isSuperSet={isSuperset} SuperSetSize={SuperSetSize}/>)}
             {superArms &&  <SuperArms /> }
+            {superEndurance &&  <SuperEndurance /> }
           </Tbody>
          
         </Table>

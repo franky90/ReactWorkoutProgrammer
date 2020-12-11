@@ -53,7 +53,7 @@ class SuperArms extends React.Component {
             <>
                 <Tr className="exercise-row">
                     <Td onClick={this.shuffleExercise}>
-                        <ShuffleButton muscleGroup="Super Arms Triceps" isReadOnly={false} />
+                        <ShuffleButton muscleGroup="Arms Triceps" isReadOnly={false} />
                     </Td>
                     <Td>pump 1</Td>
                     <Td>{this.getExerciseByName()} </Td>
@@ -64,7 +64,7 @@ class SuperArms extends React.Component {
                 </Tr>
                 <Tr className="exercise-row">
                     <Td onClick={() => this.shuffleExercise('Biceps')}>
-                        <ShuffleButton muscleGroup="Super Arms Biceps" isReadOnly={false} />
+                        <ShuffleButton muscleGroup="Arms Biceps" isReadOnly={false} />
                     </Td>
                     <Td>pump 2</Td>
                     <Td>{this.getExerciseByName('Biceps')}</Td>

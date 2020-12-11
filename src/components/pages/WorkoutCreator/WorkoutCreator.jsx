@@ -19,7 +19,8 @@ export class WorkoutCreator extends Component {
             trainingTypeHeading:"",
             trainingTypeDescription: '',
             Goal: Goals.Endurance,// need to specify the goal here!
-            superArms: false
+            superArms: false,
+            superEndurance: false
         }
     }
 
@@ -93,7 +94,7 @@ export class WorkoutCreator extends Component {
                 break;
             }
             case 'giantsets': {
-                WorkoutTableProps = { 
+                WorkoutTableProps = {
                     ...WorkoutTableProps,
                     SuperSetSize: 3,
                     // data: regularExerciseCollection,
@@ -162,6 +163,10 @@ export class WorkoutCreator extends Component {
         this.setState({isSuperArms: !this.state.isSuperArms})
         // console.log(this.state.superArms)
       }
+
+      handleSuperEnduranceFunction=()=>{
+       this.setState({isSuperEndurance: !this.state.isSuperEndurance})
+       }
     
 
     render() {
@@ -188,8 +193,12 @@ export class WorkoutCreator extends Component {
                 routeChanged={this.routeChanged}
                 toggleGoalProps={this.toggleGoalProps}
                 handleSuperArms = {this.handleSuperArmsFunction}
+                handleSuperEndurance = {this.handleSuperEnduranceFunction}
             />
-            <WorkoutTable superArms={this.state.isSuperArms} {...WorkoutTableProps}/>
+            <WorkoutTable 
+            superArms={this.state.isSuperArms}
+            superEndurance={this.state.isSuperEndurance}
+             {...WorkoutTableProps}/>
         </div>
     }
 }
