@@ -24,8 +24,8 @@ class WorkoutCreatorOptions extends Component {
 
 
   handleSuperArms = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
+    // e.stopPropagation()
+    // e.preventDefault()
     this.props.handleSuperArms()
   }
 
@@ -123,12 +123,12 @@ class WorkoutCreatorOptions extends Component {
             </div>
             <div className="workout-creator-element-content">
 
-              <div onClick={this.handleSuperArms} className="workout-creator-element-content-switchContainer">
+              <div  className="workout-creator-element-content-switchContainer">
                 <div className="workout-creator-element-content-switchName">
                   Big Arms
                 </div>
                 <label className="switch">
-                  <input type="checkbox" id="arms" name="arms" value="arms" />
+                  <input onClick={this.handleSuperArms} type="checkbox" id="arms" name="arms" value="arms" />
                   <span className="slider round"></span>
                 </label>
               </div>
